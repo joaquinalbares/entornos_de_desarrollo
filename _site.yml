@@ -1,0 +1,21 @@
+name: "Create a simple Rmarkdown website"
+output:
+  html_document:
+    theme: cosmo
+    #highlight: textmate
+navbar:
+  left:
+    - text: "INICIO"
+      href: index.html
+    - text: "UT01"
+      menu: 
+        - text: "Contenido"
+          href: UT01_index.html
+        - text: "Programación"
+          href: UT01_programacion.html 
+        - text: "Artículo de opinión"
+          href: UT01_lectura.html 
+        - text: "Ejercicios de clase"
+          href: UT01_ejercicios.html 
+
+output_dir: "."

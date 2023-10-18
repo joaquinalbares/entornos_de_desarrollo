@@ -1,0 +1,16 @@
+---
+title: "UT01 - EJERCICIOS DE CLASE"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## EJERCICIO 01
+
+### 1. Crea una tabla usando markdown donde se clasifiquen los siguientes lenguajes de programación:
+
+![lenguajes de programacion](imagenes/lenguajes.png)
+
+### 2.Elige uno de los lenguajes anteriores y explica cuales son sus puntos fuertes y sus puntos débiles.

@@ -1,24 +1,20 @@
-# RESULTADO DE APRENDIZAJE
+---
+title: "UT01 - INTRODUCCIÓN AL DESARROLLO DE APLICACIONES"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## RESULTADOS DE APRENDIZAJE
+
 Reconoce los elementos y herramientas que intervienen en el desarrollo de un programa informático, analizando sus características y las fases en las que actúan hasta llegar a su puesta en funcionamiento. 
 
-# CRITERIOS DE EVALUACIÓN
-a) Se ha reconocido la relación de los programas con los componentes del sistema
-informático: memoria, procesador, periféricos, entre otros.  
-b) Se han identificado las fases de desarrollo de una aplicación informática.  
-c) Se han diferenciado los conceptos de código fuente, objeto y ejecutable.  
-d) Se han reconocido las características de la generación de código intermedio para su ejecución en máquinas virtuales.  
-e) Se han clasificado los lenguajes de programación.  
-f) Se ha evaluado la funcionalidad ofrecida por las herramientas utilizadas en
-programación. 
-
-# CRITERIOS DE CALIFICACIÓN:
-| CUADERNO DE CLASE | CUESTIONARIO | EJERCICIOS DE CLASE | PRÁCTICAS  |
-| -- | -- | -- | -- |
-| %| %| %| % |
-
+--- 
 
 # CONTENIDOS
-## [Concepto de programa informático.](#uno)
+## [Orígenes del Software. Concepto de Software.](#uno)
 ## [Instrucciones y datos.](#dos)
 ## [Ejecución de programas en ordenadores.](#tres)
 ## [Lenguajes de programación](#cuatro)
@@ -26,14 +22,16 @@ programación.
 ## [Proceso de obtención de código ejecutable a partir del código fuente.](#seis)
 ## [Errores en el desarrollo de programas.](#siete)
 ## [Importancia de la reutilización de código.](#ocho)
+## [Criterios de Evalución](#nueve)
+## [Criterios de Calificación](#diez)
 
+--- 
 
+## <a name="uno">Orígenes del Software. Concepto de Software</a>
 
-<a name="uno"></a>
-## Orígenes del Software. Concepto de Software
 El concepto de **software** fue utilizado por Charles Babbage (1791-1871) hace mucho tiempo. Cuando trabajaba en su máquina diferencial, utilizaba series de instrucciones que se leían desde la memoria principal del sistema, y a esta serie de instrucciones las denominaba software.
 
-![Máquina Analítica](_resources/maquina_analitica.jpg)
+![Máquina Analítica](imagenes/maquina_analitica.jpg)
 
 > En el Science Museum de Londres, podrás ver algunos mecanismos que Charles Babbage desarrolló pero que no finalizó. Para los más morbosos y/o frikis, parte de su cerebro se encuentra conservado en formol en el Royal College of Surgeons de la misma ciudad.
 
@@ -43,7 +41,7 @@ En estas notas, Ada escribió:
 
 > Terminamos estas notas siguiendo en detalle los pasos a través de los cuales la máquina podría computar los Números de Bernoulli, siendo este (en la forma en que lo deduciremos) un ejemplo bastante complicado de su poder.
 
- ![ada.jpg](_resources/ada.jpg)
+ ![ada.jpg](imagenes/ada.jpg)
  
  > Ada Lovelace.
 
@@ -62,8 +60,8 @@ Como puede observarse, se establecían las bases de los modernos compiladores. J
 
 El término **informática** viene del acrónimo de procesamiento de la INFORmación de forma autoMÁTICA.
 
-<a name="dos"></a>
-## Instrucciones y datos.
+
+## <a name="dos">Instrucciones y datos.</a>
 
 El término **programa** referido a la computación especifica un a secuencia de **instrucciones**, comprensibles para el ordenador, que permiten el procesamiento de unos **datos de entrada** y produce unos **datos de salida**.
 
@@ -113,7 +111,7 @@ El software se ejecutará sobre los dispositivos físicos y de manera dependient
 ### Estructura funcional de un ordenador: procesador, memoria.
 La primera arquitectura hardware con programa almacenado se estableció en 1946 por John V on Neumann:
 
-![4fb01b93557437eb5f19c4a329c71cb0.png](_resources/4fb01b93557437eb5f19c4a329c71cb0.png)
+![4fb01b93557437eb5f19c4a329c71cb0.png](imagenes/4fb01b93557437eb5f19c4a329c71cb0.png)
 
 Arquitectura Von Neumann (programa almacenado):
 - **Procesador (Unidad Central de Procesamiento – CPU)**: ejecuta las instrucciones.
@@ -131,7 +129,7 @@ Arquitectura Von Neumann (programa almacenado):
 ### Tipos de Software. BIOS. Sistema. Aplicaciones.
 Según su función se distinguen tres tipos de software: sistema operativo, software de programación y aplicaciones.
 
-![f28a00bd490806bb117c0f7e14ebbed8.png](_resources/f28a00bd490806bb117c0f7e14ebbed8.png)
+![f28a00bd490806bb117c0f7e14ebbed8.png](imagenes/f28a00bd490806bb117c0f7e14ebbed8.png)
 
 El **sistema operativo** es el software base que ha de estar instalado y configurado en nuestro ordenador para que las aplicaciones puedan ejecutarse y funcionar. Son ejemplos de sistemas operativos: Windows, Linux, Mac OS X ...
 
@@ -217,7 +215,7 @@ b) **Lenguajes interpretados**. No se genera código objeto. El intérprete es u
 c) **Lenguajes virtuales**. Son lenguajes más portables que los lenguajes compilados, puesto que el código que se genera tras la compilación es un código intermedio o bytecode. Este código puede ser, a su vez, interpretado por una máquina virtual instalada en cualquier equipo. Tienen una ejecución lenta, pero su versatilidad para poder ejecutarse en cualquier entorno los hace muy apreciados.
 
 Aquí podemos ver el grado de uso de los diversos lenguajes de programación según TIOBE:
-![642c471ce5b6a755d88d5911443ef63b.png](_resources/642c471ce5b6a755d88d5911443ef63b.png)
+![642c471ce5b6a755d88d5911443ef63b.png](imagenes/642c471ce5b6a755d88d5911443ef63b.png)
 FUENTE: [TIOBE Index](https://www.tiobe.com/tiobe-index/)
 
 
@@ -253,10 +251,10 @@ para desarrollar software de calidad:
 
 A nivel genérico, el desarrollo de software implica las siguientes fases, comparadas con la resolución de problemas en la vida real:
 
-![3fac81a65888b47bbff8addcf67a05df.png](_resources/3fac81a65888b47bbff8addcf67a05df.png)
+![3fac81a65888b47bbff8addcf67a05df.png](imagenes/3fac81a65888b47bbff8addcf67a05df.png)
 
 Siendo más específicos, el Ciclo de Vida de Desarrollo de Software consta de unas serie de fases que varían según el modelo pero que podemos ver en el siguiente esquema:
-![721f4b5c80d1ab21f54f88d1ee039ee2.png](_resources/721f4b5c80d1ab21f54f88d1ee039ee2.png)
+![721f4b5c80d1ab21f54f88d1ee039ee2.png](imagenes/721f4b5c80d1ab21f54f88d1ee039ee2.png)
 FUENTE: [https://www.sergestec.com/que-es-el-ciclo-de-vida-de-desarrollo-de-sistemas-software/](https://www.sergestec.com/que-es-el-ciclo-de-vida-de-desarrollo-de-sistemas-software/)
 
 Esta organización por fases permite a los desarrolladores de
@@ -336,19 +334,19 @@ El modelo de cascada define las siguientes etapas que deben cumplirse de forma s
 - Despliegue (o instalación)
 - Mantenimiento
 
-![19b07658fdb02941b53de40d53385136.png](_resources/19b07658fdb02941b53de40d53385136.png)
+![19b07658fdb02941b53de40d53385136.png](imagenes/19b07658fdb02941b53de40d53385136.png)
 
 Siguiendo el modelo de cascada de forma estricta, sólo cuando se finaliza una fase, comienza la otra. En ocasiones se realiza una revisión antes de iniciar la siguiente fase, lo que permite la posibilidad de cambios (lo que puede incluir un proceso de control formal de cambio). Las revisiones también se utilizan para asegurar que la fase anterior ha sido totalmente finalizada; los criterios para completar una fase se conocen frecuentemente con el término inglés "gate" (puerta). Este modelo desaconseja revisitar y revisar fases que ya se han completado. Esta falta de flexibilidad en un modelo de cascada puro ha sido fuente de crítica de los defensores de modelos más flexibles. 
 
 ####  Modelo en espiral
 La principal característica del modelo en espiral es la gestión de riesgos de forma periódica en el ciclo de desarrollo. Este modelo fue creado en 1988 por Barry Boehm, combinando algunos aspectos clave de las metodologías del modelo de cascada y del desarrollo rápido de aplicaciones, pero dando énfasis en un área que para muchos no jugó el papel que requiere en otros modelos: un análisis iterativo y concienzudo de los riesgos, especialmente en el caso de sistema complejos de gran escala. 
-![7cd5e62fa9e898eedbb35313ad741504.png](_resources/7cd5e62fa9e898eedbb35313ad741504.png)
+![7cd5e62fa9e898eedbb35313ad741504.png](imagenes/7cd5e62fa9e898eedbb35313ad741504.png)
 
 
 #### Desarrollo iterativo e incremental
 El desarrollo iterativo recomienda la construcción de secciones reducidas de software que irán ganando en tamaño para facilitar así la detección de problemas de importancia antes de que sea demasiado tarde. Los procesos iterativos pueden ayudar a desvelar metas del diseño en el caso de clientes que no saben cómo definir lo que quieren.
 
-![c1a74ac268d445e28af81ea0e12f2fc4.png](_resources/c1a74ac268d445e28af81ea0e12f2fc4.png)
+![c1a74ac268d445e28af81ea0e12f2fc4.png](imagenes/c1a74ac268d445e28af81ea0e12f2fc4.png)
 
 ### Metodologías de desarrollo software. Características. Técnicas. Objetivos. Tipos de metodologías.
 
@@ -365,7 +363,7 @@ Las principales metodologías ágiles son:
 
 - **Programación extrema (XP):** es una metodología de desarrollo de software basada en las relaciones interpersonales, que se consideran la clave del éxito. Su principal objetivo es crear un buen ambiente de trabajo en equipo y que haya un feedback constante del cliente. El trabajo se basa en 12 conceptos: diseño sencillo, testing, refactorización y codificación con estándares, propiedad colectiva del código, programación en parejas, integración continua, entregas semanales e integridad con el cliente, cliente in situ, entregas frecuentes y planificación.
 
-![9bbba306ed3de516cd90200e32123dcc.png](_resources/9bbba306ed3de516cd90200e32123dcc.png)
+![9bbba306ed3de516cd90200e32123dcc.png](imagenes/9bbba306ed3de516cd90200e32123dcc.png)
 FUENTE: [https://www.becas-santander.com/es/blog/metodologias-desarrollo-software.html](https://www.becas-santander.com/es/blog/metodologias-desarrollo-software.html)
 
 ### Herramientas CASE (Computer Aided Software Engineering).
@@ -483,3 +481,23 @@ https://sites.google.com/site/desarrollodesoftwareuba/reutilizacion
 https://medium.com/forecast-en-espa%C3%B1ol/agile-vs-cascada-parte-1-de-5-qu%C3%A9-es-la-metodolog%C3%ADa-en-cascada-cc0ad7ea9875
 
 https://www.northware.mx/blog/7-errores-comunes-en-proyectos-de-desarrollo-de-software/
+
+
+<a name="nueve"></a>
+## CRITERIOS DE EVALUACIÓN
+
+a) Se ha reconocido la relación de los programas con los componentes del sistema
+informático: memoria, procesador, periféricos, entre otros.  
+b) Se han identificado las fases de desarrollo de una aplicación informática.  
+c) Se han diferenciado los conceptos de código fuente, objeto y ejecutable.  
+d) Se han reconocido las características de la generación de código intermedio para su ejecución en máquinas virtuales.  
+e) Se han clasificado los lenguajes de programación.  
+f) Se ha evaluado la funcionalidad ofrecida por las herramientas utilizadas en
+programación. 
+
+<a name="diez"></a>
+## CRITERIOS DE CALIFICACIÓN:
+
+| CUADERNO DE CLASE | CUESTIONARIO | EJERCICIOS DE CLASE | PRÁCTICAS  |
+| -- | -- | -- | -- |
+| %| %| %| % |

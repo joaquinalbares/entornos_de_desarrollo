@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>UT01 - INTRODUCCIÓN AL DESARROLLO DE APLICACIONES</title>
+
+<script src="site_libs/header-attrs-2.19/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html"></a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">INICIO</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    UT01
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="UT01_index.html">Contenido</a>
+    </li>
+    <li>
+      <a href="UT01_programacion.html">Programación</a>
+    </li>
+    <li>
+      <a href="UT01_lectura.html">Artículo de opinión</a>
+    </li>
+    <li>
+      <a href="UT01_ejercicios.html">Ejercicios de clase</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">UT01 - INTRODUCCIÓN AL DESARROLLO DE
+APLICACIONES</h1>
+
+</div>
+
+
+<div id="resultados-de-aprendizaje" class="section level2">
+<h2>RESULTADOS DE APRENDIZAJE</h2>
+<p>Reconoce los elementos y herramientas que intervienen en el
+desarrollo de un programa informático, analizando sus características y
+las fases en las que actúan hasta llegar a su puesta en
+funcionamiento.</p>
+<hr />
+</div>
+<div id="contenidos" class="section level1">
+<h1>CONTENIDOS</h1>
+<div id="orígenes-del-software.-concepto-de-software."
+class="section level2">
+<h2><a href="#uno">Orígenes del Software. Concepto de Software.</a></h2>
+</div>
+<div id="instrucciones-y-datos." class="section level2">
+<h2><a href="#dos">Instrucciones y datos.</a></h2>
+</div>
+<div id="ejecución-de-programas-en-ordenadores." class="section level2">
+<h2><a href="#tres">Ejecución de programas en ordenadores.</a></h2>
+</div>
+<div id="lenguajes-de-programación" class="section level2">
+<h2><a href="#cuatro">Lenguajes de programación</a></h2>
+</div>
+<div id="introducción-a-la-ingeniería-del-software"
+class="section level2">
+<h2><a href="#cinco">Introducción a la ingeniería del software</a></h2>
+</div>
+<div
+id="proceso-de-obtención-de-código-ejecutable-a-partir-del-código-fuente."
+class="section level2">
+<h2><a href="#seis">Proceso de obtención de código ejecutable a partir
+del código fuente.</a></h2>
+</div>
+<div id="errores-en-el-desarrollo-de-programas." class="section level2">
+<h2><a href="#siete">Errores en el desarrollo de programas.</a></h2>
+</div>
+<div id="importancia-de-la-reutilización-de-código."
+class="section level2">
+<h2><a href="#ocho">Importancia de la reutilización de código.</a></h2>
+</div>
+<div id="criterios-de-evalución" class="section level2">
+<h2><a href="#nueve">Criterios de Evalución</a></h2>
+</div>
+<div id="criterios-de-calificación" class="section level2">
+<h2><a href="#diez">Criterios de Calificación</a></h2>
+<hr />
+</div>
+<div id="orígenes-del-software.-concepto-de-software"
+class="section level2">
+<h2><a name="uno">Orígenes del Software. Concepto de Software</a></h2>
+<p>El concepto de <strong>software</strong> fue utilizado por Charles
+Babbage (1791-1871) hace mucho tiempo. Cuando trabajaba en su máquina
+diferencial, utilizaba series de instrucciones que se leían desde la
+memoria principal del sistema, y a esta serie de instrucciones las
+denominaba software.</p>
+<div class="float">
+<img src="imagenes/maquina_analitica.jpg" alt="Máquina Analítica" />
+<div class="figcaption">Máquina Analítica</div>
+</div>
+<blockquote>
+<p>En el Science Museum de Londres, podrás ver algunos mecanismos que
+Charles Babbage desarrolló pero que no finalizó. Para los más morbosos
+y/o frikis, parte de su cerebro se encuentra conservado en formol en el
+Royal College of Surgeons de la misma ciudad.</p>
+</blockquote>
+<p>En 1840 Charles Ada Byron (o Ada Lovelace) tradujo al inglés unas
+notas que el ingeniero militar y matemático Luigi Menabrea había hecho
+sobre una conferencia para presentar la máquina diferencial de Babbage,
+y al hacerlo, añadió un apéndice tan extenso que constituía un artículo
+en sí mismo. Las notas de Ada se publicaron en la revista Scientific
+Memoir en septiembre de 1843, con el título de «Sketch of the analytical
+engine invented by Charles Babbage», que firmó con sus iniciales A. A.
+L.</p>
+<p>En estas notas, Ada escribió:</p>
+<blockquote>
+<p>Terminamos estas notas siguiendo en detalle los pasos a través de los
+cuales la máquina podría computar los Números de Bernoulli, siendo este
+(en la forma en que lo deduciremos) un ejemplo bastante complicado de su
+poder.</p>
+</blockquote>
+<div class="float">
+<img src="imagenes/ada.jpg" alt="ada.jpg" />
+<div class="figcaption">ada.jpg</div>
+</div>
+<blockquote>
+<p>Ada Lovelace.</p>
+</blockquote>
+<p>Este algoritmo para calcular los números de Bernoulli -una serie de
+fracciones con diferentes aplicaciones en matemáticas- se ha considerado
+por muchos como el primer programa/algoritmo de la historia.
+Consecuentemente, muchos perfiles de la figura de Ada Lovelace lo
+celebran como la primera persona programadora de la historia.</p>
+<p>Posteriormente, Alan Turing (1912-1954) profundizó en el concepto de
+software. Este desarrolló su carrera como matemático, pero destacó en su
+momento como informático y criptógrafo, participando activamente en el
+desciframiento de los códigos de la máquina “ENIGMA” usada por los
+alemanes en la Segunda Guerra Mundial. Sin embargo, sus logros se vieron
+truncados, ya que, tras ser acusado y y procesado por ser homosexual, se
+suicidó.</p>
+<p>Diseñó un dispositivo teórico denominado <em>“máquina de Turing”</em>
+y desarrolló la teoría de la computación, la cual se tiene como
+referente hoy en día y forma parte del origen del software moderno. Se
+considera a Turing uno de los padres de la ciencia de la computación,
+antecedente de la informática moderna.</p>
+<p>Por otro lado, el término software se empleó como tal por primera vez
+John Wilder Tukey (1915-2000) en un artículo de la revista American
+Mathematical Monthly en 1958.</p>
+<p>En este artículo, donde se empleó el término <strong>computer
+software</strong> por primera vez, se hablaba de aprovechar las
+capacidades de cálculo de los ordenadores de tal manera que os
+programadores pudiesen escribir conjuntos de instrucciones (programas),
+los cuales podrían llegar a ser complejos, que luego se traducirían en
+otras más comprensibles para las máquinas en las que fueran a ser
+ejecutadas.</p>
+<p>Como puede observarse, se establecían las bases de los modernos
+compiladores. J. W. Tukey también creó otro término imprescindible en la
+tecnología computacional, la palabra <strong>bit</strong> como
+contracción de “dígito binario”, por su abreviación del inglés binary
+digit.</p>
+<p>El término <strong>informática</strong> viene del acrónimo de
+procesamiento de la INFORmación de forma autoMÁTICA.</p>
+</div>
+<div id="instrucciones-y-datos.-1" class="section level2">
+<h2><a name="dos">Instrucciones y datos.</a></h2>
+<p>El término <strong>programa</strong> referido a la computación
+especifica un a secuencia de <strong>instrucciones</strong>,
+comprensibles para el ordenador, que permiten el procesamiento de unos
+<strong>datos de entrada</strong> y produce unos <strong>datos de
+salida</strong>.</p>
+<p>Debemos tener claros entonces los conceptos de datos e
+instrucciones:</p>
+<p>Los <strong>datos</strong> son aquellos valores que cumplen una serie
+de requisitos para poder ser representados e interpretados
+independientemente del soporte donde se guarden. (Una dirección postal,
+un número de teléfono, una foto, …).</p>
+<p>La representación de dichos datos por medio de caracteres es uno de
+los medios más usuales para realizar la entrada (desde el teclado) y
+salida(hacia el monitor) de estos.</p>
+<p>Los datos atómicos (caracteres) pueden ser:</p>
+<ul>
+<li>Letras Mayúsculas: A B C D E F G H I J K L M N O P Q R S T U V W X Y
+Z</li>
+<li>Letras Minúsculas: a b c d e f g h i j k l m n o p q r s t u v w x y
+z</li>
+<li>Dígitos: 0 1 2 3 4 5 6 7 8 9</li>
+<li>Símbolos de puntuación: , ; . : ? ! ( ) [ ] { }</li>
+<li>Otros símbolos: = + - / * &gt; &lt;  @ # $ % ˆ &amp; | _ ~ ’ ”</li>
+<li>Caracteres de control: tabulador, nueva-línea, retorno-de-carro,
+nueva-página, etc.</li>
+<li>Otros caracteres:</li>
+</ul>
+<p>Los caracteres se codifican numéricamente según una tabla de
+correspondencia:</p>
+<ul>
+<li>ASCII (7 bits).</li>
+<li>ISO-8859 (8 bits).</li>
+<li>Unicode (32 bits).</li>
+</ul>
+<p>A cada carácter se le asocia un número.Para codificar
+<strong>N</strong> símbolos distintos se necesitan <strong>x</strong>
+bits, tal que:</p>
+<p><span class="math inline">\(2^{x-1} &lt; N ≤ 2^x\)</span></p>
+<p>Unicode (32 bits) tiene diversas formas de codificación: UTF-8,
+UTF-16, UTF-32.</p>
+<p>Las <strong>instrucciones</strong> representan acciones atómicas y
+sencillas que tienen un significado concreto y son de duración limitada.
+(leer, escribir, sumar, restar, …)</p>
+<p><a name="tres"></a> ## Ejecución de programas en ordenadores. ###
+Datos y programas. El término <strong>dato</strong> indica toda
+información que utiliza el ordenador en las ejecuciones de los
+programas.</p>
+<p>Un <strong>programa</strong> es una secuencia de comandos,
+comprensibles para el ordenador, que permiten la realización de una
+tarea determinada.</p>
+<div id="hardware-frente-a-software." class="section level3">
+<h3>Hardware frente a software.</h3>
+<p>Como sabemos, al conjunto de dispositivos físicos que conforman un
+ordenador se le denomina <strong>hardware</strong>. Existe una relación
+indisoluble entre éste y el software, ya que las aplicaciones o
+<strong>software</strong> necesitan estar instalados y configurados
+correctamente para que el equipo funcione.</p>
+<p>El software se ejecutará sobre los dispositivos físicos y de manera
+dependiente a éste. Para que un software funcione correctamente, debe de
+ser ejecutado en un hardware concreto o que cumpla una serie de
+requisitos.</p>
+</div>
+<div id="estructura-funcional-de-un-ordenador-procesador-memoria."
+class="section level3">
+<h3>Estructura funcional de un ordenador: procesador, memoria.</h3>
+<p>La primera arquitectura hardware con programa almacenado se
+estableció en 1946 por John V on Neumann:</p>
+<div class="float">
+<img src="imagenes/4fb01b93557437eb5f19c4a329c71cb0.png"
+alt="4fb01b93557437eb5f19c4a329c71cb0.png" />
+<div class="figcaption">4fb01b93557437eb5f19c4a329c71cb0.png</div>
+</div>
+<p>Arquitectura Von Neumann (programa almacenado): - <strong>Procesador
+(Unidad Central de Procesamiento – CPU)</strong>: ejecuta las
+instrucciones. - <strong>Unidad de Control (CU)</strong>: controla la
+ejecución de las instrucciones. - <strong>Unidad Aritmético/Lógica
+(ALU)</strong>: realiza operaciones aritméticas y lógicas con operandos
+numéricos (binarios). - <strong>Registros</strong>: almacenan operandos
+numéricos, resultados de las operaciones, así como información adecuada
+para la ejecución del programa. - <strong>Buses</strong> (Control,
+Direcciones y Datos): son el medio para la transferencia de información
+entre el procesador, la memoria principal y el resto de dispositivos. -
+El tamaño de la palabra de CPU indica el número de bits con el que es
+capaz de trabajar el procesador. - La frecuencia del reloj y el tamaño
+de la palabra de CPU determinan la potencia del procesador. -
+<strong>Memoria Principal</strong>: almacena tanto los programas como
+los datos (en forma de números codificados en binario). RAM, ROM. -
+<strong>Memoria Secundaria</strong>: sistemas de almacenamiento
+persistente (no-volátil). - <strong>Dispositivos Periféricos</strong>:
+transferencia de información con el exterior (ENTRADA - SALIDA).</p>
+</div>
+<div id="tipos-de-software.-bios.-sistema.-aplicaciones."
+class="section level3">
+<h3>Tipos de Software. BIOS. Sistema. Aplicaciones.</h3>
+<p>Según su función se distinguen tres tipos de software: sistema
+operativo, software de programación y aplicaciones.</p>
+<div class="float">
+<img src="imagenes/f28a00bd490806bb117c0f7e14ebbed8.png"
+alt="f28a00bd490806bb117c0f7e14ebbed8.png" />
+<div class="figcaption">f28a00bd490806bb117c0f7e14ebbed8.png</div>
+</div>
+<p>El <strong>sistema operativo</strong> es el software base que ha de
+estar instalado y configurado en nuestro ordenador para que las
+aplicaciones puedan ejecutarse y funcionar. Son ejemplos de sistemas
+operativos: Windows, Linux, Mac OS X …</p>
+<p>El <strong>software de programación</strong> es el conjunto de
+herramientas que nos permiten desarrollar programas informáticos, tienen
+ese propósito concreto y están diseñadas para ser usadas por
+profesionales. Los programas informáticos pueden usarse para desarrollar
+aplicaciones o bien para controlar otros dispositivos (brazo robótico,
+escáner de código de barras, …).</p>
+<p>Una <strong>aplicación informática</strong> está en contacto con el
+usuario y y no con el hardware. Será el sistema operativo el que haga de
+nexo de unión entre ambos (aplicación informática y hardware).</p>
+<p>Existe multitud de aplicaciones informáticas que automatizan o ayudan
+a la realización de ciertas tareas como, por ejemplo:</p>
+<p>Entre los diversos tipos de software podemos encontrar, por ejemplo:
+- Programas de contabilidad. - Bases de datos. - Programas de diseño
+gráfico. - Procesadores de texto. - Programa de facturación. -
+Aplicaciones multimedia. - Hojas de cálculo. - Presentaciones. -
+Herramientas de correo electrónico.</p>
+<p>Un caso especial de software es la <strong>BIOS</strong>. BIOS
+significa “Basic Input-Output System” que viene a ser sistema básico de
+entrada salida. Se almacena en un chip integrado en la placa base y es
+la interfaz o puente entre tu sistema operativo y el hardware de nuestro
+equipo. Todas las acciones que hagas a nivel software, como por ejemplo
+hacer clic en un programa, son traducidas en instrucciones que pasan a
+través de la BIOS y a continuación mandadas al monitor, tarjeta gráfica
+etc.</p>
+<p>La BIOS integra un software que se carga al encender el ordenador y
+chequea que todo esté correcto antes de cargar el sistema operativo. El
+alto acoplamiento entre el software y el hardware de la BIOS establece
+el concepto de <strong><a
+href="https://es.wikipedia.org/wiki/Firmware">firmware</a></strong>.</p>
+</div>
+<div
+id="código-fuente-código-objeto-y-código-ejecutable-máquinas-virtuales."
+class="section level3">
+<h3>Código fuente, código objeto y código ejecutable; máquinas
+virtuales.</h3>
+<ul>
+<li><p>El <strong>código fuente</strong> es el conjunto de archivos que
+contienen órdenes o instrucciones que forman el programa. Para hacer
+cambios en un programa es necesario acceder al código fuente.</p>
+<p>Las instrucciones son ejecutadas por la CPU que funciona del
+siguiente modo: obtiene la obtiene la primera instrucción de la memoria,
+la decodifica para determinar el código de operación y los datos,
+después la ejecuta y en algunos casos almacena el resultado. Este
+proceso se ejecuta continuamente hasta que se leen todas las
+instrucciones del programa.</p></li>
+<li><p>Se llama <strong>código objeto</strong> al código que resulta de
+la compilación del código fuente. Puede ser en lenguaje máquina o
+bytecode, y puede distribuirse en varios archivos que corresponden a
+cada código fuente compilado.</p>
+<p>Luego un enlazador (linker) se encarga de juntar todos los archivos
+de código objeto para obtener el programa ejecutable.</p></li>
+<li><p>Por último, el <strong>código objeto</strong>: Conjunto de
+instrucciones y datos escritos en un lenguaje que entiende el ordenador
+directamente: binario o código máquina.</p></li>
+</ul>
+<p>Provienen de la traducción de cierto código fuente, es un fragmento
+del programa final y es específico de la plataforma de ejecución.</p>
+<p>Una máquina virtual es software de proceso nativo, es decir,
+ejecutable en una plataforma específica, capaz de interpretar y ejecutar
+instrucciones expresadas en un código binario especial, el cual es
+generado por el compilador del lenguaje que estemos utilizando (por
+ejemplo Java).</p>
+<p><a name="cuatro"></a> ## Lenguajes de programación. Los lenguajes de
+programación han evolucionado a lo largo del tiempo para aumentar su
+rendimiento y facilitar el trabajo a los programadores. Cada vez,
+existen lenguajes de programación que son más amigables con el usuario
+y, por tanto, más fáciles de programar.</p>
+<p>Muchas veces, el que se programe más rápido y los programas sean más
+sencillos de realizar provoca que estos sean más lentos y que ocupen más
+espacio.</p>
+</div>
+<div id="tipos-de-lenguajes-de-programación." class="section level3">
+<h3>Tipos de lenguajes de programación.</h3>
+<p>A continuación, se muestran las características de los lenguajes de
+programación existentes en la actualidad:</p>
+<div id="lenguaje-máquina" class="section level4">
+<h4>Lenguaje máquina:</h4>
+<ul>
+<li>Sus instrucciones son complejas e ininteligibles. Se componen de
+combinaciones de unos y ceros.</li>
+<li>No necesita ser traducido, por lo tanto es el único lenguaje que
+entiende directamente el ordenador.</li>
+<li>Fue el primer lenguaje utilizado. En su momento, los expertos debían
+tener un dominio profundo del hardware para poder entender este lenguaje
+de programación.</li>
+<li>Difiere para cada procesador. Las instrucciones no son portables de
+un equipo a otro.</li>
+<li>Salvo excepciones, actualmente, nadie programa en este
+lenguaje.</li>
+<li>Es dificil de comprender y programar.</li>
+<li>Dada la dificultad y poca portabilidad del lenguaje máquina, el
+ensamblador lo sustituyó para facilitar la labor de programación.</li>
+</ul>
+</div>
+<div id="lenguaje-de-medio-nivel" class="section level4">
+<h4>Lenguaje de medio nivel</h4>
+<ul>
+<li>Dada la dificultad y poca portabilidad del lenguaje máquina, el
+ensamblador lo sustituyó para facilitar la labor de programación.</li>
+<li>Sigue estando cercano al hardware, pero, en lugar de unos y y ceros,
+se programa usando mnemotécnicos, que son instrucciones más inteligibles
+por el programador que permiten comprender de una forma más sencilla que
+hace el programa.</li>
+<li>Este lenguaje necesita compilarse y traducirse al lenguaje máquina
+para poder ser ejecutado.</li>
+<li>Se trabaja con los registros del procesador y direcciones físicas.
+En lenguajes de nivel más alto, ya se utilizan variables y estructuras
+más sofisticadas.</li>
+</ul>
+</div>
+<div id="lenguajes-de-alto-nivel" class="section level4">
+<h4>Lenguajes de alto nivel:</h4>
+<ul>
+<li>La mayoría de los lenguajes de programación actuales pertenecen a
+esta categoría.</li>
+<li>Tienen una forma de programar más intuitiva y sencilla.</li>
+<li>Más cercano al lenguaje humano que al lenguaje máquina (por ejemplo:
+WHILE var DO…DONE).</li>
+<li>Suelen tener librerías y funciones predeterminadas que solucionan
+algunos de los problemas que suelen presentarse al programador.</li>
+<li>En ocasiones, ofrecen frameworks para una programación más eficiente
+y y rápida.</li>
+<li>Suelen trabajar con mucha abstracción y orientación a objetos. De
+esa manera, es más fácil la reutilización y y el encapsulamiento de
+componentes.</li>
+</ul>
+</div>
+</div>
+<div id="características-de-los-lenguajes-más-difundidos."
+class="section level3">
+<h3>Características de los lenguajes más difundidos.</h3>
+<p>Podemos definir las características de los lenguajes de una manera
+más educada si los agrupamos según la forma en la que son
+ejecutados:</p>
+<ol style="list-style-type: lower-alpha">
+<li><p><strong>Lenguajes compilados</strong>. Necesitan un programa
+traductor (compilador) para convertir el código fuente en código
+máquina. Este tipo de programas se ejecutan de forma más rápida que los
+interpretados o los virtuales. Además del compilador, existe un programa
+llamado enlazador o linker que permite unir el código objeto del
+programa con el código objeto de las librerías.</p></li>
+<li><p><strong>Lenguajes interpretados</strong>. No se genera código
+objeto. El intérprete es un programa que tiene que estar cargado en
+memoria y se encarga de leer cada una de las instrucciones,
+interpretarlas y ejecutarlas. Las instrucciones se traducen on the fly y
+solamente aquellas que van ejecutándose, en vez de interpretar todo el
+programa.</p></li>
+<li><p><strong>Lenguajes virtuales</strong>. Son lenguajes más portables
+que los lenguajes compilados, puesto que el código que se genera tras la
+compilación es un código intermedio o bytecode. Este código puede ser, a
+su vez, interpretado por una máquina virtual instalada en cualquier
+equipo. Tienen una ejecución lenta, pero su versatilidad para poder
+ejecutarse en cualquier entorno los hace muy apreciados.</p></li>
+</ol>
+<p>Aquí podemos ver el grado de uso de los diversos lenguajes de
+programación según TIOBE: <img
+src="imagenes/642c471ce5b6a755d88d5911443ef63b.png"
+alt="642c471ce5b6a755d88d5911443ef63b.png" /> FUENTE: <a
+href="https://www.tiobe.com/tiobe-index/">TIOBE Index</a></p>
+<p><a name="cinco"></a> ## Introducción a la ingeniería del software:
+### Proceso software y ciclo de vida del software. Una vez que un
+programa es desarrollado, será utilizado durante un largo periodo de
+tiempo. Durante su periodo de utilización, el software deberá ir
+evolucionando para adaptarse a nuevos requisitos. Además, cuando se
+detecten errores, deberán ser depurados y corregidos adecuadamente.
+Estos cambios en el software podrán ser desarrollados por el propio
+programador, por otros programadores, o por un equipo de ellos.</p>
+<p>Construir un sistema software que sea correcto: Que se comporte según
+las especificaciones del problema a resolver. Que cumpla los requisitos
+y restricciones especificados. Que cuando sea ejecutado, resuelva el
+problema correctamente, para todos los valores posibles, y siempre que
+sea ejecutado. Se debe seguir una metodología que facilite la detección
+y corrección de errores</p>
+<p>Cuando desarrollamos programas, es posible que cometamos errores, que
+podrían ser detectados durante el desarrollo, o bien en el futuro
+durante su utilización.</p>
+<p>Debemos seguir metodologías de programación y estrategias adecuadas
+para desarrollar software de calidad:</p>
+<ul>
+<li>Que facilite la modificación y evolución del software.</li>
+<li>Que minimice las posibilidades de introducir errores en el
+software,</li>
+<li>Que facilite la depuración (detección y corrección) de los errores
+existentes.</li>
+<li>Que facilite la cooperación entre diversos desarrolladores a lo
+largo del tiempo.</li>
+</ul>
+</div>
+<div
+id="fases-del-desarrollo-de-una-aplicación-análisis-diseño-codificación-pruebas-documentación-explotación-y-mantenimiento-entre-otras."
+class="section level3">
+<h3>Fases del desarrollo de una aplicación: análisis, diseño,
+codificación, pruebas, documentación, explotación y mantenimiento, entre
+otras.</h3>
+<p>A nivel genérico, el desarrollo de software implica las siguientes
+fases, comparadas con la resolución de problemas en la vida real:</p>
+<div class="float">
+<img src="imagenes/3fac81a65888b47bbff8addcf67a05df.png"
+alt="3fac81a65888b47bbff8addcf67a05df.png" />
+<div class="figcaption">3fac81a65888b47bbff8addcf67a05df.png</div>
+</div>
+<p>Siendo más específicos, el Ciclo de Vida de Desarrollo de Software
+consta de unas serie de fases que varían según el modelo pero que
+podemos ver en el siguiente esquema: <img
+src="imagenes/721f4b5c80d1ab21f54f88d1ee039ee2.png"
+alt="721f4b5c80d1ab21f54f88d1ee039ee2.png" /> FUENTE: <a
+href="https://www.sergestec.com/que-es-el-ciclo-de-vida-de-desarrollo-de-sistemas-software/">https://www.sergestec.com/que-es-el-ciclo-de-vida-de-desarrollo-de-sistemas-software/</a></p>
+<p>Esta organización por fases permite a los desarrolladores de sistemas
+ir planteando soluciones a los problemas que puedan ir surgiendo.</p>
+<div id="análisisfactibilidad" class="section level4">
+<h4>1.Análisis/factibilidad:</h4>
+<p>Esta es la primera fase de toda vida de un desarrollo de software,
+donde debemos obtener una idea clara de que solicita el cliente y de la
+viabilidad del proyecto a nivel temporal y económico.</p>
+<p>En esta fase debería quedar claro si tiene sentido desarrollar un
+programa para resolver el problema dado, algo que no es simple en
+algunos casos. En general, podemos decir que el uso de programas es
+pertinente en dos casos:</p>
+<ol style="list-style-type: decimal">
+<li>Cuando la ejecución del programa se realizará un gran número de
+veces, es decir, cuando el programa permite automatizar el desarrollo de
+tareas, complejas o no, de carácter repetitivo, como es el caso de una
+cadena de montaje, la confección de nóminas de los trabajadores,
+etc.</li>
+<li>Cuando el programa sirve para asegurar la ejecución, unas pocas
+veces, de una tarea compleja y pesada, en la que se asegurará fiabilidad
+y rapidez, como es el caso del control de una nave espacial.</li>
+</ol>
+<p>Es decir, no tiene ningún sentido desarrollar un programa para
+resolver un problema que nos encontraremos pocas veces o que es de muy
+fácil resolución.</p>
+<p>En estas fases iniciales, suelen tomarse decisiones que, a veces,
+afectan a todas las demás fases del proyecto, con lo cual tiene que
+estar todo bien documentado, detallado y soportado por datos
+concretos.</p>
+</div>
+<div id="planificaciónrequisitos" class="section level4">
+<h4>2. Planificación/Requisitos:</h4>
+<p>Esta fase define los requisitos del usuario, identifica las
+características, funciones y personalizaciones necesarias, e investiga
+las capacidades generales.</p>
+<p>Una vez que los interesados en el diseño definen el alcance del
+trabajo a realizar, los desarrolladores empiezan a relacionarse con los
+usuarios finales del sistema, a fin de definir los requisitos a cumplir
+por el proyecto finalizado.</p>
+<p>Esta fase termina cuando los usuarios finales validan los requisitos
+que se han definido. Por ejemplo, en algunos proyectos, se hace firmar
+al cliente un documento de requisitos de la aplicación en el cual el
+equipo de desarrollo se compromete a realizar las especificaciones
+indicadas por el cliente y este, a su vez, se compromete a no variar sus
+necesidades hasta por lo menos terminar una primera release.</p>
+</div>
+<div id="diseño" class="section level4">
+<h4>3. Diseño</h4>
+<p>Esta fase consiste en determinar los requisitos generales de la
+arquitectura de la aplicación y en dar una definición precisa de cada
+subconjunto de la aplicación. En esta fase, los documentos ya son más
+técnicos. Suelen crease dos documentos de diseño: uno más genérico, en
+el que se tiene una visión de la aplicación más general, y otro
+detallado, en el que se profundizará en los detalles técnicos de cada
+módulo concreto del sistema. Estos documentos los realizarán los
+analistas, junto con la supervisión del jefe de proyecto.</p>
+</div>
+<div id="desarrollo" class="section level4">
+<h4>4. Desarrollo</h4>
+<p>Algunos dicen que esta es la parte más robusta del ciclo de vida.
+Durante esta fase, los desarrolladores escriben el código y se crea
+documentación muy detallada.</p>
+<p>Aunque mucho código suele comentarse en el mismo programa, también
+tienen que generarse documentos donde se indica, por ejemplo, para cada
+función, las entradas, salidas, parámetros, propósito, módulos o
+librerías donde se encuentra, quién la ha realizado, cuándo, las
+revisiones que se han realizado de esta, etc.</p>
+<p>Como puede verse, el detalle es máximo teniendo en cuenta que ese
+código, en un futuro, va a tener que ser mantenido por la misma o,
+seguramente, otra persona y toda información que pueda recibir, a veces,
+es poca.</p>
+</div>
+<div id="pruebas-testing" class="section level4">
+<h4>5. Pruebas (testing)</h4>
+<p>En esta fase, se realizarán pruebas para garantizar que la aplicación
+se ha programado de acuerdo con las especificaciones originales y los
+distintos programas de los que consta la aplicación están perfectamente
+integrados y preparados para la explotación. Generalmente hay dos tipos
+de pruebas:</p>
+<ol style="list-style-type: decimal">
+<li><p>Funcionales. Verifica que la aplicación hace lo que tiene que
+hacer con las funciones acordes a los documentos de especificaciones que
+se establecieron con el cliente.</p></li>
+<li><p>Estructurales. Son de carácter meramente técnico. En estas
+pruebas, se hacen cargas reales y se somete la aplicación y el sistema a
+estrés, etc.</p></li>
+</ol>
+</div>
+<div id="f-explotación" class="section level4">
+<h4>F) Explotación</h4>
+<p>En esta fase, se instala el software en el entorno real de uso
+(entorno de producción) y se trabaja con él de forma cotidiana.
+Generalmente, es la fase más larga y suelen surgir multitud de
+incidencias, nuevas necesidades, etc.</p>
+</div>
+<div id="g-mantenimiento" class="section level4">
+<h4>G) Mantenimiento</h4>
+<p>La naturaleza cíclica del ciclo de vida de desarrollo de
+sistemas/software reconoce que el proceso de cambio y actualización es
+constante. Es necesario llevar a cabo el reemplazo de hardware/software
+obsoleto, actualizaciones de seguridad y mejoras continuas de manera
+regular.</p>
+<p>Sin una buena documentación de la aplicación, las labores de
+mantenimiento son muy difíciles y su garantía, en ese caso, sería
+poca.Todas las operaciones de mantenimiento tienen que estar
+documentadas porque ha de saberse quién ha realizado la operación, qué
+ha hecho y cómo. También tienen que estar documentadas porque debería
+probarlas otra persona distinta al programador.</p>
+<p>Como se ha dicho, el comienzo y el final de cada fase descrita hasta
+ahora no están claros. Todas las fases se solapan y, una vez que
+concluyen, el resultado es la aplicación.</p>
+</div>
+<div id="h-evaluación" class="section level4">
+<h4>H) EVALUACIÓN</h4>
+<p>un elemento que a menudo se pasa por alto en cualquier implementación
+de un sistema a gran escala es el proceso de evaluación, que respalda la
+mejora continua del sistema. El equipo revisa continuamente lo que
+funciona y lo que necesita mejorar. Esto puede significar recomendar
+capacitación, procedimientos o actualizaciones adicionales.</p>
+</div>
+<div id="i-fin-de-vida" class="section level4">
+<h4>I) FIN DE VIDA</h4>
+<p>Cuando una aplicación software termina su vida, hay que decidir que
+hacer con los activos excedentes u obsoletos que han quedad al final. En
+esta fase se incluye la recuperación segura de datos e información para
+su conservación, así como la disposición física de un activo.</p>
+</div>
+<div id="documentación" class="section level4">
+<h4>DOCUMENTACIÓN</h4>
+<p>En cada una de las fases anteriores, se generan uno o más documentos.
+En ningún proyecto, es viable comenzar la codificación sin haber
+realizado las fases anteriores porque eso equivaldría a un desastre
+absoluto.</p>
+<p>Además, la documentación debe ser útil y estar adaptada a los
+potenciales usuarios de dicha documentación (cuando se crea un coche,
+existen los manuales de usuario y los manuales técnicos para los
+mecánicos. “Para qué quiero yo saber dónde están situados los
+inyectores, las bujías o la trócola si nunca la voy a cambiar. A mí lo
+que me interesa es saber cómo se regula el volante, cómo funciona la
+radio, etc.”). En cualquier aplicación, como mínimo, deberá generarse el
+manual que utilizará el usuario para desenvolverse con el programa.
+Deberá ser autoexplicativo y de ayuda para el cliente.</p>
+</div>
+</div>
+<div
+id="modelos-de-proceso-de-desarrollo-software-cascada-iterativo-evolutivo."
+class="section level3">
+<h3>Modelos de proceso de desarrollo software (cascada, iterativo,
+evolutivo).</h3>
+<div id="modelo-de-cascada" class="section level4">
+<h4>Modelo de cascada</h4>
+<p>El modelo de cascada define las siguientes etapas que deben cumplirse
+de forma sucesiva:</p>
+<ul>
+<li>Especificación de requisitos</li>
+<li>Diseño del software</li>
+<li>Construcción o Implementación del software</li>
+<li>Integración</li>
+<li>Pruebas (o validación)</li>
+<li>Despliegue (o instalación)</li>
+<li>Mantenimiento</li>
+</ul>
+<div class="float">
+<img src="imagenes/19b07658fdb02941b53de40d53385136.png"
+alt="19b07658fdb02941b53de40d53385136.png" />
+<div class="figcaption">19b07658fdb02941b53de40d53385136.png</div>
+</div>
+<p>Siguiendo el modelo de cascada de forma estricta, sólo cuando se
+finaliza una fase, comienza la otra. En ocasiones se realiza una
+revisión antes de iniciar la siguiente fase, lo que permite la
+posibilidad de cambios (lo que puede incluir un proceso de control
+formal de cambio). Las revisiones también se utilizan para asegurar que
+la fase anterior ha sido totalmente finalizada; los criterios para
+completar una fase se conocen frecuentemente con el término inglés
+“gate” (puerta). Este modelo desaconseja revisitar y revisar fases que
+ya se han completado. Esta falta de flexibilidad en un modelo de cascada
+puro ha sido fuente de crítica de los defensores de modelos más
+flexibles.</p>
+</div>
+<div id="modelo-en-espiral" class="section level4">
+<h4>Modelo en espiral</h4>
+<p>La principal característica del modelo en espiral es la gestión de
+riesgos de forma periódica en el ciclo de desarrollo. Este modelo fue
+creado en 1988 por Barry Boehm, combinando algunos aspectos clave de las
+metodologías del modelo de cascada y del desarrollo rápido de
+aplicaciones, pero dando énfasis en un área que para muchos no jugó el
+papel que requiere en otros modelos: un análisis iterativo y concienzudo
+de los riesgos, especialmente en el caso de sistema complejos de gran
+escala. <img src="imagenes/7cd5e62fa9e898eedbb35313ad741504.png"
+alt="7cd5e62fa9e898eedbb35313ad741504.png" /></p>
+</div>
+<div id="desarrollo-iterativo-e-incremental" class="section level4">
+<h4>Desarrollo iterativo e incremental</h4>
+<p>El desarrollo iterativo recomienda la construcción de secciones
+reducidas de software que irán ganando en tamaño para facilitar así la
+detección de problemas de importancia antes de que sea demasiado tarde.
+Los procesos iterativos pueden ayudar a desvelar metas del diseño en el
+caso de clientes que no saben cómo definir lo que quieren.</p>
+<div class="float">
+<img src="imagenes/c1a74ac268d445e28af81ea0e12f2fc4.png"
+alt="c1a74ac268d445e28af81ea0e12f2fc4.png" />
+<div class="figcaption">c1a74ac268d445e28af81ea0e12f2fc4.png</div>
+</div>
+</div>
+</div>
+<div
+id="metodologías-de-desarrollo-software.-características.-técnicas.-objetivos.-tipos-de-metodologías."
+class="section level3">
+<h3>Metodologías de desarrollo software. Características. Técnicas.
+Objetivos. Tipos de metodologías.</h3>
+<div id="desarrollo-ágil" class="section level4">
+<h4>Desarrollo ágil</h4>
+<p>El desarrollo ágil de software utiliza un desarrollo iterativo como
+base para abogar por un punto de vista más ligero y mas centrado en las
+personas que en el caso de las soluciones tradicionales. Los procesos
+ágiles utilizan retroalimentación en lugar de planificación, como
+principal mecanismo de control. La retroalimentación se canaliza por
+medio de pruebas periódicas y frecuentes versiones del software.</p>
+<p>Las principales metodologías ágiles son: - <strong>Kanban</strong>:
+metodología de trabajo inventada por la empresa de automóviles Toyota.
+Consiste en dividir las tareas en porciones mínimas y organizarlas en un
+tablero de trabajo dividido en tareas pendientes, en curso y
+finalizadas. De esta forma, se crea un flujo de trabajo muy visual
+basado en tareas prioritarias e incrementando el valor del producto.</p>
+<ul>
+<li><p><strong>Scrum</strong>: es también una metodología incremental
+que divide los requisitos y tareas de forma similar a Kanban. Se itera
+sobre bloques de tiempos cortos y fijos (entre dos y cuatro semanas)
+para conseguir un resultado completo en cada iteración. Las etapas son:
+planificación de la iteración (planning sprint), ejecución (sprint),
+reunión diaria (daily meeting) y demostración de resultados (sprint
+review). Cada iteración por estas etapas se denomina también
+sprint.</p></li>
+<li><p><strong>Lean</strong>: está configurado para que pequeños equipos
+de desarrollo muy capacitados elaboren cualquier tarea en poco tiempo.
+Los activos más importantes son las personas y su compromiso, relegando
+así a un segundo plano el tiempo y los costes. El aprendizaje, las
+reacciones rápidas y potenciar el equipo son fundamentales.</p></li>
+<li><p><strong>Programación extrema (XP):</strong> es una metodología de
+desarrollo de software basada en las relaciones interpersonales, que se
+consideran la clave del éxito. Su principal objetivo es crear un buen
+ambiente de trabajo en equipo y que haya un feedback constante del
+cliente. El trabajo se basa en 12 conceptos: diseño sencillo, testing,
+refactorización y codificación con estándares, propiedad colectiva del
+código, programación en parejas, integración continua, entregas
+semanales e integridad con el cliente, cliente in situ, entregas
+frecuentes y planificación.</p></li>
+</ul>
+<p><img src="imagenes/9bbba306ed3de516cd90200e32123dcc.png"
+alt="9bbba306ed3de516cd90200e32123dcc.png" /> FUENTE: <a
+href="https://www.becas-santander.com/es/blog/metodologias-desarrollo-software.html">https://www.becas-santander.com/es/blog/metodologias-desarrollo-software.html</a></p>
+</div>
+</div>
+<div id="herramientas-case-computer-aided-software-engineering."
+class="section level3">
+<h3>Herramientas CASE (Computer Aided Software Engineering).</h3>
+<p>En la práctica, para llevar a cabo varias de las etapas vistas en el
+punto anterior contamos con herramientas informáticas, cuya finalidad
+principal es automatizar las tareas y ganar fiabilidad y tiempo.</p>
+<p>Esto nos va a permitir centrarnos en los requerimientos del sistema y
+el análisis del mismo, que son las causas principales de los fallos del
+software.</p>
+<p>Las herramientas <strong>CASE</strong> son un conjunto de
+aplicaciones que se utilizan en el desarrollo de software con el
+objetivo de reducir costes y tiempo del proceso, mejorando por tanto la
+productividad del proceso.</p>
+<p>¿En qué fases del proceso nos pueden ayudar? En el diseño del
+proyecto, en la codificación de nuestro diseño a partir de su apariencia
+visual, detección de errores… El desarrollo rápido de aplicaciones o RAD
+es un proceso de desarrollo de software que comprende el desarrollo
+iterativo, la construcción de prototipos y el uso de utilidades CASE.
+Hoy en día se suele utilizar para referirnos al desarrollo rápido de
+interfaces gráficas de usuario o entornos de desarrollo integrado
+completos. La tecnología CASE trata de automatizar las fases del
+desarrollo de software para que mejore la calidad del proceso y del
+resultado final. En concreto, estas herramientas permiten:</p>
+<ul>
+<li>Mejorar la planificación del proyecto.</li>
+<li>Darle agilidad al proceso.</li>
+<li>Poder reutilizar partes del software en proyectos futuros.</li>
+<li>Hacer que las aplicaciones respondan a estándares.</li>
+<li>Mejorar la tarea del mantenimiento de los programas.</li>
+<li>Mejorar el proceso de desarrollo, al permitir visualizar las fases
+de forma gráfica.</li>
+</ul>
+<div id="clasificación" class="section level4">
+<h4>CLASIFICACIÓN</h4>
+<p>Normalmente, las herramientas CASE se clasifican en función de las
+fases del ciclo de vida del software en la que ofrecen ayuda:</p>
+<ul>
+<li>U-CASE: ofrece ayuda en las fases de planificación y análisis de
+requisitos.</li>
+<li>M-CASE: ofrece ayuda en análisis y diseño.</li>
+<li>L-CASE: ayuda en la programación del software, detección de errores
+del código, depuración de programas y pruebas y en la generación de la
+documentación del proyecto.</li>
+</ul>
+<p>Ejemplos de herramientas CASE libres son: ArgoUML, Use Case Maker,
+ObjectBuilder…</p>
+<p><a name="seis"></a> ## Proceso de obtención de código ejecutable a
+partir del código fuente. Herramientas implicadas: editores,
+compiladores, enlazadores, etc.</p>
+<ol style="list-style-type: upper-alpha">
+<li>El <strong>código fuente</strong> es el conjunto de instrucciones
+que la computadora deberá realizar, escritas por los programadores en
+algún lenguaje de alto nivel. Este conjunto de instrucciones no es
+directamente ejecutable por la máquina, sino que deberá ser traducido al
+lenguaje máquina, que la computadora será capaz de entender y
+ejecutar.</li>
+</ol>
+<p>Algunas características del código fuente son: - Es escrito por los
+en algún editor de texto o IDE. - Se escribe usando algún lenguaje de
+programación de alto nivel y contiene el conjunto de instrucciones
+necesarias. - Se debe hacer uso del control de versiones para garantizar
+el desarrollo óptimo y la respuesta ante fallos técnicos (pérdida de
+datos, roturas, borrados accidentales, …).</p>
+<p>Un aspecto importante a tener en cuenta es su licencia. Así, en base
+a ella, podemos distinguir dos tipos de código fuente: - Código fuente
+abierto. Es aquel que está disponible para que cualquier usuario pueda
+estudiarlo, modificarlo o reutilizarlo. - Código fuente cerrado. Es
+aquel que no tenemos permiso para editarlo.</p>
+<ol start="2" style="list-style-type: upper-alpha">
+<li>El <strong>código objeto</strong> es un código intermedio, resultado
+de traducir código fuente a un código equivalente formado por unos y
+ceros (bytecode) que aún no puede ser ejecutado directamente por la
+computadora. Está distribuido en varios archivos, cada uno de los cuales
+corresponde a cada programa fuente compilado. Sólo se genera código
+objeto una vez que el código fuente está libre de errores sintácticos y
+semánticos.</li>
+</ol>
+<p>El proceso de traducción de código fuente a código objeto puede
+realizarse de dos formas:</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Compilación: El proceso de traducción se realiza sobre todo el
+código fuente, en un solo paso. Se crea código objeto que habrá que
+enlazar. El software responsable se llama compilador (Software que
+traduce, de una sola vez, un programa escrito en un lenguaje de
+programación de alto nivel en su equivalente en lenguaje
+máquina.).</p></li>
+<li><p>Interpretación: El proceso de interpretación del código fuente se
+realiza línea a línea y se ejecuta simultáneamente. No existe código
+objeto intermedio. El software responsable se llama intérprete (Software
+que traduce, instrucción a instrucción, un programa escrito en un
+lenguaje de alto nivel en su equivalente en lenguaje máquina).</p></li>
+</ol>
+<p>El proceso de interpretación es más lento que en el caso de la
+compilación, pero es recomendable cuando el programador es inexperto, ya
+que da la detección de errores es más detallada.</p>
+<ol start="3" style="list-style-type: upper-alpha">
+<li>El <strong>Código Ejecutable</strong> es el código binario
+resultante de enlazar los archivos de código objeto con ciertas rutinas
+y bibliotecas necesarias. El sistema operativo será el encargado de
+cargar el código ejecutable en memoria RAM y proceder a ejecutarlo.
+También es conocido como código máquina y ya si es directamente
+inteligible por la computadora.</li>
+</ol>
+<p><a name="siete"></a> ## Errores en el desarrollo de programas. Los
+errores mas comunes en los que se suele incurrir en el desarrollo de
+software son: 1. Mala estimación de tiempos: Si bien la estimación de
+tiempos y costo es un arte, también es un proceso que tiene técnicas
+para estimar y acercarse bastante a una buena cotización. Tener una mala
+estimación de tiempos y costo afecta a ambas partes, a ti como cliente y
+al proveedor.</p>
+<ol start="2" style="list-style-type: decimal">
+<li><p>Insuficiente administración de los riesgos: Un riesgo es un
+evento o condición incierta que, si sucede, tiene un efecto en por lo
+menos uno de los objetivos del proyecto. Hay distintos tipos de riesgos,
+entre los que se pueden destacar:</p>
+<ol style="list-style-type: decimal">
+<li>Riesgos asociados con los usuarios. Incluyen la falta de compromiso
+de la alta gerencia de la organización y la insuficiente participación
+de los usuarios. Estos factores no siempre están al alcance del líder
+del proyecto.</li>
+<li>Factores de riesgo asociados al líder del proyecto. La incapacidad
+para juzgar el alcance del sistema y con la pobre identificación de la
+funcionalidad requerida. Estos factores sí deben ser controlados por el
+líder del proyecto.</li>
+<li>Factores asociados a la ejecución del proyecto, tales como personal
+inadecuado, metodología de desarrollo inapropiada, fallas en la
+definición de roles y responsabilidades, pobre planeación y control del
+proyecto. Estos factores generalmente si son considerados y controlados
+por el líder del proyecto.</li>
+<li>Factores de riesgo asociados al entorno, que se enfoca
+principalmente en los cambios en la gerencia organizacional y que
+podrían afectar al proyecto.</li>
+</ol></li>
+<li><p>Escatimar en el control de calidad: El aseguramiento de la
+calidad es una etapa primordial en tu proyecto de software, pues en esta
+etapa se permite validar todos los puntos de quiebre y cruciales en la
+operación de un negocio dado y hacia el cual está encaminado el
+software.</p></li>
+<li><p>Diseño inadecuado: Si bien es realmente cierto que sin un buen
+análisis no se puede tener un buen diseño, por ser actividades que por
+lo regular van de la mano no todo es totalmente dependiente del
+análisis, pues se puede tener el mejor de los análisis, pero un diseño
+deficiente.</p></li>
+<li><p>Confiar demasiado en tecnologías-herramientas no exploradas
+previamente</p></li>
+</ol>
+<blockquote>
+<p>“Mas vale bueno por conocido que malo por conocer”, no siempre se
+aplica en el gremio del desarrollo de software.</p>
+</blockquote>
+<ol start="6" style="list-style-type: decimal">
+<li><p>Motivación débil.</p></li>
+<li><p>Añadir más personal a un proyecto atrasado.</p></li>
+</ol>
+<p><a name="ocho"></a> ## Importancia de la reutilización de código. La
+reutilización de software aparece como una alternativa para desarrollar
+aplicaciones y sistemas SW de un manera más eficiente, productiva y
+rápida.</p>
+<p>Es un proceso donde se recurre al uso de activos de software en las
+especificaciones de análisis, diseños, implementación y pruebas de una
+aplicación o sistemas de software.</p>
+<p>La reutilización tiene ciertos Indicadores por ejemplo:</p>
+<ol style="list-style-type: decimal">
+<li>Entre el 40% y 60% de una aplicación es reutilizable en otra.</li>
+<li>Aproximadamente el 0% de una aplicación administrativa es
+re-utilizable.</li>
+<li>Aproximadamente el 75% de las funciones son comunes a más de un
+programa.</li>
+<li>Solo el 15% del código encontrado en muchos sistemas es único y
+novedoso a una aplicación específica.</li>
+</ol>
+<p>La reutilización tiene principios, como la existencia de parecidos en
+distintos sistemas de un mismo dominio, donde el software puede
+representarse como una combinación de módulos y los sistemas nuevos se
+puede caracterizar por diferencias respecto a los antiguos sistemas.</p>
+<p>FUENTES:</p>
+<p><a
+href="https://ioc.xtec.cat/materials/FP/Recursos/fp_asx_m03_/web/fp_asx_m03_htmlindex/WebContent/u1/a2/continguts.html"
+class="uri">https://ioc.xtec.cat/materials/FP/Recursos/fp_asx_m03_/web/fp_asx_m03_htmlindex/WebContent/u1/a2/continguts.html</a></p>
+<p><a href="https://github.com/statickidz/TemarioDAW"
+class="uri">https://github.com/statickidz/TemarioDAW</a></p>
+<p><a href="http://www.sitiolibre.com/"
+class="uri">http://www.sitiolibre.com/</a></p>
+<p><a href="https://github.com/juanro49/DAM"
+class="uri">https://github.com/juanro49/DAM</a></p>
+<p><a
+href="http://www.lcc.uma.es/~vicente/docencia/fundprog/teoria/fp_1_intro.pdf"
+class="uri">http://www.lcc.uma.es/~vicente/docencia/fundprog/teoria/fp_1_intro.pdf</a></p>
+<p><a
+href="https://web.archive.org/web/20130614204403/http://alarcos.inf-cr.uclm.es/doc/ISOFTWAREI/Tema03.pdf"
+class="uri">https://web.archive.org/web/20130614204403/http://alarcos.inf-cr.uclm.es/doc/ISOFTWAREI/Tema03.pdf</a></p>
+<p><a
+href="https://sites.google.com/site/desarrollodesoftwareuba/reutilizacion"
+class="uri">https://sites.google.com/site/desarrollodesoftwareuba/reutilizacion</a></p>
+<p><a
+href="https://medium.com/forecast-en-espa%C3%B1ol/agile-vs-cascada-parte-1-de-5-qu%C3%A9-es-la-metodolog%C3%ADa-en-cascada-cc0ad7ea9875"
+class="uri">https://medium.com/forecast-en-espa%C3%B1ol/agile-vs-cascada-parte-1-de-5-qu%C3%A9-es-la-metodolog%C3%ADa-en-cascada-cc0ad7ea9875</a></p>
+<p><a
+href="https://www.northware.mx/blog/7-errores-comunes-en-proyectos-de-desarrollo-de-software/"
+class="uri">https://www.northware.mx/blog/7-errores-comunes-en-proyectos-de-desarrollo-de-software/</a></p>
+<p><a name="nueve"></a> ## CRITERIOS DE EVALUACIÓN</p>
+<ol style="list-style-type: lower-alpha">
+<li>Se ha reconocido la relación de los programas con los componentes
+del sistema informático: memoria, procesador, periféricos, entre
+otros.<br />
+</li>
+<li>Se han identificado las fases de desarrollo de una aplicación
+informática.<br />
+</li>
+<li>Se han diferenciado los conceptos de código fuente, objeto y
+ejecutable.<br />
+</li>
+<li>Se han reconocido las características de la generación de código
+intermedio para su ejecución en máquinas virtuales.<br />
+</li>
+<li>Se han clasificado los lenguajes de programación.<br />
+</li>
+<li>Se ha evaluado la funcionalidad ofrecida por las herramientas
+utilizadas en programación.</li>
+</ol>
+<p><a name="diez"></a> ## CRITERIOS DE CALIFICACIÓN:</p>
+<table>
+<thead>
+<tr class="header">
+<th>CUADERNO DE CLASE</th>
+<th>CUESTIONARIO</th>
+<th>EJERCICIOS DE CLASE</th>
+<th>PRÁCTICAS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>%</td>
+<td>%</td>
+<td>%</td>
+<td>%</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
