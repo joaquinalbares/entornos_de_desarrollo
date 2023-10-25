@@ -1,0 +1,63 @@
+---
+title: "UT02 - INSTALACIÓN Y USO DE ENTORNOS DE DESARROLLO INTEGRADO"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## RESULTADOS DE APRENDIZAJE
+
+Evalúa entornos integrados de desarrollo analizando sus características para editar código fuente y generar ejecutables.
+
+--- 
+
+# CONTENIDOS
+##  [Funciones de un entorno de desarrollo.](#uno)
+## [Tipos de entornos de desarrollo. Entornos de desarrollo libres y propietarios. Características.](#dos)
+## [Instalación de un entorno de desarrollo.](#tres)
+## [Uso básico de un entorno de desarrollo.](#cuatro)
+
+
+--- 
+
+<a name="uno"></a>
+## Funciones de un entorno de desarrollo.
+
+
+<a name="dos"></a>
+
+
+
+<a name="tres"></a>
+
+
+<a name="cuatro"></a>
+
+
+<a name="cinco"></a>
+
+<a name="siete"></a>
+
+
+<a name="ocho"></a>
+
+
+<a name="nueve"></a>
+## CRITERIOS DE EVALUACIÓN
+
+a) Se han instalado entornos de desarrollo, propietarios y libres.<br>
+b) Se han añadido y eliminado módulos en el entorno de desarrollo.<br>
+c) Se ha personalizado y automatizado el entorno de desarrollo.<br>
+d) Se ha configurado el sistema de actualización del entorno de desarrollo.<br>
+e) Se han generado ejecutables a partir de código fuente de diferentes lenguajes en un mismo entorno de desarrollo.<br>
+f) Se han generado ejecutables a partir de un mismo código fuente con varios entornos de desarrollo.<br>
+g) Se han identificado las características comunes y específicas de diversos entornos de desarrollo. 
+
+<a name="diez"></a>
+## CRITERIOS DE CALIFICACIÓN:
+
+| CUADERNO DE CLASE | CUESTIONARIO | EJERCICIOS DE CLASE | PRÁCTICAS  |
+| -- | -- | -- | -- |
+| %| %| %| % |

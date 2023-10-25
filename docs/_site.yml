@@ -17,5 +17,11 @@ navbar:
           href: UT01_lectura.html 
         - text: "Ejercicios de clase"
           href: UT01_ejercicios.html 
-
+          
+    - text: "UT02"
+      menu: 
+        - text: "Contenido"
+          href: UT02_index.html
+        - text: "Ejercicios de clase"
+          href: UT02_ejercicios.html 
 output_dir: "."

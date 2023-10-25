@@ -1,0 +1,22 @@
+---
+title: "UT02 - INSTALACIÓN Y USO DE ENTORNOS DE DESARROLLO INTEGRADO"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## EJERCICIO 01
+Instalar y configurar Java e instalar y configurar Netbeans.
+Indicar las incidencias y problemas encontrados.
+
+
+## EJERCICIO 02
+
+Usando el siguiente tutorial:
+
+[Python y eclipse](https://www.vogella.com/tutorials/Python/article.html)
+
+Instalar y configurar Eclipse para el desarrollo con Python. 
+Incluir pantallazos de todo el proceso de instalación y comentar las incidencias encontradas.
