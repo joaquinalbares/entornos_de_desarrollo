@@ -9,8 +9,10 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## EJERCICIO 01
 Instalar y configurar Java e instalar y configurar Netbeans.
-Indicar las incidencias y problemas encontrados.
 
+Incluir pantallazos de todo el proceso de instalación y comentar las incidencias encontradas.
+
+-[Configurar variables de entorno Java en Windows](https://www.aprenderaprogramar.com/index.php?option=com_content&view=article&id=389:configurar-java-en-windows-variables-de-entorno-javahome-y-path-cu00610b&catid=68&Itemid=188)
 
 ## EJERCICIO 02
 
@@ -19,4 +21,13 @@ Usando el siguiente tutorial:
 [Python y eclipse](https://www.vogella.com/tutorials/Python/article.html)
 
 Instalar y configurar Eclipse para el desarrollo con Python. 
+Incluir pantallazos de todo el proceso de instalación y comentar las incidencias encontradas.
+
+## EJERCICIO 03
+
+Usando el siguiente tutorial:
+
+[Visual Studio Code y C++](https://code.visualstudio.com/docs/languages/cpp)
+
+Instalar y configurar Visual Studio Code para el desarrollo con C++ 
 Incluir pantallazos de todo el proceso de instalación y comentar las incidencias encontradas.
