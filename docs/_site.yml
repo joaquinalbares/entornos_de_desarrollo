@@ -24,4 +24,10 @@ navbar:
           href: UT02_index.html
         - text: "Ejercicios de clase"
           href: UT02_ejercicios.html 
+    - text: "UT03"
+      menu: 
+        - text: "Programación"
+          href: UT03_index.html
+        - text: "Contenidos Parte 1"
+          href: UT03_parte01.html 
 output_dir: "."

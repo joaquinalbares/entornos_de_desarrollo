@@ -14,8 +14,8 @@ Evalúa entornos integrados de desarrollo analizando sus características para e
 --- 
 
 # CONTENIDOS
-##  [Funciones de un entorno de desarrollo.](#uno)
-## [Tipos de entornos de desarrollo. Entornos de desarrollo libres y propietarios. Características.](#dos)
+##1.  [Funciones de un entorno de desarrollo.](#uno)
+##2. [Tipos de entornos de desarrollo. Entornos de desarrollo libres y propietarios. Características.](#dos)
 ## [Instalación de un entorno de desarrollo.](#tres)
 ## [Uso básico de un entorno de desarrollo.](#cuatro)
 
@@ -23,28 +23,13 @@ Evalúa entornos integrados de desarrollo analizando sus características para e
 --- 
 
 <a name="uno"></a>
-## Funciones de un entorno de desarrollo.
-
 
 <a name="dos"></a>
 
-
-
 <a name="tres"></a>
-
 
 <a name="cuatro"></a>
 
-
-<a name="cinco"></a>
-
-<a name="siete"></a>
-
-
-<a name="ocho"></a>
-
-
-<a name="nueve"></a>
 ## CRITERIOS DE EVALUACIÓN
 
 a) Se han instalado entornos de desarrollo, propietarios y libres.<br>
@@ -58,6 +43,6 @@ g) Se han identificado las características comunes y específicas de diversos e
 <a name="diez"></a>
 ## CRITERIOS DE CALIFICACIÓN:
 
-| CUADERNO DE CLASE | CUESTIONARIO | EJERCICIOS DE CLASE | PRÁCTICAS  |
+| CUADERNO DE CLASE | CUESTIONARIO | PARTICIPACIÓN EN CLASE | PRÁCTICAS  |
 | -- | -- | -- | -- |
-| %| %| %| % |
+| 10%| 0%| 10%| 80% |

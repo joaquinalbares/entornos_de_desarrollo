@@ -1,0 +1,51 @@
+---
+title: "UT03 - DISEÑO Y REALIZACIÓN DE PRUEBAS"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+--- 
+### RESULTADO DE APRENDIZAJE:
+Verifica el funcionamiento de programas diseñando y realizando pruebas
+
+#### CRITERIOS DE EVALUACIÓN:
+a) Se han identificado los diferentes tipos de pruebas.  
+b) Se han definido casos de prueba.  
+c) Se han identificado las herramientas de depuración y prueba de aplicaciones ofrecidas por el entorno de desarrollo.  
+d) Se han utilizado herramientas de depuración para definir puntos de ruptura y seguimiento.  
+e) Se han utilizado las herramientas de depuración para examinar y modificar el comportamiento de un programa en tiempo de ejecución.  
+f) Se han efectuado pruebas unitarias de clases y funciones.  
+g) Se han implementado pruebas automáticas.  
+h) Se han documentado las incidencias detectadas.   
+
+
+#### CONTENIDOS:Diseño y realización de pruebas:
+
+1. Pruebas en el proceso de desarrollo de software.
+   - Planificación de pruebas a lo largo del ciclo de desarrollo.
+   - Tipos de pruebas: funcionales, estructurales, regresión, caja negra, etc.
+   - Procedimientos y casos de prueba.
+2. Pruebas de código:
+   - Cubrimiento, valores límite, clases de equivalencia, etc.
+   - Pruebas unitarias de clases y funciones.
+   - Uso de herramientas integradas en los entornos de desarrollo para realizar pruebas unitarias.
+   - Automatización de pruebas unitarias.
+   - Pruebas de integración.
+   - Diseño y documentación casos de prueba.
+3. Depuración de programas:
+   - Herramientas de depuración integradas en los entornos de desarrollo.
+   - Puntos de ruptura y seguimiento en tiempo de ejecución.
+   - Examinadores de variables.
+   - Normas de calidad. 
+
+
+
+#### CALFICACIÓN:
+
+| CUADERNO DE CLASE | CUESTIONARIO | EJERCICIOS DE CLASE | PRÁCTICAS |
+|:-----------------:|:------------:|:-------------------:|:---------:| 
+|        10%        |      0%      |        30%          |    60%    |
+
