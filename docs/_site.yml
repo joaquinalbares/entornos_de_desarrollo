@@ -30,4 +30,6 @@ navbar:
           href: UT03_index.html
         - text: "Contenidos Parte 1"
           href: UT03_parte01.html 
+        - text: "Ejercicios de clase"
+          href: UT03_ejercicios.html 
 output_dir: "."

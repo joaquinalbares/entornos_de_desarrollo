@@ -1,0 +1,15 @@
+---
+title: "UT03 A) -  PRUEBAS DE CAJA BLANCA"
+author: "Joaquin Rios"
+date: "2023-11-06"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+### EJERCICIO 1
+Crea un algoritmo en pseudocódigo que lea dos números y nos diga cual de ellos es mayor o bien si son iguales 
+
+### EJERCICIO 2
+Crea un algoritmo en pseudocódigo que nos diga si una persona puede acceder a cursar un ciclo formativo de grado superior o no. Para acceder a un grado superior, si se tiene un titulo de bachiller, en caso de no tenerlo, se puede acceder si hemos superado una prueba de acceso.
