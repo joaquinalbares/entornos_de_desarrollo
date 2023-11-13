@@ -8,8 +8,21 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-### EJERCICIO 1
-Crea un algoritmo en pseudocódigo que lea dos números y nos diga cual de ellos es mayor o bien si son iguales 
+Para los siguientes ejercicios, impleméntalos en pseudocódigo, crea su grafo de flujo, calcula su complejidad ciclomática y escribe los caminos posibles y los casos de prueba, justificando la elección de valores.
 
-### EJERCICIO 2
-Crea un algoritmo en pseudocódigo que nos diga si una persona puede acceder a cursar un ciclo formativo de grado superior o no. Para acceder a un grado superior, si se tiene un titulo de bachiller, en caso de no tenerlo, se puede acceder si hemos superado una prueba de acceso.
+### EJERCICIOS 
+
+1. Crea un algoritmo  que lea dos números y nos diga cual de ellos es mayor o bien si son iguales 
+
+2. Crea un algoritmo que nos diga si una persona puede acceder a cursar un ciclo formativo de grado superior o no. Para acceder a un grado superior, si se tiene un titulo de bachiller, en caso de no tenerlo, se puede acceder si hemos superado una prueba de acceso.
+
+3. En una tienda de informática, hay una promoción en la venta de teclados:
+  - Si se compran más de 8 el precio de cada teclado es de 20€
+  - Si se compran entre 4 y 8 el precio de cada teclado es de 26€
+  - Si se compran menos de 4 el precio es de 30€ cada uno.  
+
+  Escribe el algoritmo para saber cuánto pagará un cliente según el número de teclados que compra. Mostrar el número de teclados a comprar y el total a pagar.
+
+4. Para tributar un determinado impuesto se debe ser mayor de 16 años y tener unos ingresos iguales o superiores a 1000 € mensuales. Escribir un programa que pregunte al usuario su edad y sus ingresos mensuales y muestre por pantalla si el usuario tiene que tributar o no.
+
+5. 
