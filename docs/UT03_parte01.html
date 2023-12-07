@@ -13,7 +13,7 @@
 
 <meta name="date" content="2023-11-06" />
 
-<title>UT03 A) - 01 DISEÑO Y REALIZACIÓN DE PRUEBAS</title>
+<title>UT03 - PRUEBAS UNITARIAS DE CAJA BLANCA</title>
 
 <script src="site_libs/header-attrs-2.19/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -294,7 +294,13 @@ $(document).ready(function () {
       <a href="UT03_index.html">Programación</a>
     </li>
     <li>
-      <a href="UT03_parte01.html">Contenidos Parte 1</a>
+      <a href="UT03_parte00.html">INTRO</a>
+    </li>
+    <li>
+      <a href="UT03_parte01.html">PARTE 1</a>
+    </li>
+    <li>
+      <a href="UT03_parte02.html">PARTE 2</a>
     </li>
     <li>
       <a href="UT03_ejercicios.html">Ejercicios de clase</a>
@@ -313,135 +319,133 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">UT03 A) - 01 DISEÑO Y REALIZACIÓN DE
-PRUEBAS</h1>
+<h1 class="title toc-ignore">UT03 - PRUEBAS UNITARIAS DE CAJA
+BLANCA</h1>
 <h4 class="author">Joaquin Rios</h4>
 <h4 class="date">2023-11-06</h4>
 
 </div>
 
 
-<div id="introducción" class="section level2">
-<h2>Introducción</h2>
-<p>Las pruebas son necesarias en la fabricación de cualquier producto
-industrial y, análogamente, en el desarrollo de proyectos informáticos.
-¿Quién pondría a la venta una aspiradora sin estar seguro de que aspira
-correctamente? ¿O una radio digital sin haber comprobado que pueda
-sintonizar los canales?</p>
-<p>Una aplicación informática no puede llegar a manos de un usuario
-final con errores, y menos si éstos son suficientemente visibles y
-claros como para haber sido detectados por los desarrolladores. Se daría
-una situación de falta de profesionalidad y disminuiría la confianza por
-parte de los usuarios, que podría mermar oportunidades futuras.</p>
-<p>¿Cuándo es necesario llevar a cabo las pruebas? ¿Qué es necesario
-probar? Todas las fases establecidas en el desarrollo del software son
-importantes. La falta o mala ejecución de alguna de ellas puede provocar
-que el resto del proyecto arrastre uno o varios errores que serán
-determinantes para su éxito. Cuanto antes se detecte un error, menos
-costoso será solucionarlo.</p>
-<p>También serán muy importantes las pruebas que se llevarán a cabo una
-vez finalizado el proyecto. Es por ello que la fase de pruebas del
-desarrollo de un proyecto de software se considera básica antes de
-realizar la transferencia del proyecto al usuario final. ¿Quién daría un
-coche por construido y finalizado si al intentar arrancarlo no
-funcionara?</p>
-<p>Es posible desarrollar varios tipos de pruebas del sistema, como
-pruebas funcionales, de usabilidad, de seguridad y de navegación.</p>
-</div>
-<div id="tipo-de-pruebas" class="section level2">
-<h2>Tipo de pruebas</h2>
-<p>Puesto que el proceso de prueba puede ser repetitivo y laborioso, es
-posible automatizar algunos procesos de forma que los procedimientos de
-prueba se puedan realizar con la ayuda de software. Este software debe
-ser preparado y recibe el nombre de componentes de prueba. Su
-utilización es muy frecuente en las pruebas de integración.</p>
-<p>Existen diferentes tipos de pruebas que se realizan en el sistema.
-Según el momento de realización, existen las descritas en la siguiente
-tabla:</p>
+<p>También se las conoce como pruebas estructurales o de caja de
+cristal. Se basan en el minucioso examen de los detalles procedimentales
+del código de la aplicación. Mediante esta técnica se pueden obtener
+casos de prueba que:</p>
+<ul>
+<li>Garanticen que se ejecutan al menos una vez todos los caminos
+independientes de cada módulo.</li>
+<li>Ejecuten todas las sentencias al menos una vez.</li>
+<li>Ejecuten todas las las decisiones lógicas en su parte verdadera yen
+su parte falsa.</li>
+<li>Ejecuten todos los bucles en sus límites.</li>
+<li>Utilicen todas las estructuras de datos internas para asegurar su
+validez.</li>
+</ul>
+<p>Una de las técnicas utilizadas para desarrollar los casos de prueba
+de caja blanca es la prueba del camino básico.</p>
+<div id="prueba-del-camino-básico" class="section level2">
+<h2>PRUEBA DEL CAMINO BÁSICO</h2>
+<p>La prueba del camino básico es una técnica de prueba de caja blanca
+que permite al diseñador de casos de prueba obtener una medida de la
+complejidad lógica de un diseño procedimental y usar esa medida como
+guía para la definición de un conjunto básico de caminos de ejecución.
+Los casos de prueba obtenidos del conjunto básico garantizan que durante
+la prueba se ejecuta por lo menos una vez cada sentencia del
+programa.</p>
+<div id="grafo-de-flujo" class="section level3">
+<h3>GRAFO DE FLUJO</h3>
+<p>Para la obtención de la medida de la complejidad lógica (o
+complejidad ciclomática) emplearemos una representación del flujo de
+control denominada grafo de flujo o grafo del programa.</p>
+<p><img src="imagenes/9439fa3f9da5a6a99012a5b2623f2fcd.png"
+alt="9439fa3f9da5a6a99012a5b2623f2fcd.png" /> <img
+src="imagenes/0c7a4fa3c1ad8c1100f065789acf9bc8.png"
+alt="0c7a4fa3c1ad8c1100f065789acf9bc8.png" /></p>
+<p>En el caso de condiciones AND y OR, se generan un mayor número de
+bifurcaciones de acuerdo con las siguientes estructuras.</p>
+<p>Para una condición AND:</p>
+<p><img src="imagenes/grafo_and.png" alt="estructura and.png" />
+<strong>ESTRUCTURA AND</strong></p>
+<p>Para una condición OR:</p>
+<p><img src="imagenes/cfg_or.jpg" alt="estructura or.png" />
+<strong>ESTRUCTURA OR</strong></p>
+<p>Las características más importantes de los grafos de flujo son:</p>
+<ul>
+<li>Cada círculo del grafo de flujo se llama <strong>nodo</strong>.
+Representa una o más sentencias procedimentales. Un solo nodo se puede
+corresponder con a secuencia de símbolos del proceso y un rombo de
+decisión. Un ejemplo es el nodo numerado como 1,2</li>
+<li>Las flechas del grafo de flujo se denominan <strong>aristas</strong>
+o enlaces y representan el flujo de control, como en el diagrama de
+flujo. Una arista termina en un nodo, aunque el nodo no tenga ninguna
+sentencia procedimental; es el caso del nodo numerado como 6.</li>
+<li>Las áreas delimitadas por aristas y nodos se llaman
+<strong>regiones</strong>.</li>
+<li>El nodo que contiene una condición se llama nodo
+<strong>predicado</strong> y se caracteriza porque de él salen dos o más
+aristas.</li>
+</ul>
 <blockquote>
-<p>Tabla: Descripción de los tipos de prueba del software.</p>
+<p>el area exterior del grafo es otra región más</p>
 </blockquote>
+</div>
+<div id="complejidad-ciclomática" class="section level3">
+<h3>COMPLEJIDAD CICLOMÁTICA</h3>
+<p>La complejidad ciclomática es una métrica del software que
+proporciona una medida cuantitativa de la complejidad lógica de un
+programa’. En el contexto del método de prueba camino básico, la
+complejidad ciclomática establece el número de caminos independientes
+del conjunto básico de caminos de ejecución de un programa, y por lo
+tanto, el número de casos de prueba que se deben ejecutar para asegurar
+que cada sentencia se ejecuta al menos una vez.</p>
+<p>La complejidad ciclomática V(G) puede calcularse de tres formas:</p>
+<ol style="list-style-type: decimal">
+<li>V(G) = Número de regiones del grafo.</li>
+<li>V(G) = Aristas - Nodos + 2.</li>
+<li>V(G) = Nodos predicado + 1</li>
+</ol>
+<p>Se establecen los siguientes valores de referencia de la complejidad
+ciclomática:</p>
 <table>
-<colgroup>
-<col width="33%" />
-<col width="33%" />
-<col width="33%" />
-</colgroup>
 <thead>
 <tr class="header">
-<th>Tipos de pruebas</th>
-<th>Fases de realización</th>
-<th>Descripción</th>
+<th>Complejidad ciclomática</th>
+<th>Evaluación de riesgo</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Unitarias</td>
-<td>Durante la construcción del sistema</td>
-<td>Prueban el diseño y el comportamiento de cada uno de los componentes
-del sistema una vez construidos.</td>
+<td>Entre 1 y 10</td>
+<td>Programas o métodos sencillos, sin mucho riesgo.</td>
 </tr>
 <tr class="even">
-<td>Integración</td>
-<td>Durante la construcción del sistema</td>
-<td>Comprueban la correcta unión de los componentes entre sí a través de
-sus interfaces, y si cumplen con la funcionalidad establecida.</td>
+<td>Entre 11 y 20</td>
+<td>Programas o métodos más complejos, riesgo moderado.</td>
 </tr>
 <tr class="odd">
-<td>Sistema</td>
-<td>Después de la construcción del sistema</td>
-<td>Prueban a fondo el sistema, comprobando su funcionalidad e
-integridad globalmente, en un entorno lo más parecido posible al entorno
-final de producción.</td>
+<td>Entre 21 y 50</td>
+<td>Programas o métodos complejos, alto riesgo.</td>
 </tr>
 <tr class="even">
-<td>Implantación</td>
-<td>Durante la implantación en el entorno de producción</td>
-<td>Comprueba el correcto funcionamiento del sistema dentro del entorno
-real de producción.</td>
-</tr>
-<tr class="odd">
-<td>Validación</td>
-<td>Después de la implantación en el entorno de producción</td>
-<td>Verifican que el sistema cumple con todos los requisitos indicados y
-permite que los usuarios del sistema den el visto bueno definitivo.</td>
-</tr>
-<tr class="even">
-<td>Regresión</td>
-<td>Después de realizar modificaciones al sistema</td>
-<td>El objetivo es comprobar que los cambios sobre un componente del
-sistema, no generan errores adicionales en otros componentes no
-modificados.</td>
+<td>Mayor que 50</td>
+<td>Programas o métodos no testeables, muy alto riesgo.</td>
 </tr>
 </tbody>
 </table>
-<div id="pruebas-unitarias" class="section level3">
-<h3>Pruebas unitarias</h3>
-<p>Es posible clasificar las pruebas unitarias en dos grandes grupos: -
-Las pruebas de <strong>caja blanca</strong> tienen como objetivo
-recorrer la estructura del código comprobando la ejecución de todos los
-posibles caminos de ejecución. - Las pruebas de <strong>caja
-negra</strong>, en cambio, se centran en los requisitos o resultados del
-sistema software.</p>
-<p>La siguiente imagen describe de manerá simbólica qué persiguen estos
-dos tipos de prueba: <img
-src="imagenes/3828b5123038f66b58249b87f31644ac.png"
-alt="3828b5123038f66b58249b87f31644ac.png" /></p>
-<p>Por otro lado, dependiendo del proceso de realización, las pruebas
-pueden ser manuales o automáticas: - Las <strong>pruebas
-automáticas</strong> son aquellas realizadas por un programa o
-herramienta que prueba el sistema sin necesidad de la interacción de una
-persona. - Las <strong>pruebas manuales</strong>, en cambio, son
-aquellas pruebas realizadas por una o más personas que interactúan
-directamente con el sistema. Estas personas verifican si los resultados
-obtenidos son válidos o no.</p>
+<p>EI valor de V(G) nos da el número de caminos independientes del
+conjunto básico de un programa. Un camino independiente es cualquier
+camino del programa que introduce, por lo menos, un nuevo conjunto de
+sentencias de proceso o una condición. En términos del diagrama de
+flujo, un camino independiente está constituido por lo menos por una
+arista que no haya sido recorrida anteriormente a la definición del
+camino.</p>
 </div>
 <div id="casos-de-prueba" class="section level3">
-<h3>Casos de prueba</h3>
-<p>Los casos de prueba son, según Wikipedia, “un conjunto de condiciones
-o variables bajo las cuales un analista determinará si una aplicación,
-un sistema software (software system), o una característica de éstos es
-parcial o completamente satisfactoria”.</p>
+<h3>CASOS DE PRUEBA</h3>
+<p>Los casos de prueba son, según Wikipedia, <strong><em>“un conjunto de
+condiciones o variables bajo las cuales un analista determinará si una
+aplicación, un sistema software (software system), o una característica
+de éstos es parcial o completamente satisfactoria”</em></strong>.</p>
 <p>En este tema vamos a conocer una vía para obtener de manera
 sistemática los casos de uso a través de la medición de la Complejidad
 Ciclomática del modelo visto desde el punto de vista de un grafo. De
@@ -453,13 +457,6 @@ fallará, para estar seguros de que el sistema no fallará en un número
 mayoritario de casos, deberíamos probarlo en todas las condiciones y
 situaciones, con todas las entradas posibles y haciendo uso de toda la
 funcionalidad. ¿Es esto posible?</p>
-<p>Imaginemos un programa sencillo que nos dice si una persona es mayor
-o menor de edad. En el programa introducimos una edad y el sistema
-responde que es mayor de edad si su valor es mayor o igual a 18
-años.</p>
-<p>El programa puede verse en la siguiente imagen: <img
-src="imagenes/5947e117dfbfa77ad9a9e48613943228.png"
-alt="5947e117dfbfa77ad9a9e48613943228.png" /></p>
 <p>Para probar el programa podríamos introducir una edad de 10 años y
 funcionaría bien, otra edad de 25 años y funcionaría bien también. Pero
 esto no sería suficiente porque hay muchas más opciones, y podríamos
@@ -488,43 +485,18 @@ incorrectas para evaluar el comportamiento del sistema en cualquier
 situación.</li>
 </ul>
 </div>
-<div id="pruebas-de-caja-blanca" class="section level3">
-<h3>Pruebas de caja blanca</h3>
-<p>ambién se las conoce como pruebas estructurales o de caja de cristal.
-Se basan en el minucioso examen de los detalles procedimentales del
-código de la aplicación. Mediante esta técnica se pueden obtener casos
-de prueba que: - Garanticen que se ejecutan al menos una vez todos los
-caminos independientes de cada módulo. - Ejecuten todas las sentencias
-al menos una vez. - Ejecuten todas las las decisiones lógicas en su
-parte verdadera yen su parte falsa. - Ejecuten todos los bucles en sus
-límites. - Utilicen todas las estructuras de datos internas para
-asegurar su validez.</p>
-<p>Una de las técnicas utilizadas para desarrollar los casos de prueba
-de caja blanca es la prueba del camino básico</p>
-<div id="prueba-del-camino-básico" class="section level4">
-<h4>Prueba del camino básico</h4>
-<p>La prueba del camino básico es una técnica de prueba de caja blanca
-que permite al diseñador de casos de prueba obtener una medida de la
-complejidad lógica de un diseño procedimental y usar esa medida como
-guía para la definición de un conjunto básico de caminos de ejecución.
-Los casos de prueba obtenidos del conjunto básico garantizan que durante
-la prueba se ejecuta por lo menos una vez cada sentencia del programa.
-Para la obtención de la medida de la complejidad lógica (o complejidad
-ciclomática) emplearemos una representación del flujo de control
-denominada grafo de flujo o grafo del programa.</p>
-<p><img src="imagenes/9439fa3f9da5a6a99012a5b2623f2fcd.png"
-alt="9439fa3f9da5a6a99012a5b2623f2fcd.png" /> <img
-src="imagenes/0c7a4fa3c1ad8c1100f065789acf9bc8.png"
-alt="0c7a4fa3c1ad8c1100f065789acf9bc8.png" /></p>
-<p>En el caso de condiciones AND y OR, se generan un mayor número de
-bifurcaciones de acuerdo con las siguientes estructuras:</p>
-<p><img src="imagenes/cfg_and.jpg" alt="estructura and.png" />
-<strong>ESTRUCTURA AND</strong></p>
-<p><img src="imagenes/cfg_or.jpg" alt="estructura or.png" />
-<strong>ESTRUCTURA OR</strong></p>
-<p>Retomando el ejemplo anterior, podemos establecer una equivalencia
-entre el diagrama de flujo (organigrama) obtenido y el grafo de manera
-muy sencilla:</p>
+</div>
+<div id="un-ejemplo-práctico" class="section level2">
+<h2>UN EJEMPLO PRÁCTICO</h2>
+<p>Imaginemos un programa sencillo que nos dice si una persona es mayor
+o menor de edad. En el programa introducimos una edad y el sistema
+responde que es mayor de edad si su valor es mayor o igual a 18
+años.</p>
+<p>El diagrama de flujo asociado al código puede verse en la siguiente
+imagen: <img src="imagenes/5947e117dfbfa77ad9a9e48613943228.png"
+alt="5947e117dfbfa77ad9a9e48613943228.png" /></p>
+<p>Podemos establecer una equivalencia entre el diagrama de flujo
+(organigrama) obtenido y el grafo de manera muy sencilla:</p>
 <div class="float">
 <img src="imagenes/equivalencia_organigrama_grafo.jpg"
 alt="equivalencia organigrama-grafo" />
@@ -533,60 +505,15 @@ alt="equivalencia organigrama-grafo" />
 <p>Una de las cosas que llama la atención es el hecho de que los finales
 de los bucles y los condicionales se consideran nodos del grafo, algo
 que hay que tener muy en cuenta a la hora de elaborar nuestro grafo.</p>
-<p>Estudiando el grafo generado podemos deducir los siguientes conceptos
-:</p>
-<ul>
-<li>Cada círculo del grafo de flujo se llama nodo. Representa una o más
-sentencias procedimentales. Un solo nodo se puede corresponder con a
-secuencia de símbolos del proceso y un rombo de decisión. Un ejemplo es
-el nodo numerado como 1,2</li>
-<li>Las flechas del grafo de flujo se denominan aristas o enlaces y
-representan el flujo de control, como en el diagrama de flujo. Una
-arista termina en un nodo, aunque el nodo no tenga ninguna sentencia
-procedimental; es el caso del nodo numerado como 6.</li>
-<li>Las áreas delimitadas por aristas y nodos se llaman
-<strong>regiones</strong>.</li>
-<li>El nodo que contiene una condición se llama nodo
-<strong>predicado</strong> y se caracteriza porque de él salen dos o más
-aristas. En el ejemplo hay 1 nodo predicado, el número 3. Unicamente de
-estos nodos pueden salir dos aristas.</li>
-</ul>
-<blockquote>
-<p>el area exterior del grafo es otra región más</p>
-</blockquote>
-<p>En el ejemplo se muestran 2 regiones, 8 aristas y 6 nodos.</p>
-</div>
-<div id="complejidad-ciclomática" class="section level4">
-<h4>COMPLEJIDAD CICLOMÁTICA</h4>
-<p>La complejidad ciclomática es una métrica del software que
-proporciona una medida cuantitativa de la complejidad lógica de un
-programa’. En el contexto del método de prueba camino básico, la
-complejidad ciclomática establece el número de caminos independientes
-del conjunto básico de caminos de ejecución de un programa, y por lo
-tanto, el número de casos de prueba que se deben ejecutar para asegurar
-que cada sentencia se ejecuta al menos una vez.</p>
-<p>La complejidad ciclomática V(G) puede calcularse de tres formas: 1.
-V(G) = Número de regiones del grafo. 2. V(G) = Aristas - Nodos + 2. 3.
-V(G) = Nodos predicado + 1</p>
-<p>Se establecen los siguientes valores de referencia de la complejidad
-ciclomática: | Complejidad ciclomática | Evaluación de riesgo | | – | –
-| Entre 1 y 10 | Programas o métodos sencillos, sin mucho riesgo. Entre
-11 y 20 | Programas o métodos más complejos, riesgo moderado. Entre 21 y
-50 | Programas o métodos complejos, alto riesgo. Mayor que 50 |
-Programas o métodos no testeables, muy alto riesgo.</p>
-<p>EI valor de V(G) nos da el número de caminos independientes del
-conjunto básico de un programa. Un camino independiente es cualquier
-camino del programa que introduce, por lo menos, un nuevo conjunto de
-sentencias de proceso o una condición. En términos del diagrama de
-flujo, un camino independiente está constituido por lo menos por una
-arista que no haya sido recorrida anteriormente a la definición del
-camino.</p>
-<p>En nuestro ejemplo, los posbles caminos serán:</p>
+<p>Estudiando el grafo generado de nuestro ejemplo se muestran 2
+regiones, 8 aristas y 6 nodos.<br />
+En el ejemplo hay 1 nodo predicado, el número 3. Unicamente de estos
+nodos pueden salir dos aristas.</p>
+<p>En nuestro ejemplo, los posibles caminos serán:</p>
 <ul>
 <li>Camino 1: 1-3-4-6-7.</li>
 <li>Camino 2: 1-3-4-5-7.</li>
 </ul>
-</div>
 <div id="obtención-de-los-casos-de-prueba" class="section level4">
 <h4>OBTENCIÓN DE LOS CASOS DE PRUEBA</h4>
 <p>El último paso de la prueba del camino básico es construir los casos
@@ -605,23 +532,23 @@ muestra en la siguiente tabla:</p>
 <tr class="header">
 <th align="center">Camino</th>
 <th align="center">Caso de prueba</th>
-<th align="center"> Resultado esperado</th>
+<th align="center">Resultado esperado</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td align="center">1</td>
-<td align="center"> Escoger algún valor de Edad tal que la condición
+<td align="center">Escoger algún valor de Edad tal que la condición
 Edad&gt;18 <strong>NO</strong> se
 cumpla<br><strong>Edad=10</strong></td>
-<td align="center"> Visualizar “Es menor de edad”</td>
+<td align="center">Visualizar “Es menor de edad”</td>
 </tr>
 <tr class="even">
 <td align="center">2</td>
-<td align="center"> Escoger algún valor de Edad tal que la condición
+<td align="center">Escoger algún valor de Edad tal que la condición
 Edad&gt;18 <strong>SI</strong> se
 cumpla<br><strong>Edad=20</strong></td>
-<td align="center"> Visualizar “Es mayor de edad”</td>
+<td align="center">Visualizar “Es mayor de edad”</td>
 </tr>
 </tbody>
 </table>
@@ -631,7 +558,6 @@ camino u otros.</p>
 <p>La buena elección de los casos de prueba pasa por un buen
 entendimiento de las condiciones de cada nodo predicado.</p>
 </blockquote>
-</div>
 </div>
 </div>
 

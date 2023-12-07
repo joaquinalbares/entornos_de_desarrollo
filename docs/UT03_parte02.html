@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Joaquin Rios" />
+
+<meta name="date" content="2023-11-06" />
+
+<title>UT03 - PRUEBAS DE CAJA NEGRA</title>
+
+<script src="site_libs/header-attrs-2.19/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html"></a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">INICIO</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    UT01
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="UT01_index.html">Contenido</a>
+    </li>
+    <li>
+      <a href="UT01_programacion.html">Programación</a>
+    </li>
+    <li>
+      <a href="UT01_lectura.html">Artículo de opinión</a>
+    </li>
+    <li>
+      <a href="UT01_ejercicios.html">Ejercicios de clase</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    UT02
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="UT02_index.html">Contenido</a>
+    </li>
+    <li>
+      <a href="UT02_ejercicios.html">Ejercicios de clase</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    UT03
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="UT03_index.html">Programación</a>
+    </li>
+    <li>
+      <a href="UT03_parte00.html">INTRO</a>
+    </li>
+    <li>
+      <a href="UT03_parte01.html">PARTE 1</a>
+    </li>
+    <li>
+      <a href="UT03_parte02.html">PARTE 2</a>
+    </li>
+    <li>
+      <a href="UT03_ejercicios.html">Ejercicios de clase</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">UT03 - PRUEBAS DE CAJA NEGRA</h1>
+<h4 class="author">Joaquin Rios</h4>
+<h4 class="date">2023-11-06</h4>
+
+</div>
+
+
+<div id="definición" class="section level2">
+<h2>DEFINICIÓN</h2>
+<p>En contraposición a las pruebas de caja blanca, las Pruebas de Caja
+Negra, constituyen una técnica de pruebas de software en para comprobar
+y verificar la funcionalidad de una aplicación sin tener en cuenta la
+implementación o estructura interna de código, así como los escenarios
+de ejecución (donde se va a ejecutar).</p>
+<p>En estas pruebas, no hace falta conocer la estructura interna del
+programa ni su funcionamiento. Su busca la obtención de casos de prueba
+que demuestren que las salidas que devuelve la aplicación son las
+esperadas en función de las entradas que se proporcionen.</p>
+<p><img src="imagenes/caja_negra.jpg" alt="Purebas de caja negra" /> A
+este tipo de pruebas también se les llama prueba de comportamiento.</p>
+<p>Con ellas intentamos encontrar errores de las siguientes
+categorías:</p>
+<ul>
+<li>Funcionalidades incorrectas o ausentes.</li>
+<li>Errores de interfaz.</li>
+<li>Errores en estructuras de datos o en accesos a bases de datos
+externas.</li>
+<li>Errores de rendimiento.</li>
+<li>Errores de inicialización y finalización.</li>
+</ul>
+</div>
+<div id="test-unitarios" class="section level2">
+<h2>TEST UNITARIOS</h2>
+<p>Son una forma de manera el correcto funcionamiento de una unidad de
+código.</p>
+<p>Nos ayuda a asegurarnos que cada unidad funcione correctamente y
+eficientemente por separado. Además de verificar que el código hace lo
+que tiene que hacer, se puede comprobar que sea correcto el nombre, los
+nombres y tipos de los parámetros, el tipo de lo que se devuelve.</p>
+<p>Para ello, se debe escribir casos de prueba para cada función o
+método no trivial (que tenga cierta complejidad) en el módulo.</p>
+<p>Las pruebas unitarias se realizan sobre una clase para probar su
+comportamiento de modo aislado independientemente del resto de clases de
+la aplicación. Aunque esto no siempre es así porque una clase a veces
+depende de otras clases para poder llevar a cabo su función.</p>
+<p>En nuestro caso vamos a ver dos maneras de realizar test o
+pruebas:</p>
+<ul>
+<li><p><strong>Pruebas de clase</strong>: Se genera una clase de prueba
+para toda la clase de manera global. Este tipo de pruebas es
+recomendable en el caso de clases sencillas en los que suele devolver un
+tipo de dato concreto (integer, char, storing ,…).</p></li>
+<li><p><strong>Pruebas parametrizadas</strong>: En este caso, probamos
+un método con diferentes conjuntos de parámetros de entrada para
+comprobar que los procesa de manera correcta y devuelve en cada caso el
+valor y el tipo correspondiente.</p></li>
+</ul>
+<p>Son dos maneras de abordar las pruebas, que podemos realizar de
+manera conjunta o independiente según las necesidades de nuestra
+aplicación.</p>
+</div>
+<div id="herramienta-junit" class="section level2">
+<h2>HERRAMIENTA JUNIT</h2>
+<p>JUnit es una herramienta para realizar pruebas unitarias
+automatizadas. Está integrada en Eclipse Visual Studio Code, por lo que
+no es necesario descargarse ningún paquete para poder usarla.</p>
+<p>Hay problemas con su integración en Netbeans, pero hay soluciones no
+oficiales por internet.</p>
+<p>La versión actual es la 5 (JUPITER) y tiene algunos cambios respecto
+a las versiones anteriores, por lo que es recomendable que todo el mundo
+use esta versión, si no, habrá problemas a la hora de corregir los
+ejercicios y/o exámenes.</p>
+<p>En el siguiente enlace podéis encontrar más información sobre las
+novedades de JUNIT 5:</p>
+<p><a
+href="https://www.adictosaltrabajo.com/2016/11/24/primeros-pasos-con-junit-5/"
+class="uri">https://www.adictosaltrabajo.com/2016/11/24/primeros-pasos-con-junit-5/</a></p>
+<p>Y por supuesto, visitar la web oficial:</p>
+<p><a href="https://junit.org/junit5/"></a></p>
+<div id="métodos-de-junit-para-ejecutar-test" class="section level3">
+<h3>MÉTODOS DE JUNIT PARA EJECUTAR TEST</h3>
+<p>Algunos de los métodos que nos sirven para probar nuestras
+aplicaciones son los siguientes:</p>
+<ul>
+<li><p><code>assertEquals(String mensaje, valorEsperado, valorReal)</code>:
+Comprueba que el valorEsperado sea igual al valorReal. Si no son iguales
+y se incluye el String, entonces se lanzará el mensaje. ValorEsperado y
+valorReal pueden ser de diferentes tipos.</p></li>
+<li><p><code>assertTrue(String mensaje, boolean expresión)</code>:
+Comprueba que la expresión se evalúe a true. Si no es true y se incluye
+el String, al producirse error se lanzará el mensaje.</p></li>
+<li><p><code>assertFalse(String mensaje, boolean expresión)</code>:
+Comprueba que la expresión se evalúe a false. Si no es false y se
+incluye el String, al producirse error se lanzará el mensaje.</p></li>
+<li><p><code>assertNull(String mensaje, Object objeto)</code>: Comprueba
+que el objeto sea null. Si no es null y se incluye el String, al
+producirse error se lanzará el mensaje.</p></li>
+<li><p><code>assertNotNull(String mensaje, Object objeto)</code>:
+Comprueba que el objeto no sea null. Si es null y se incluye el String,
+al producirse error se lanzará el mensaje.</p></li>
+<li><p><code>assertSame(String mensaje, Object objetoEsperado, Object objetoReal)</code>:
+Comprueba que objetoEsperado y objetoReal sean el mismo objeto. Si no
+son el mismo y se incluye el String, al producirse error se lanzará el
+mensaje.</p></li>
+<li><p><code>assertNotSame(String mensaje, Object objetoEsperado, Object objetoReal)</code>:
+Comprueba que objetoEsperado y objetoReal no sean el mismo objeto. Si
+son el mismo y se incluye el String, al producirse error se lanzará el
+mensaje.</p></li>
+<li><p><code>fail(String mensaje)</code>: Hace que la prueba falle. Si
+se incluye un String la prueba falla lanzando el mensaje.</p></li>
+</ul>
+</div>
+</div>
+<div id="conceptos-previos-creación-de-proyectos-maven"
+class="section level2">
+<h2>CONCEPTOS PREVIOS: CREACIÓN DE PROYECTOS MAVEN</h2>
+<p>Para hacer nuestros test unitarios, podemos usar las librerías
+integradas que vienen por defecto en los IDE o bien importar nuestras
+propias librerías para realizar los test.</p>
+<p>En nuestro caso hemos optado por crear un proyecto Maven e instalar
+las dependencias necesarias para realizar los test. Esto hace el
+proyecto independiente del IDE y el sistema operativo que usemos.</p>
+<p>Para conocer un poco de maven recomiendo visitar el siguiente enlace:
+<a href="https://www.arquitecturajava.com/que-es-maven/">¿Qué es
+Maven?</a></p>
+<p>Para conocer mas sobre los proyectos Maven también podemos visitar la
+página web de Apache, el creador oficial de la herramienta:</p>
+<p><a href="https://maven.apache.org/guides/getting-started/"
+class="uri">https://maven.apache.org/guides/getting-started/</a></p>
+<p>Para crear un proyecto Maven, basta con elegir de las diversas
+opciones que nos ofrece la pantalla de “Nuevo Proyecto”:</p>
+<p><img src="imagenes/nuevo_proyecto_maven.jpg" /></p>
+<p>Lo configuramos:</p>
+<p><img src="imagenes/nuevo_proyecto_maven_2.jpg" /> y Netbeans nos crea
+la estructura de carpetas del proyecto:</p>
+<p><img src="imagenes/nuevo_proyecto_maven_3.jpg" /> ### INSTALACIÓN DE
+DEPENDENCIAS</p>
+<p>Podemos encontrar las dependecias necesarias en los dos repositorios
+más famosos:</p>
+<ul>
+<li><p><a
+href="https://central.sonatype.com/search?namespace=org.junit.jupiter">REPOSOTORIO
+SONATYPE</a>. Es el repositorio recomendado por el desarrollador
+oficial, con las últimas actualizaciones del plugin.</p></li>
+<li><p><a href="https://mvnrepository.com/">REPOSOTORIO MAVEN</a>. Es el
+repositorio de Maven creado por un desarrollador particular con una gran
+cantidad de plugins.</p></li>
+</ul>
+<p>Vamos a elegir la primera opción. Accediendo a la web desde la página
+oficial, podemos ver las diversas herramientas que JUnit nos ofrece:</p>
+<p><img src="imagenes/nuevo_proyecto_maven_4.jpg" /> Los dos primeros
+que nos encontramos son los que vamos a usar en la mayoría de los
+casos.</p>
+<p>Haciendo click en cada uno de ellos obtenemos los códigos necesarios
+para nuestro archivo <code>pom.xml</code>:</p>
+<pre class="xml"><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.junit.jupiter&lt;/groupId&gt;
+    &lt;artifactId&gt;junit-jupiter-engine&lt;/artifactId&gt;
+    &lt;version&gt;5.10.1&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+<p>Y para los test parametrizados:</p>
+<pre class="xml"><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.junit.jupiter&lt;/groupId&gt;
+    &lt;artifactId&gt;junit-jupiter-params&lt;/artifactId&gt;
+    &lt;version&gt;5.10.1&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+<p>Incluimos estas dos librerías en nuestro archivo, que quedaría
+finalmente :</p>
+<pre class="xml"><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+    &lt;groupId&gt;es.ieslosalbares&lt;/groupId&gt;
+    &lt;artifactId&gt;pruebas&lt;/artifactId&gt;
+    &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+    &lt;packaging&gt;jar&lt;/packaging&gt;
+    &lt;properties&gt;
+        &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
+        &lt;maven.compiler.source&gt;21&lt;/maven.compiler.source&gt;
+        &lt;maven.compiler.target&gt;21&lt;/maven.compiler.target&gt;
+        &lt;exec.mainClass&gt;es.ieslosalbares.pruebas.Pruebas&lt;/exec.mainClass&gt;
+    &lt;/properties&gt;
+    &lt;dependencies&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.junit.jupiter&lt;/groupId&gt;
+            &lt;artifactId&gt;junit-jupiter-engine&lt;/artifactId&gt;
+            &lt;version&gt;5.10.1&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.junit.jupiter&lt;/groupId&gt;
+            &lt;artifactId&gt;junit-jupiter-params&lt;/artifactId&gt;
+            &lt;version&gt;5.10.1&lt;/version&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+&lt;/project&gt;</code></pre>
+<p>Reconstruimos el proyecto para que cargue las dependencias:</p>
+<p><img src="imagenes/nuevo_proyecto_maven_5.jpg" /></p>
+<p>Y ya tendríamos el proyecto configurado para realizar test.</p>
+</div>
+<div id="conceptos-previos-de-java-anotaciones" class="section level2">
+<h2>CONCEPTOS PREVIOS DE JAVA: ANOTACIONES</h2>
+<p>Antes de empezar, debemos conocer un concepto que vamos a utilizar
+durante el desarrollo de nuestras pruebas: las anotaciones.</p>
+<p>Las anotaciones son, según la wikipedia, son <strong><em>una forma de
+añadir metadatos al código fuente Java, y se pueden añadir a los
+elementos de programa tales como clases, métodos, metadatos, campos,
+parámetros, variables locales, y paquetes</em></strong>.</p>
+<p>Para una información más detallada, podéis leer este útil enlace:</p>
+<p><a href="https://jarroba.com/annotations-anotaciones-en-java/"
+class="uri">https://jarroba.com/annotations-anotaciones-en-java/</a></p>
+<p>JUnit dispone de una serie de anotaciones que permiten complementar y
+ofrecer más información sobre las pruebas, asi como ejecutar código
+antes y después de las pruebas. Algunas de las más usadas son:</p>
+<ul>
+<li><p><code>@BeforeEach</code>: si anotamos un método con esta
+etiqueta, el código será ejecutado antes de cualquier método de prueba.
+Podemos usarlo, por ejemplo, en una aplicación de acceso a base de datos
+para preparar la base de datos.</p></li>
+<li><p><code>@AfterEach</code>: Se pone en métodos cuyo código será
+ejecutado después de la ejecución de cada uno de los métodos de prueba.
+Se puede utilizar para limpiar datos. Puede haber varios métodos en la
+clase de prueba con estas dos anotaciones.</p></li>
+</ul>
+<p>Existe otras anotaciones que permiten ejecutar código y afectan a la
+clase en sí. Veamos:</p>
+<ul>
+<li><p><code>@BeforeAll</code>: El método marcado con esta anotación es
+invocado una vez al principio del lanzamiento de todas las pruebas. Se
+suele utilizar para inicializar atributos comunes a todas las pruebas o
+para realizar acciones que tardan un tiempo considerable en ejecutarse.
+Tanto los atributos modificados como la clase se deben definir como
+<code>static</code>.</p></li>
+<li><p><code>@Afterall</code>: Este método será invocado cuando
+finalicen todas las pruebas. Se puede utilizar para limpiar los
+atributos de la clase u otras tareas finales.</p></li>
+</ul>
+<p>Solamente puede haber un método en la clase de prueba con estas dos
+anotaciones.</p>
+</div>
+<div id="creando-nuestro-primer-test" class="section level2">
+<h2>CREANDO NUESTRO PRIMER TEST</h2>
+<p>Para testear nuestra aplicación, debemos crear tantos test como
+métodos tenga la clase a testear, con las siguientes
+características:</p>
+<ul>
+<li>Los métodos son públicos, no devuelven nada y no reciben ningún
+argumento.</li>
+<li>El nombre de cada método es recomendable que se llame de la misma
+manera que el original o bien que vaya precedido de la palabra test (ej:
+testSuma(), testResta(), testMultiplica(), testDivide()) .</li>
+<li>Encima de cada uno de los métodos aparece la anotación <span
+class="citation">@Test</span> que indica al compilador que es un método
+de prueba.</li>
+<li>Para los test parametrizados, incluiremos las anotaciones
+pertinentes.</li>
+</ul>
+<p>Dentro de cada método de test, debemos seguir siempre el mismo
+procedimiento: - Creamos una instancia de la clase con los valores que
+nos interese. - Invocamos al método que queremos testar. - Comprobamos
+que el valor obtenido coincide con el valor deseado. Para ello hacemos
+uso de los métodos que nos ofrece la Librería JUnit.</p>
+<div id="creación-de-la-clase-a-testear" class="section level3">
+<h3>CREACIÓN DE LA CLASE A TESTEAR</h3>
+<p>Para comenzar nuestro ejemplo, en primer lugar debemos crear nuestra
+clase sobre la que vamos a realizar los test.</p>
+<p>Para este ejemplo básico, hemos creado esta clase calculadora que
+incluye cuatro métodos y el constructor, que recibe dos números como
+entrada.</p>
+<p>La clase calculadora queda así:</p>
+<pre class="java"><code>package es.ieslosalbares.pruebas;
+
+public class Calculadora {
+
+    private final int num1;
+    private final int num2;
+
+    public Calculadora(int a, int b) {
+        num1 = a;
+        num2 = b;
+    }
+
+    public int suma() {
+        int resul = num1 + num2;
+        return resul;
+    }
+
+    public int resta() {
+        int resul = num1 - num2;
+        return resul;
+    }
+
+    public int multiplica() {
+        int resul = num1 * num2;
+        return resul;
+    }
+
+    public int divide() {
+        int resul;
+        if (num2== 0) {
+            resul = 0;
+        }
+        else resul = num1 / num2; 
+        return resul;
+    }
+}
+</code></pre>
+</div>
+<div id="creando-el-test" class="section level3">
+<h3>CREANDO EL TEST</h3>
+<p>Ahora vamos a crear una clase de prueba para verificar nuestra
+calculadora. En genera podremos crear la plantilla del test desde el
+menú de nuestro IDE o bien hacerlo desde cero.</p>
+<p>Para el caso de NetBeans, hacemos clic con el botón derecho encima de
+la clase a testear y elegimos “Tools -&gt; Create/Update Test”:</p>
+<p><img src="imagenes/test_unitarios_3.jpg" /></p>
+<p>Y elegimos que test, vamos a generar. En la parte izquierda elegimos
+los tipos de métodos sobre los que queremos generar los test y en la
+parte de la derecha elegimos los test que afectan a todo el código o
+toda la clase. Podemos inicialmente desmarcar todo lo de la columna
+derecha, y puslar en “OK”</p>
+<p><img src="imagenes/test_unitarios_4.jpg" /></p>
+<p>Lo que nos genera un nuevo archivo que se ubicará en la carpeta
+“test” de nuestro proyecto y que tendrá la siguiente estructura:</p>
+<pre class="java"><code>package es.ieslosalbares.pruebas;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class CalculadoraTest {
+    
+    public CalculadoraTest() {
+    }
+
+    @Test
+    public void testSuma() {
+    }
+
+    @Test
+    public void testResta() {
+    }
+
+    @Test
+    public void testMultiplica() {
+    }
+
+    @Test
+    public void testDivide() {
+    }
+    
+}</code></pre>
+<p>Vemos una estructura similar a una clase Java ordinaria.</p>
+<p>Como muestra vamos a comenzar creando el test para el método suma().
+Debemos crear un objeto de la clase Calculadora y luego llamar al método
+suma(). Luego comprobamos que el valor devuelto coincide con el valor
+esperado. Se ha incluido la anotación <code>DisplayName</code> que
+muestra el mensaje del método al realizar el test, aunque esta anotación
+no funciona en NetBeans.</p>
+<pre class="java"><code>  @Test
+    @DisplayName(&quot;1 + 1 = 2&quot;)
+    void sumarDosNumeros() {
+        Calculator calculadora = new Calculadora(1, 1);
+        assertEquals(2, calculadora.suma(), &quot;1 + 1 debe ser igual a 2&quot;);
+    }</code></pre>
+<p>El procedimiento sería similar para el resto.</p>
+<p>Para pasar el test, hacemos clic con el botón derecho encima de la
+clase sobre la que hayamos creado los test y elegimos “Test file”:</p>
+<p><img src="imagenes/test_unitarios_2.jpg" /></p>
+<p>y en la ventana de resultados podemos ver que el test se pasa
+satisactoriamente:</p>
+<p><img src="imagenes/test_unitarios_5.jpg" /></p>
+<p>Ahora podemos crear una batería de pruebas para probar otro método de
+esta clase. Para ello vamos usar la anotación <span
+class="citation">@ParameterizedTest</span> para indicar que es un test
+con parámetros. Al usar este tipo de test, debemos incluir una segunda
+anotación para indicar de dónde vamos a obtener los valores que vamos a
+pasar al método. Existen muchas formas de generar valores, y dependerá
+del método a probar su elección. Aqui hemos optado por una serie de
+valores CSV (Valores Separados por Coma), que es la mas sencilla de
+manejar.</p>
+<p>El código quedaría así:</p>
+<pre class="java"><code>@ParameterizedTest(name = &quot;{0} + {1} = {2}&quot;)
+@CsvSource({
+    &quot;0,    1,   -1&quot;,
+    &quot;2,    1,   1&quot;,
+    &quot;237,  22, 215&quot;,
+    &quot;1,  100, -99&quot;
+})
+void resta(int num1, int num2, int resultadoEsperado) {
+    Calculadora calculadora = new Calculadora(num1 , num2);
+    assertEquals(resultadoEsperado, calculadora.resta(),
+            () -&gt; num1 + &quot; - &quot; + num2 + &quot; debe ser igual a &quot; + resultadoEsperado);
+}</code></pre>
+<p>Podéis ver un interesante tutorial sobre test parametrizados en el
+siguiente enlace:</p>
+<p><a
+href="https://blog.codefx.org/libraries/junit-5-parameterized-tests/"
+class="uri">https://blog.codefx.org/libraries/junit-5-parameterized-tests/</a></p>
+<p>Si completamos los demás métodos, el test final quedaría así:</p>
+<pre class="java"><code>package es.ieslosalbares.pruebas;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+
+public class CalculadoraTest {
+
+
+    @Test
+    @DisplayName(&quot;1 + 1 = 2&quot;)
+    void sumarDosNumeros() {
+        Calculadora calculadora = new Calculadora(1, 1);
+        assertEquals(2, calculadora.suma(), &quot;1 + 1 debe ser igual a 2&quot;);
+    }
+
+    @ParameterizedTest(name = &quot;{0} - {1} = {2}&quot;)
+    @CsvSource({
+        &quot;0,    1,   -1&quot;,
+        &quot;2,    1,   1&quot;,
+        &quot;237,  22, 215&quot;,
+        &quot;1,  100, -99&quot;
+    })
+    void resta(int num1, int num2, int resultadoEsperado) {
+        Calculadora calculadora = new Calculadora(num1 , num2);
+        assertEquals(resultadoEsperado, calculadora.resta(),
+                () -&gt; num1 + &quot; - &quot; + num2 + &quot; debe ser igual a &quot; + resultadoEsperado);
+    }
+
+
+    @ParameterizedTest(name = &quot;{0} * {1} = {2}&quot;)
+    @CsvSource({
+        &quot;0,    1,   0&quot;,
+        &quot;2,    1,   2&quot;,
+        &quot;10,  22, 220&quot;,
+        &quot;12,  11, 132&quot;
+    })
+    public void multiplica(int num1, int num2, int resultadoEsperado) {
+        Calculadora calculadora = new Calculadora(num1 , num2);
+        assertEquals(resultadoEsperado, calculadora.multiplica(),
+                () -&gt; num1 + &quot; * &quot; + num2 + &quot; debe ser igual a &quot; + resultadoEsperado);
+    }
+
+    @ParameterizedTest(name = &quot;{0} / {1} = {2}&quot;)
+    @CsvSource({
+        &quot;0,   1,  0&quot;,
+        &quot;2,   1,  2&quot;,
+        &quot;24,  6,  4&quot;,
+        &quot;111, 10, 11&quot;
+    })
+    public void divide(int num1, int num2, int resultadoEsperado) {
+        Calculadora calculadora = new Calculadora(num1 , num2);
+        assertEquals(resultadoEsperado, calculadora.divide(),
+                () -&gt; num1 + &quot; / &quot; + num2 + &quot; debe ser igual a &quot; + resultadoEsperado);
+    }
+
+}</code></pre>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

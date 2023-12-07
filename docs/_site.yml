@@ -28,8 +28,12 @@ navbar:
       menu: 
         - text: "Programación"
           href: UT03_index.html
-        - text: "Contenidos Parte 1"
+        - text: "INTRO"
+          href: UT03_parte00.html 
+        - text: "PARTE 1"
           href: UT03_parte01.html 
+        - text: "PARTE 2"
+          href: UT03_parte02.html 
         - text: "Ejercicios de clase"
           href: UT03_ejercicios.html 
 output_dir: "."
