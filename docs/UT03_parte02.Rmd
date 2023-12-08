@@ -86,6 +86,7 @@ Para hacer nuestros test unitarios, podemos usar las librerías integradas que v
 En nuestro caso hemos optado por crear un proyecto Maven e instalar las dependencias necesarias para realizar los test. Esto hace el proyecto independiente del IDE y el sistema operativo que usemos.
 
 Para conocer un poco de maven recomiendo visitar el siguiente enlace:
+
 [¿Qué es Maven?](https://www.arquitecturajava.com/que-es-maven/)
 
 Para conocer mas sobre los proyectos Maven también podemos visitar la página web de Apache, el creador oficial de la herramienta:
@@ -99,9 +100,11 @@ Para crear un proyecto Maven, basta con elegir de las diversas opciones que nos 
 Lo configuramos:
 
 ![](imagenes/nuevo_proyecto_maven_2.jpg)
+
 y Netbeans nos crea la estructura de carpetas del proyecto:
 
 ![](imagenes/nuevo_proyecto_maven_3.jpg)
+
 ### INSTALACIÓN DE DEPENDENCIAS
 
 Podemos encontrar las dependecias necesarias en los dos repositorios más famosos:
@@ -113,6 +116,7 @@ Podemos encontrar las dependecias necesarias en los dos repositorios más famoso
 Vamos a elegir la primera opción. Accediendo a la web desde la página oficial, podemos ver las diversas herramientas que JUnit nos ofrece:
 
 ![](imagenes/nuevo_proyecto_maven_4.jpg)
+
 Los dos primeros que nos encontramos son los que vamos a usar en la mayoría de los casos.
 
 Haciendo click en cada uno de ellos obtenemos los códigos necesarios para nuestro archivo `pom.xml`:
