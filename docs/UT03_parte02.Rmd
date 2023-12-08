@@ -411,3 +411,5 @@ public class CalculadoraTest {
 
 }
 ```
+
+Al ejecutar el test, vemos que todas las pruebas pasan correctamente.

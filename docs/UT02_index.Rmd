@@ -11,38 +11,24 @@ knitr::opts_chunk$set(echo = TRUE)
 
 Evalúa entornos integrados de desarrollo analizando sus características para editar código fuente y generar ejecutables.
 
---- 
-
-# CONTENIDOS
-##1.  [Funciones de un entorno de desarrollo.](#uno)
-##2. [Tipos de entornos de desarrollo. Entornos de desarrollo libres y propietarios. Características.](#dos)
-## [Instalación de un entorno de desarrollo.](#tres)
-## [Uso básico de un entorno de desarrollo.](#cuatro)
-
-
---- 
-
-<a name="uno"></a>
-
-<a name="dos"></a>
-
-<a name="tres"></a>
-
-<a name="cuatro"></a>
-
 ## CRITERIOS DE EVALUACIÓN
 
-a) Se han instalado entornos de desarrollo, propietarios y libres.<br>
-b) Se han añadido y eliminado módulos en el entorno de desarrollo.<br>
-c) Se ha personalizado y automatizado el entorno de desarrollo.<br>
-d) Se ha configurado el sistema de actualización del entorno de desarrollo.<br>
-e) Se han generado ejecutables a partir de código fuente de diferentes lenguajes en un mismo entorno de desarrollo.<br>
-f) Se han generado ejecutables a partir de un mismo código fuente con varios entornos de desarrollo.<br>
+a) Se han instalado entornos de desarrollo, propietarios y libres.
+b) Se han añadido y eliminado módulos en el entorno de desarrollo.
+c) Se ha personalizado y automatizado el entorno de desarrollo.
+d) Se ha configurado el sistema de actualización del entorno de desarrollo.
+e) Se han generado ejecutables a partir de código fuente de diferentes lenguajes en un mismo entorno de desarrollo.
+f) Se han generado ejecutables a partir de un mismo código fuente con varios entornos de desarrollo.
 g) Se han identificado las características comunes y específicas de diversos entornos de desarrollo. 
 
-<a name="diez"></a>
-## CRITERIOS DE CALIFICACIÓN:
+## CONTENIDOS
+1. Funciones de un entorno de desarrollo.
+2. Tipos de entornos de desarrollo. Entornos de desarrollo libres y propietarios. Características.
+3. Instalación de un entorno de desarrollo.
+4. Uso básico de un entorno de desarrollo.
 
-| CUADERNO DE CLASE | CUESTIONARIO | PARTICIPACIÓN EN CLASE | PRÁCTICAS  |
-| -- | -- | -- | -- |
-| 10%| 0%| 10%| 80% |
+#### CALFICACIÓN:
+
+| CUADERNO DE CLASE | CUESTIONARIO | EJERCICIOS DE CLASE | PRÁCTICAS |
+|:-----------------:|:------------:|:-------------------:|:---------:| 
+|        10%        |      0%      |        30%          |    60%    |
