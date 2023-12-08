@@ -441,8 +441,9 @@ propias librerías para realizar los test.</p>
 <p>En nuestro caso hemos optado por crear un proyecto Maven e instalar
 las dependencias necesarias para realizar los test. Esto hace el
 proyecto independiente del IDE y el sistema operativo que usemos.</p>
-<p>Para conocer un poco de maven recomiendo visitar el siguiente enlace:
-<a href="https://www.arquitecturajava.com/que-es-maven/">¿Qué es
+<p>Para conocer un poco de maven recomiendo visitar el siguiente
+enlace:</p>
+<p><a href="https://www.arquitecturajava.com/que-es-maven/">¿Qué es
 Maven?</a></p>
 <p>Para conocer mas sobre los proyectos Maven también podemos visitar la
 página web de Apache, el creador oficial de la herramienta:</p>
@@ -452,10 +453,11 @@ class="uri">https://maven.apache.org/guides/getting-started/</a></p>
 opciones que nos ofrece la pantalla de “Nuevo Proyecto”:</p>
 <p><img src="imagenes/nuevo_proyecto_maven.jpg" /></p>
 <p>Lo configuramos:</p>
-<p><img src="imagenes/nuevo_proyecto_maven_2.jpg" /> y Netbeans nos crea
-la estructura de carpetas del proyecto:</p>
-<p><img src="imagenes/nuevo_proyecto_maven_3.jpg" /> ### INSTALACIÓN DE
-DEPENDENCIAS</p>
+<p><img src="imagenes/nuevo_proyecto_maven_2.jpg" /></p>
+<p>y Netbeans nos crea la estructura de carpetas del proyecto:</p>
+<p><img src="imagenes/nuevo_proyecto_maven_3.jpg" /></p>
+<div id="instalación-de-dependencias" class="section level3">
+<h3>INSTALACIÓN DE DEPENDENCIAS</h3>
 <p>Podemos encontrar las dependecias necesarias en los dos repositorios
 más famosos:</p>
 <ul>
@@ -469,9 +471,9 @@ cantidad de plugins.</p></li>
 </ul>
 <p>Vamos a elegir la primera opción. Accediendo a la web desde la página
 oficial, podemos ver las diversas herramientas que JUnit nos ofrece:</p>
-<p><img src="imagenes/nuevo_proyecto_maven_4.jpg" /> Los dos primeros
-que nos encontramos son los que vamos a usar en la mayoría de los
-casos.</p>
+<p><img src="imagenes/nuevo_proyecto_maven_4.jpg" /></p>
+<p>Los dos primeros que nos encontramos son los que vamos a usar en la
+mayoría de los casos.</p>
 <p>Haciendo click en cada uno de ellos obtenemos los códigos necesarios
 para nuestro archivo <code>pom.xml</code>:</p>
 <pre class="xml"><code>&lt;dependency&gt;
@@ -516,6 +518,7 @@ finalmente :</p>
 <p>Reconstruimos el proyecto para que cargue las dependencias:</p>
 <p><img src="imagenes/nuevo_proyecto_maven_5.jpg" /></p>
 <p>Y ya tendríamos el proyecto configurado para realizar test.</p>
+</div>
 </div>
 <div id="conceptos-previos-de-java-anotaciones" class="section level2">
 <h2>CONCEPTOS PREVIOS DE JAVA: ANOTACIONES</h2>
@@ -710,11 +713,14 @@ void resta(int num1, int num2, int resultadoEsperado) {
     assertEquals(resultadoEsperado, calculadora.resta(),
             () -&gt; num1 + &quot; - &quot; + num2 + &quot; debe ser igual a &quot; + resultadoEsperado);
 }</code></pre>
-<p>Podéis ver un interesante tutorial sobre test parametrizados en el
-siguiente enlace:</p>
-<p><a
-href="https://blog.codefx.org/libraries/junit-5-parameterized-tests/"
-class="uri">https://blog.codefx.org/libraries/junit-5-parameterized-tests/</a></p>
+<p>Podéis ver un interesante tutorial sobre test parametrizados en los
+siguientes enlaces:</p>
+<ul>
+<li><a
+href="https://blog.codefx.org/libraries/junit-5-parameterized-tests/"></a></li>
+<li><a
+href="https://www.geeksforgeeks.org/junit-5-how-to-write-parameterized-tests/"></a></li>
+</ul>
 <p>Si completamos los demás métodos, el test final quedaría así:</p>
 <pre class="java"><code>package es.ieslosalbares.pruebas;
 
@@ -775,6 +781,8 @@ public class CalculadoraTest {
     }
 
 }</code></pre>
+<p>Al ejecutar el test, vemos que todas las pruebas pasan
+correctamente.</p>
 </div>
 </div>
 
