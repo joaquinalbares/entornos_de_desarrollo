@@ -1,5 +1,5 @@
 ---
-title: "UT03 A) -  PRUEBAS DE CAJA BLANCA"
+title: "UT03 -  EJERCICIOS DE CLASE"
 author: "Joaquin Rios"
 date: "2023-11-06"
 output: html_document
@@ -25,4 +25,5 @@ Para los siguientes ejercicios, impleméntalos en pseudocódigo, crea su grafo d
 
 4. Para tributar un determinado impuesto se debe ser mayor de 16 años y tener unos ingresos iguales o superiores a 1000 € mensuales. Escribir un programa que pregunte al usuario su edad y sus ingresos mensuales y muestre por pantalla si el usuario tiene que tributar o no.
 
-5. 
+5. Escribe un algoritmo que calcule la media de una serie de números introducidos por teclado. El usuario indicará que ha terminado de introducir los datos cuando meta el número 0. Los requisitos son:
+	- Los números deben ser positivos.
