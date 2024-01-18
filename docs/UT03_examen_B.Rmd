@@ -1,0 +1,11 @@
+---
+title: "UT02 - INSTALACIÓN Y USO DE ENTORNOS DE DESARROLLO INTEGRADO"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## EXAMEN DE TEST UNITARIOS
+[Descargar ejemplo](assets/examen2324.zip)

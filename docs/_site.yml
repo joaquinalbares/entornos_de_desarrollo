@@ -35,5 +35,7 @@ navbar:
         - text: "PARTE 2"
           href: UT03_parte02.html 
         - text: "Ejercicios de clase"
-          href: UT03_ejercicios.html 
+          href: UT03_ejercicios.html
+        - text: "Examen de test unitarios"
+          href: UT03_examen_B.html
 output_dir: "."
