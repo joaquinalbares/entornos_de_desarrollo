@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Joaquin Rios" />
+
+<meta name="date" content="2024-01-23" />
+
+<title>UT04 - OPTIMIZACIÓN Y DOCUMENTACIÓN</title>
+
+<script src="site_libs/header-attrs-2.19/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html"></a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">INICIO</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    UT01
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="UT01_index.html">Contenido</a>
+    </li>
+    <li>
+      <a href="UT01_programacion.html">Programación</a>
+    </li>
+    <li>
+      <a href="UT01_lectura.html">Artículo de opinión</a>
+    </li>
+    <li>
+      <a href="UT01_ejercicios.html">Ejercicios de clase</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    UT02
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="UT02_index.html">Contenido</a>
+    </li>
+    <li>
+      <a href="UT02_ejercicios.html">Ejercicios de clase</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    UT03
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="UT03_index.html">Programación</a>
+    </li>
+    <li>
+      <a href="UT03_parte00.html">INTRO</a>
+    </li>
+    <li>
+      <a href="UT03_parte01.html">PARTE 1</a>
+    </li>
+    <li>
+      <a href="UT03_parte02.html">PARTE 2</a>
+    </li>
+    <li>
+      <a href="UT03_ejercicios.html">Ejercicios de clase</a>
+    </li>
+    <li>
+      <a href="UT03_examen_B.html">Examen de test unitarios</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    UT04
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="UT03_index.html">Programación</a>
+    </li>
+    <li>
+      <a href="UT04_contenido.html">Contenidos</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">UT04 - OPTIMIZACIÓN Y DOCUMENTACIÓN</h1>
+<h4 class="author">Joaquin Rios</h4>
+<h4 class="date">2024-01-23</h4>
+
+</div>
+
+
+<div id="refactorización" class="section level2">
+<h2>1. REFACTORIZACIÓN</h2>
+<p>Una de las destrezas básicas para convertirse en un buen programador
+consiste en saber optimizar código. Inicialmente, cuando somos
+profesores novatos, hacemos los programas de la única forma que sabemos,
+pero, cuando adquirimos experiencia y somos capaces de generar varias,
+hay que elegir entre todas las posibles soluciones la más eficiente,
+efectiva, … En resumen, la óptima. De eso se trata la optimización.</p>
+<p>Técnicamente, podemos decir que optimización o refactorización es el
+proceso de cambiar la estructura interna de un software sin alterar su
+comportamiento externo y se realiza para mejorar la calidad del código,
+aumentar su legibilidad y mantenibilidad.</p>
+<p>Algunas de las características más importantes son:</p>
+<ol style="list-style-type: decimal">
+<li>Se puede hacer a medida que se desarrolla el software o después de
+que está completado.</li>
+<li>Algunas técnicas de refactorización incluyen la reestructuración de
+código, la eliminación de duplicados y la creación de métodos
+reutilizables.</li>
+<li>Es importante realizar pruebas después de cualquier refactorización
+para asegurarse de que el comportamiento del software sigue siendo el
+esperado.</li>
+<li>La refactorización puede ser una parte valiosa del ciclo de
+desarrollo de software para asegurar un código limpio y eficiente.</li>
+</ol>
+<p><strong>¿Cuándo refactorizar?</strong></p>
+<p>Algunos autores han identificado algunos indicadores que nos van a
+decir que nuestro código es susceptible de ser refactorizado. Algunos de
+los más importantes son los siguientes:</p>
+<ul>
+<li><strong>Código duplicado (Duplicated code)</strong>. Es la principal
+razón para refactorizar. Si se detecta el mismo código en más de un
+lugar, se debe buscar la forma de extraerlo y unificarlo.</li>
+<li><strong>Métodos muy largos (Long method)</strong>. Cuanto más largo
+es un método más dificil es de entender. Un método muy largo normalmente
+está realizando tareas que deberían ser responsabilidad de otros. Se
+deben identificar y descomponer el método en otros más pequeños. En la
+programación orientada a objetos cuanto más corto es un método más fácil
+es reutilizarlo.</li>
+<li><strong>Clases muy grandes (Large class)</strong>. Si una clase
+intenta resolver muchos problemas, tendremos una clase con demasiados
+métodos, atributos o incluso instancias. La clase está asumiendo
+demasiadas responsabilidades. Hay que intentar hacer clases más
+pequeñas, de forma que cada una trate con un conjunto pequeño de
+responsabilidades bien delimitadas.</li>
+<li><strong>Lista de parámetros extensa (Long parameter list)</strong>.
+En la programación orientada a objetos no se suelen pasar muchos
+parámetros a los métodos, sino solo aquellos mínimamente necesarios para
+que el objeto involucrado consiga lo necesario. Tener demasiados
+parámetros puede estar indicando un problema de encapsulación de datos o
+la necesidad de crear una clase de objetos a partir de varios de esos
+parámetros, y pasar ese objeto como argumento en vez de todos los
+parámetros. Especialmente si esos parámetros suelen tener que ver unos
+con otros y suelen ir juntos siempre.</li>
+</ul>
+<div id="patrones-de-refactorización" class="section level3">
+<h3>1.1. Patrones de refactorización</h3>
+<ol style="list-style-type: decimal">
+<li>Son soluciones comunes y probadas a problemas específicos en el
+código.</li>
+<li>Ayudan a mejorar la estructura y calidad del código de forma
+sistemática y repetitiva.</li>
+<li>Algunos patrones de refactorización comunes incluyen: Extracción de
+método, Reemplazo de condicional con polimorfismo, Inversión de
+dependencias y Extracción de clase.</li>
+<li>Cada patrón tiene un propósito específico, como reducir la
+complejidad, aumentar la legibilidad o mejorar la escalabilidad.</li>
+<li>Utilizar patrones de refactorización es una buena práctica para
+mantener un código sólido y fácil de mantener.</li>
+<li>Es importante conocer los patrones de refactorización y elegir el
+adecuado para cada situación, para lograr una solución eficiente y
+sostenible a largo plazo.</li>
+</ol>
+<div id="algunos-patrones" class="section level4">
+<h4>Algunos patrones:</h4>
+<p>En el proceso de refactorización, se siguen una serie de patrones
+preestablecidos, los más comunes son los siguientes:</p>
+<ul>
+<li><strong>Renombrado (rename)</strong>: este patrón nos indica que
+debemos cambiar el nombre de un paquete, clase, método o campo, por un
+nombre más significativo.</li>
+<li><strong>Sustituir bloques de código por un método</strong>: este
+patrón nos aconseja sustituir un bloque de código, por un método. De
+esta forma, cada vez que queramos acceder a ese bloque de código,
+bastaría con invocar al método.</li>
+<li><strong>Campos encapsulados</strong>: se aconseja crear métodos
+getter y setter, (de asignación y de consulta) para cada campo que se
+defina en una clase. Cuando sea necesario acceder o modificar el valor
+de un campo, basta con invocar al método getter o setter según
+convenga.</li>
+<li><strong>Organizar las clases por paquetes (packages)</strong>: si es
+necesario, se puede mover una clase de un paquete a otro, o de un
+proyecto a otro. La idea es no duplicar código que ya se haya generado.
+Esto impone la actualización en todo el código fuente de las referencias
+a la clase en su nueva localización.</li>
+<li>Cambiar los parámetros del proyecto: nos permite añadir nuevos
+parámetros a un método y cambiar los modificadores de acceso.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="documentación" class="section level2">
+<h2>2. DOCUMENTACIÓN</h2>
+<p>Por último, la documentación. Ningún desarrollador puede considerarse
+bueno si no le da la importancia que corresponde a la documentación.
+Recuérdese que un programa poco o mal documentado es un mal
+producto.</p>
+<p>Antes de entrar en detalles, algunas frases a tener en cuenta:</p>
+<blockquote>
+<p>“If your program isn’t worth documenting, it probably isn’t worth
+running” (Si su programa no merece la pena documentarlo, probablemente
+no merece la pena ejecutarlo). J. Nagler. 1995.</p>
+</blockquote>
+<blockquote>
+<p>“Do not document bad code - rewrite it” (No documentar código
+malo—reescribirlo). R. Caron. 2000.</p>
+</blockquote>
+<blockquote>
+<p>“Write the documentation before you write the code.” (Escribe la
+documentación antes de escribir el código). S.W. Ambler. 2000.</p>
+</blockquote>
+<p><strong>JavaDoc</strong> es la utilidad de Java para extraer y
+generar documentación directamente del código en formato HTML. Es muy
+recomendable escribir los comentarios del código de acuerdo a las
+recomendaciones de <code>Javadoc</code>, ya que es un estándar ‘de
+facto’ y así la documentación será útil. La documentación y el código se
+van a incluir dentro del mismo fichero.</p>
+<p>Los tipos de comentarios para generar la documentación son:</p>
+<ul>
+<li>Comentarios de línea: comienzan con los caracteres <code>//</code> y
+terminan con la línea.</li>
+<li>Comentarios tipo C: comienzan con los caracteres <code>/*</code>, y
+terminan con los caracteres <code>*/</code>. Pueden agrupar a varias
+líneas.</li>
+<li>Parecidos a los anteriores, los comentarios de documentación
+<code>Javadoc</code> se colocan entre los delimitadores <code>/**</code>
+(dos Asteriscos en la primera línea) y <code>*/</code> , agrupan varias
+líneas, y cada línea irá precedida por un <code>*</code> y deben
+colocarse:
+<ul>
+<li>antes de la declaración de una clase.</li>
+<li>antes de un método o un constructor.</li>
+<li>antes un campo o atributo (opcional)</li>
+</ul></li>
+</ul>
+<p>Dentro de estos delimitadores se podrá escribir etiquetas HTML. Los
+comentarios Javadoc están formados por dos partes una descripción
+seguida de un bloque de tags.</p>
+<blockquote>
+<p>Los tags son etiquetas que describen una característica o propiedad
+de la documentación en java.</p>
+</blockquote>
+<p>Los tags mas comunes son:</p>
+<table>
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Tag</th>
+<th> Descripción</th>
+<th> Uso</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="citation">@author</span></td>
+<td> Nombre del desarrollador.</td>
+<td> nombre_autor</td>
+</tr>
+<tr class="even">
+<td><span class="citation">@version</span></td>
+<td> Versión del método o clase.</td>
+<td> versión</td>
+</tr>
+<tr class="odd">
+<td><span class="citation">@param</span></td>
+<td>Definición de un parámetro de un método, es requerido para todos los
+parámetros del método.</td>
+<td>nombre_parametro descripción</td>
+</tr>
+<tr class="even">
+<td><span class="citation">@return</span></td>
+<td>Informa de lo que devuelve el método, no se puede usar en
+constructores o métodos “void”.</td>
+<td>descripción</td>
+</tr>
+<tr class="odd">
+<td><span class="citation">@throws</span></td>
+<td>Excepción lanzada por el método, posee un sinónimo de nombre <span
+class="citation">@exception</span></td>
+<td>nombre_clase descripción</td>
+</tr>
+<tr class="even">
+<td><span class="citation">@see</span></td>
+<td>Asocia con otro método o clase.</td>
+<td>referencia (#método(); clase#método(); paquete.clase;
+paquete.clase#método()).</td>
+</tr>
+<tr class="odd">
+<td><span class="citation">@since</span></td>
+<td>Especifica la versión del producto</td>
+<td>indicativo numerico</td>
+</tr>
+<tr class="even">
+<td><span class="citation">@serial</span></td>
+<td>Describe el significado del campo y sus valores aceptables. Otras
+formas válidas son <span class="citation">@serialField</span> y <span
+class="citation">@serialData</span></td>
+<td>campo_descripcion</td>
+</tr>
+<tr class="odd">
+<td><span class="citation">@deprecated</span></td>
+<td>Indica que el método o clase es antigua y que no se recomienda su
+uso porque posiblemente desaparecerá en versiones posteriores.</td>
+<td>descripción</td>
+</tr>
+</tbody>
+</table>
+<div id="un-ejmplo-de-clase-documentada." class="section level3">
+<h3>2.2. UN EJMPLO DE CLASE DOCUMENTADA.</h3>
+<p>Un ejemplo de documentación podría ser el siguiente:</p>
+<pre class="java"><code>/**
+* &lt;h2&gt;Clase Empleado, se utiliza para crear y leer empleados de una BD&lt;/h2&gt;
+* Busca información de javadoc en &lt; a href=&quot;http://google.com&quot;&gt;GOOGLE&lt;/a&gt; 
+* @see &lt;a href=&quot;http://www.google.com&quot;&gt;Google&lt;/a&gt;
+* @version 1-2014
+* @author ARM
+* @since 1-1-2014 */
+public class Empleado {
+  /** Atributo Nombre del empleado */
+  private String nombre; 
+  /** Atributo apellido del empleado */
+  private String apellido; 
+  /** Edad del empleado */
+  private double salario;
+  
+  /**
+  * Constructor con 3 parámetros.
+  * Crea objetos empleado, con nombre, apellido y salario.
+  * @param nombre Nombre d e l empleado
+  * @param apellido Apellido del empleado
+  * @param salario Salario del empleado */
+  public Empleado(String nombre, String apellido, double salario).{ 
+    this.nombre=nombre;
+    this.apellido=apellido;
+    this.salario=salario;
+  }
+  
+  //Métodos públicos
+  /**
+  * Sube el salario al empleado. * @see Empleado
+  * @param subida
+  *
+  */
+  public void subidasalario (double subida) { 
+    salario=salario + subida;
+  }
+
+  //Métodos privados 
+  /**
+  * Comprueba que e l nombre no este vacío 
+  * @return &lt;ul&gt;
+  *   &lt;li&gt;true: el nombre es una cadena vacía&lt;/li&gt;
+  *   &lt;li&gt;false: el nombre no es una cadena vacía&lt;/li&gt;
+  * &lt;ul&gt;
+  */
+  private boolean comprobar(){ 
+    if(nombre.equals(&quot;&quot;)) {
+      return false;
+     }
+     return true;
+  }
+}</code></pre>
+</div>
+<div id="generación-de-la-documentación" class="section level3">
+<h3>GENERACIÓN DE LA DOCUMENTACIÓN</h3>
+<p>La herramienta de línea de comandos de <code>Javadoc</code> es muy
+poderosa pero tiene cierta complejidad.</p>
+<p>Ejecutar el comando <code>javadoc</code> sin ninguna opción o
+parámetro dará como resultado un error y los parámetros de salida que
+espera.Tendremos que especificar al menos para qué paquete o clase
+queremos que se genere la documentación.</p>
+<p>Para ello, abrimos una línea de comando y naveguamos al directorio
+del proyecto y ,asumiendo que las clases están todas en la carpeta
+<code>src</code> en el directorio del proyecto, dentro de
+<code>src</code> ejecutamos:</p>
+<pre class="cmd"><code>javadoc -d doc *</code></pre>
+<p>Esto generará documentación en un directorio llamado doc como se
+especifica con el indicador <code>–d</code>. Con el <code>*</code>
+generamos la documentación de todo lo contanido en la carpeta
+<code>src</code>.</p>
+<p>Utilizar un IDE con la funcionalidad integrada es, por supuesto, más
+fácil y generalmente recomendado.</p>
+<p><a
+href="https://docs.oracle.com/en/java/javase/11/tools/javadoc.html">REFERENCIA
+OFICIAL</a></p>
+</div>
+</div>
+<div id="control-de-versiones" class="section level2">
+<h2>CONTROL DE VERSIONES</h2>
+<p>Otro de los elementos que contribuye al desarrollo óptimo del
+software es el uso de un SCV (Sistema de Control de Versiones), un
+sistema que permite gestionar y mantener versiones de archivos y
+proyectos de software. Utilizar un sistema de control de versiones es
+una buena práctica en el desarrollo de software, ya que facilita la
+colaboración y el seguimiento de los cambios en el proyecto.</p>
+<p>Las ventajas del uso de CVS (sus siglas en inglés) son:</p>
+<ul>
+<li>Permite a varios desarrolladores trabajar juntos en un mismo
+proyecto, manteniendo un historial de cambios y versiones.</li>
+<li>Ofrece la posibilidad de revertir a versiones previas, comparar y
+fusionar versiones, y hacer seguimiento de los cambios realizados por
+cada usuario.</li>
+<li>CVS se ejecuta en un servidor central y los desarrolladores pueden
+acceder y descargar versiones a través de un cliente.</li>
+<li>Existen diferentes tipos de CVS, incluyendo Subversion (SVN), Git y
+Mercurial.</li>
+</ul>
+<p>El control de versiones se verá mas a fondo en el próximo
+capítulo.</p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

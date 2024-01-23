@@ -1,0 +1,53 @@
+---
+title: "UT04 - OPTIMIZACIÓN Y DOCUMENTACIÓN"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+--- 
+
+### RESULTADO DE APRENDIZAJE:
+
+4. Optimiza código empleando las herramientas disponibles en el entorno de desarrollo. 
+
+#### CRITERIOS DE EVALUACIÓN:
+
+a) Se han identificado los patrones de refactorización más usuales.  
+b) Se han elaborado las pruebas asociadas a la refactorización.  
+c) Se ha revisado el código fuente usando un analizador de código.  
+d) Se han identificado las posibilidades de configuración de un analizador de
+código.  
+e) Se han aplicado patrones de refactorización con las herramientas que proporciona el entorno de desarrollo.  
+f) Se ha realizado el control de versiones integrado en el entorno de desarrollo.  
+g) Se han utilizado herramientas del entorno de desarrollo para documentar las clases.   
+
+#### CONTENIDOS:
+
+Optimización y documentación:
+
+- Refactorización:
+  - Concepto. Limitaciones.
+  - Patrones de refactorización más usuales.
+  - Analizadores de código; uso; configuración.
+  - Refactorización y pruebas.
+  - Herramientas de ayuda a la refactorización.
+- Control de versiones:
+  - Desarrollos colectivos.
+  - Estructura de las herramientas de control de versiones. Utilidad.
+    Características. Estructura (Cliente/Servidor). Repositorio. 
+  - Herramientas de control de versiones. Clientes de control de versiones integrados en el entorno de desarrollo. Descarga de ficheros inicial. Modificación de ficheros. Actualización de ficheros en local. Actualización de ficheros en el repositorio. Diferencias entre versiones. Restauración de versiones anteriores. Resolución de conflictos. Historial de versiones.
+- Documentación:
+  - Uso de comentarios.
+  - Herramientas integradas en el entorno de desarrollo para generar documentación automáticas de clases.
+  - Alternativas. 
+
+
+#### CALFICACIÓN:
+
+| CUADERNO DE CLASE | CUESTIONARIO | EJERCICIOS DE CLASE | PRÁCTICAS |
+|:-----------------:|:------------:|:-------------------:|:---------:| 
+|        10%        |      0%      |        30%          |    60%    |
+

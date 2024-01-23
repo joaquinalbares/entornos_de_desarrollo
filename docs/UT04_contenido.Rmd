@@ -1,0 +1,182 @@
+---
+title: "UT04 - OPTIMIZACIÓN Y DOCUMENTACIÓN"
+author: "Joaquin Rios"
+date: "2024-01-23"
+output: html_document
+---
+
+## 1. REFACTORIZACIÓN
+
+Una de las destrezas básicas para convertirse en un buen programador consiste en saber optimizar código. Inicialmente, cuando somos profesores novatos, hacemos los programas de la única forma que sabemos, pero, cuando adquirimos experiencia y somos capaces de generar varias, hay que elegir entre todas las posibles soluciones la más eficiente, efectiva, ... En resumen, la óptima. De eso se trata la optimización.
+
+Técnicamente, podemos decir que optimización o refactorización es el proceso de cambiar la estructura interna de un software sin alterar su comportamiento externo y se realiza para mejorar la calidad del código, aumentar su legibilidad y mantenibilidad.
+
+Algunas de las características más importantes son:
+
+1. Se puede hacer a medida que se desarrolla el software o después de que está completado.
+2. Algunas técnicas de refactorización incluyen la reestructuración de código, la eliminación de duplicados y la creación de métodos reutilizables.
+3. Es importante realizar pruebas después de cualquier refactorización para asegurarse de que el comportamiento del software sigue siendo el esperado.
+4. La refactorización puede ser una parte valiosa del ciclo de desarrollo de software para asegurar un código limpio y eficiente.
+
+**¿Cuándo refactorizar?**
+
+Algunos autores han identificado algunos indicadores que nos van a decir que nuestro código es susceptible de ser refactorizado. Algunos de los más importantes son los siguientes:
+
+- **Código duplicado (Duplicated code)**. Es la principal razón para refactorizar. Si se detecta el mismo código en más de un lugar, se debe buscar la forma de extraerlo y unificarlo.
+- **Métodos muy largos (Long method)**. Cuanto más largo es un método más dificil es de entender. Un método muy largo normalmente está realizando tareas que deberían ser responsabilidad de otros. Se deben identificar y descomponer el método en otros más pequeños. En la programación orientada a objetos cuanto más corto es un método más fácil es reutilizarlo.
+- **Clases muy grandes (Large class)**. Si una clase intenta resolver muchos problemas, tendremos una clase con demasiados métodos, atributos o incluso instancias. La clase está asumiendo demasiadas responsabilidades. Hay que intentar hacer clases más pequeñas, de forma que cada una trate con un conjunto pequeño de responsabilidades bien delimitadas.
+- **Lista de parámetros extensa (Long parameter list)**. En la programación orientada a objetos no se suelen pasar muchos parámetros a los métodos, sino solo aquellos mínimamente necesarios para que el objeto involucrado consiga lo necesario. Tener demasiados parámetros puede estar indicando un problema de encapsulación de datos o la necesidad de crear una clase de objetos a partir de varios de esos parámetros, y pasar ese objeto como argumento en vez de todos los parámetros. Especialmente si esos parámetros suelen tener que ver unos con otros y suelen ir juntos siempre.
+
+### 1.1. Patrones de refactorización
+
+1. Son soluciones comunes y probadas a problemas específicos en el código.
+2. Ayudan a mejorar la estructura y calidad del código de forma sistemática y repetitiva.
+3. Algunos patrones de refactorización comunes incluyen: Extracción de método, Reemplazo de condicional con polimorfismo, Inversión de dependencias y Extracción de clase.
+4. Cada patrón tiene un propósito específico, como reducir la complejidad, aumentar la legibilidad o mejorar la escalabilidad.
+5. Utilizar patrones de refactorización es una buena práctica para mantener un código sólido y fácil de mantener.
+6. Es importante conocer los patrones de refactorización y elegir el adecuado para cada situación, para lograr una solución eficiente y sostenible a largo plazo.
+
+#### Algunos patrones:
+
+En el proceso de refactorización, se siguen una serie de patrones preestablecidos, los más comunes son los siguientes:
+
+- **Renombrado (rename)**: este patrón nos indica que debemos cambiar el nombre de un paquete, clase, método o campo, por un nombre más significativo.
+- **Sustituir bloques de código por un método**: este patrón nos aconseja sustituir un bloque de código, por un método. De esta forma, cada vez que queramos acceder a ese bloque de código, bastaría con invocar al método.
+- **Campos encapsulados**: se aconseja crear métodos getter y setter, (de asignación y de consulta) para cada campo que se defina en una clase. Cuando sea necesario acceder o modificar el valor de un campo, basta con invocar al método getter o setter según convenga.
+- **Organizar las clases por paquetes (packages)**: si es necesario, se puede mover una clase de un paquete a otro, o de un proyecto a otro. La idea es no duplicar código que ya se haya generado. Esto impone la actualización en todo el código fuente de las referencias a la clase en su nueva localización.
+- Cambiar los parámetros del proyecto: nos permite añadir nuevos parámetros a un método y cambiar los modificadores de acceso.
+
+
+## 2. DOCUMENTACIÓN
+
+Por último, la documentación. Ningún desarrollador puede considerarse bueno si no le da la importancia que corresponde a la documentación. Recuérdese que un programa poco o mal documentado es un mal producto.
+
+Antes de entrar en detalles, algunas frases a tener en cuenta:
+
+> "If your program isn't worth documenting, it probably isn't worth running" (Si su programa no merece la pena documentarlo, probablemente no merece la pena ejecutarlo). J. Nagler. 1995.
+
+> "Do not document bad code - rewrite it" (No documentar código malo—reescribirlo). R. Caron. 2000.
+
+> "Write the documentation before you write the code." (Escribe la documentación antes de escribir el código). S.W. Ambler. 2000.
+
+**JavaDoc** es la utilidad de Java para extraer y generar documentación directamente del código en formato HTML. Es muy recomendable escribir los comentarios del código de acuerdo a las recomendaciones de `Javadoc`, ya que es un estándar 'de facto' y así la documentación será útil. La documentación y el código se van a incluir dentro del mismo fichero. 
+
+Los tipos de comentarios para generar la documentación son:
+
+- Comentarios de línea: comienzan con los caracteres `//`  y terminan con la línea.
+- Comentarios tipo C: comienzan con los caracteres `/*`, y terminan con los caracteres `*/`. Pueden agrupar a varias líneas.
+- Parecidos a los anteriores, los comentarios de documentación `Javadoc` se colocan entre los delimitadores `/**` (dos Asteriscos en la primera línea) y  `*/` , agrupan varias líneas, y cada línea irá precedida por un `*` y deben colocarse:
+  -  antes de la declaración de una clase.
+  -  antes de un método o un constructor. 
+  -  antes un campo o atributo (opcional)
+
+Dentro de estos delimitadores se podrá escribir etiquetas HTML. Los comentarios Javadoc están formados por dos partes una descripción seguida de un bloque de tags.
+
+> Los tags son etiquetas que describen una característica o propiedad de la documentación en java.
+
+Los tags mas comunes son:
+
+| Tag | Descripción | Uso | 
+| -- | -- | -- |
+| @author | Nombre del desarrollador. | nombre_autor |
+| @version | Versión del método o clase. | versión |
+| @param | Definición de un parámetro de un método, es requerido para todos los parámetros del método. 	| nombre_parametro descripción |
+| @return | Informa de lo que devuelve el método, no se puede usar en constructores o métodos "void". | 	descripción |
+| @throws | Excepción lanzada por el método, posee un sinónimo de nombre @exception | nombre_clase descripción | 
+@see | Asocia con otro método o clase. | referencia (#método(); clase#método(); paquete.clase; paquete.clase#método()). | 
+@since | Especifica la versión del producto | indicativo numerico 
+@serial | Describe el significado del campo y sus valores aceptables. Otras formas válidas son @serialField y @serialData | campo_descripcion | 
+@deprecated | Indica que el método o clase es antigua y que no se recomienda su uso porque posiblemente desaparecerá en versiones posteriores.| descripción | 
+
+### 2.2. UN EJMPLO DE CLASE DOCUMENTADA.
+Un ejemplo de documentación podría ser el siguiente:
+
+```java
+/**
+* <h2>Clase Empleado, se utiliza para crear y leer empleados de una BD</h2>
+* Busca información de javadoc en < a href="http://google.com">GOOGLE</a> 
+* @see <a href="http://www.google.com">Google</a>
+* @version 1-2014
+* @author ARM
+* @since 1-1-2014 */
+public class Empleado {
+  /** Atributo Nombre del empleado */
+  private String nombre; 
+  /** Atributo apellido del empleado */
+  private String apellido; 
+  /** Edad del empleado */
+  private double salario;
+  
+  /**
+  * Constructor con 3 parámetros.
+  * Crea objetos empleado, con nombre, apellido y salario.
+  * @param nombre Nombre d e l empleado
+  * @param apellido Apellido del empleado
+  * @param salario Salario del empleado */
+  public Empleado(String nombre, String apellido, double salario).{ 
+    this.nombre=nombre;
+    this.apellido=apellido;
+    this.salario=salario;
+  }
+  
+  //Métodos públicos
+  /**
+  * Sube el salario al empleado. * @see Empleado
+  * @param subida
+  *
+  */
+  public void subidasalario (double subida) { 
+    salario=salario + subida;
+  }
+
+  //Métodos privados 
+  /**
+  * Comprueba que e l nombre no este vacío 
+  * @return <ul>
+  *   <li>true: el nombre es una cadena vacía</li>
+  *   <li>false: el nombre no es una cadena vacía</li>
+  * <ul>
+  */
+  private boolean comprobar(){ 
+    if(nombre.equals("")) {
+	  return false;
+	 }
+	 return true;
+  }
+}
+```
+
+### GENERACIÓN DE LA DOCUMENTACIÓN
+
+La herramienta de línea de comandos de `Javadoc` es muy poderosa pero tiene cierta complejidad.
+
+Ejecutar el comando `javadoc` sin ninguna opción o parámetro dará como resultado un error y los parámetros de salida que espera.Tendremos que especificar al menos para qué paquete o clase queremos que se genere la documentación.
+
+Para ello, abrimos una línea de comando y naveguamos al directorio del proyecto y ,asumiendo que las clases están todas en la carpeta `src` en el directorio del proyecto, dentro de `src` ejecutamos:
+
+```cmd
+javadoc -d doc *
+```
+
+Esto generará documentación en un directorio llamado doc como se especifica con el indicador `–d`. Con el `*` generamos la documentación de todo lo contanido en la carpeta `src`.
+
+Utilizar un IDE con la funcionalidad integrada es, por supuesto, más fácil y generalmente recomendado.
+
+[REFERENCIA OFICIAL](https://docs.oracle.com/en/java/javase/11/tools/javadoc.html)
+
+
+## CONTROL DE VERSIONES
+
+Otro de los elementos que contribuye al desarrollo óptimo del software es el uso de un SCV (Sistema de Control de Versiones), un sistema que permite gestionar y mantener versiones de archivos y proyectos de software. Utilizar un sistema de control de versiones es una buena práctica en el  desarrollo de software, ya que facilita la colaboración y el seguimiento de los cambios en el proyecto.
+
+Las ventajas del uso de CVS (sus siglas en inglés) son:
+
+- Permite a varios desarrolladores trabajar juntos en un mismo proyecto, manteniendo un historial de cambios y versiones.
+- Ofrece la posibilidad de revertir a versiones previas, comparar y fusionar versiones, y hacer seguimiento de los cambios realizados por cada usuario.
+- CVS se ejecuta en un servidor central y los desarrolladores pueden acceder y descargar versiones a través de un cliente.
+- Existen diferentes tipos de CVS, incluyendo Subversion (SVN), Git y Mercurial.
+
+El control de versiones se verá mas a fondo en el próximo capítulo.
+
+
+
