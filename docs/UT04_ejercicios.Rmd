@@ -1,0 +1,52 @@
+---
+title: "UT04 - OPTIMIZACIÓN Y DOCUMENTACIÓN"
+author: "Joaquin Rios"
+date: "2024-01-24"
+output: html_document
+---
+
+## EJERCICIO DE REFACTORIZACIÓN
+
+A continuación mostramos el código de una clase refactorizada:
+
+```java
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ */
+package javaapplication6;
+
+/**
+ *
+ * @author joaquin
+ */
+public class JavaApplication6 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        int[] listaNumeros = new int[100];
+        // TODO code application logic here
+        for (int i=0; i<listaNumeros.length ; i++) {
+            int numero = (int) (Math.random() * 100) + 1;
+            listaNumeros[i] = numero;            
+        }
+        System.out.println("El número mayor es " + numeromayor(listaNumeros));
+    }
+    
+    public static int numeromayor( int[] listaNumeros) {
+        int numeroMayor=0;
+        for (int numeroActual : listaNumeros) {
+            if (numeroActual > numeroMayor) {
+                numeroMayor = numeroActual;
+            }
+        }
+        return numeroMayor;
+        
+    }
+    
+}
+```
+
+El proyecto original se puede descargar [desde aquí](assets/JavaApplication6.zip):

@@ -9,9 +9,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
+<meta name="author" content="Joaquin Rios" />
 
+<meta name="date" content="2024-01-24" />
 
-<title>UT02 - INSTALACIÓN Y USO DE ENTORNOS DE DESARROLLO INTEGRADO</title>
+<title>UT04 - OPTIMIZACIÓN Y DOCUMENTACIÓN</title>
 
 <script src="site_libs/header-attrs-2.19/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -338,63 +340,55 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">UT02 - INSTALACIÓN Y USO DE ENTORNOS DE
-DESARROLLO INTEGRADO</h1>
+<h1 class="title toc-ignore">UT04 - OPTIMIZACIÓN Y DOCUMENTACIÓN</h1>
+<h4 class="author">Joaquin Rios</h4>
+<h4 class="date">2024-01-24</h4>
 
 </div>
 
 
-<div id="resultados-de-aprendizaje" class="section level2">
-<h2>RESULTADOS DE APRENDIZAJE</h2>
-<p>Evalúa entornos integrados de desarrollo analizando sus
-características para editar código fuente y generar ejecutables.</p>
-</div>
-<div id="criterios-de-evaluación" class="section level2">
-<h2>CRITERIOS DE EVALUACIÓN</h2>
-<ol style="list-style-type: lower-alpha">
-<li>Se han instalado entornos de desarrollo, propietarios y libres.</li>
-<li>Se han añadido y eliminado módulos en el entorno de desarrollo.</li>
-<li>Se ha personalizado y automatizado el entorno de desarrollo.</li>
-<li>Se ha configurado el sistema de actualización del entorno de
-desarrollo.</li>
-<li>Se han generado ejecutables a partir de código fuente de diferentes
-lenguajes en un mismo entorno de desarrollo.</li>
-<li>Se han generado ejecutables a partir de un mismo código fuente con
-varios entornos de desarrollo.</li>
-<li>Se han identificado las características comunes y específicas de
-diversos entornos de desarrollo.</li>
-</ol>
-</div>
-<div id="contenidos" class="section level2">
-<h2>CONTENIDOS</h2>
-<ol style="list-style-type: decimal">
-<li>Funciones de un entorno de desarrollo.</li>
-<li>Tipos de entornos de desarrollo. Entornos de desarrollo libres y
-propietarios. Características.</li>
-<li>Instalación de un entorno de desarrollo.</li>
-<li>Uso básico de un entorno de desarrollo.</li>
-</ol>
-<div id="calficación" class="section level4">
-<h4>CALFICACIÓN:</h4>
-<table>
-<thead>
-<tr class="header">
-<th align="center">CUADERNO DE CLASE</th>
-<th align="center">CUESTIONARIO</th>
-<th align="center">EJERCICIOS DE CLASE</th>
-<th align="center">PRÁCTICAS</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="center">10%</td>
-<td align="center">0%</td>
-<td align="center">30%</td>
-<td align="center">60%</td>
-</tr>
-</tbody>
-</table>
-</div>
+<div id="ejercicio-de-refactorización" class="section level2">
+<h2>EJERCICIO DE REFACTORIZACIÓN</h2>
+<p>A continuación mostramos el código de una clase refactorizada:</p>
+<pre class="java"><code>/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ */
+package javaapplication6;
+
+/**
+ *
+ * @author joaquin
+ */
+public class JavaApplication6 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        int[] listaNumeros = new int[100];
+        // TODO code application logic here
+        for (int i=0; i&lt;listaNumeros.length ; i++) {
+            int numero = (int) (Math.random() * 100) + 1;
+            listaNumeros[i] = numero;            
+        }
+        System.out.println(&quot;El número mayor es &quot; + numeromayor(listaNumeros));
+    }
+    
+    public static int numeromayor( int[] listaNumeros) {
+        int numeroMayor=0;
+        for (int numeroActual : listaNumeros) {
+            if (numeroActual &gt; numeroMayor) {
+                numeroMayor = numeroActual;
+            }
+        }
+        return numeroMayor;
+        
+    }
+    
+}</code></pre>
+<p>El proyecto original se puede descargar <a
+href="assets/JavaApplication6.zip">desde aquí</a>:</p>
 </div>
 
 
