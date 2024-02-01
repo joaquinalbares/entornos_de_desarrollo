@@ -50,3 +50,7 @@ public class JavaApplication6 {
 ```
 
 El proyecto original se puede descargar [desde aquí](assets/JavaApplication6.zip):
+
+### EJERCICIO PROPUESTO
+
+Refactorizar el código dado en el [siguiente proyecto](assets/empleado.zip)
