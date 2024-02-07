@@ -394,6 +394,59 @@ href="assets/JavaApplication6.zip">desde aquí</a>:</p>
 <p>Refactorizar el código dado en el <a
 href="assets/empleado.zip">siguiente proyecto</a></p>
 </div>
+<div id="ejercicio-propuesto-02" class="section level3">
+<h3>EJERCICIO PROPUESTO 02</h3>
+<p>Refactorizar y documentar el siguiente código:</p>
+<pre class="java"><code>import java.time.LocalDate;
+
+import modelo.Persona;
+
+public class App {
+    public static void main(String[] args) throws Exception {
+        LocalDate f = LocalDate.now();
+        System.out.println(fecha.getDayOfMonth());
+        System.out.println(fecha.getMonthValue());
+
+        Persona pepe = new Persona(&quot;Pepe&quot;);
+        pepe.setFechaNacimiento(&quot;2002-11-04&quot;);
+        
+
+    }
+}
+
+
+public class Persona {
+    private final String nombre;
+    private String apel; 
+    private int numTelefono;
+    private String email;
+    private LocalDate fechaNacimiento;
+
+
+    public String getNombre() {
+        return nombre;
+    }
+
+   
+    public LocalDate getFechaNacimiento() {
+        return fechaNacimiento;
+    }
+    public void setFechaNacimiento(LocalDate fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
+    }
+
+    public int comprobarCumpleanyos() {
+        LocalDate hoy = LocalDate.now();
+        if (hoy.getDayOfMonth()==getFechaNacimiento().getDayOfMonth() &amp;&amp;
+        hoy.getMonthValue()==getFechaNacimiento().getMonthValue()) {
+            return hoy.getYear() - getFechaNacimiento().getYear();   
+        }
+        else {
+            return -1;
+        }
+    }
+}</code></pre>
+</div>
 </div>
 
 

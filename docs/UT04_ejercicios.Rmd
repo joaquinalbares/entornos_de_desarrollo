@@ -54,3 +54,59 @@ El proyecto original se puede descargar [desde aquí](assets/JavaApplication6.zi
 ### EJERCICIO PROPUESTO
 
 Refactorizar el código dado en el [siguiente proyecto](assets/empleado.zip)
+
+### EJERCICIO PROPUESTO 02
+
+Refactorizar y documentar el siguiente código:
+
+```java
+import java.time.LocalDate;
+
+import modelo.Persona;
+
+public class App {
+    public static void main(String[] args) throws Exception {
+        LocalDate f = LocalDate.now();
+        System.out.println(fecha.getDayOfMonth());
+        System.out.println(fecha.getMonthValue());
+
+        Persona pepe = new Persona("Pepe");
+        pepe.setFechaNacimiento("2002-11-04");
+		
+
+    }
+}
+
+
+public class Persona {
+    private final String nombre;
+    private String apel; 
+    private int numTelefono;
+    private String email;
+    private LocalDate fechaNacimiento;
+
+
+    public String getNombre() {
+        return nombre;
+    }
+
+   
+    public LocalDate getFechaNacimiento() {
+        return fechaNacimiento;
+    }
+    public void setFechaNacimiento(LocalDate fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
+    }
+
+    public int comprobarCumpleanyos() {
+        LocalDate hoy = LocalDate.now();
+        if (hoy.getDayOfMonth()==getFechaNacimiento().getDayOfMonth() &&
+        hoy.getMonthValue()==getFechaNacimiento().getMonthValue()) {
+            return hoy.getYear() - getFechaNacimiento().getYear();   
+        }
+        else {
+            return -1;
+        }
+    }
+}
+```
