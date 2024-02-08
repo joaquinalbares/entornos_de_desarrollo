@@ -69,11 +69,8 @@ public class App {
         LocalDate f = LocalDate.now();
         System.out.println(fecha.getDayOfMonth());
         System.out.println(fecha.getMonthValue());
-
         Persona pepe = new Persona("Pepe");
         pepe.setFechaNacimiento("2002-11-04");
-		
-
     }
 }
 
@@ -90,7 +87,6 @@ public class Persona {
         return nombre;
     }
 
-   
     public LocalDate getFechaNacimiento() {
         return fechaNacimiento;
     }
@@ -110,3 +106,5 @@ public class Persona {
     }
 }
 ```
+
+La solución propuesta se puede descargar [aqui](assets/ejercicio02.zip)
