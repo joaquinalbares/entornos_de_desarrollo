@@ -24,7 +24,7 @@ Y nos descargamos la versión adecuada, en el caso de Windows:
 Y seguimos los pasos:
 ![](imagenes/adf361f30da2565da8ed2d3eb1d907b7.png)
 
-> MUY IMPORTANTE: En el segundo paso hay que marcar para instalar la opción de JAVA_HOME para que podamos ejecutar todos los comandos de JAVA desde el terminal:
+> MUY IMPORTANTE: En el segundo paso hay que elegir la opción de la imagen para instalar la opción de JAVA_HOME, y así poder ejecutar todos los comandos de JAVA, incluido javadoc, desde el terminal:
 
 ![](imagenes/fec92a7a0b708120a184e569b4b8e693.png)
 
