@@ -1,0 +1,45 @@
+---
+title: "UT04 - EJMPLO DE OPTIMIZACIÓN Y DOCUMENTACIÓN"
+author: "Joaquin Rios"
+date: "2024-01-24"
+output: html_document
+---
+
+## 1. REFACTORIZANDO
+
+Para comenzar, crearemos un preoyecto basado en Ant:
+
+![](imagenes/26ff138084cb446d7d926ab3430264cd.png)
+
+El proyecto se organiza dentro de un package y con un archivo que contiene el Main:
+
+![](imagenes/d24ca7e4f2f406e8dc8ee617a1f7f2d7.png)
+
+Ahora procedemos a borrar y pegar el archivo java que queremos refactorizar. Vamos analizando uno por uno los errores que nos salen y solucinándolos.
+
+Aplicamos los cuatro procedimientos de refactorización:
+1. **Encapsular atributos**. Creamos los getter y setter que falten.
+2. **Organizar clases**. Cada clase dentro de su package.
+3. **Renombrar** atributos y métodos por valores significativos.
+4. **Crear métodos** para trozos de código grandes.
+
+## 2. GENERANDO LA DOCUMENTACIÓN.
+
+Para hacer la documentación es hacer click en la linea del metodo que vamos a documentar.
+Aparece la bombilla a la izquierda y podemos elegir `generate Javadoc for ...` para cada método y cada atributo.
+
+
+
+Cuando ya hayamos comentado los métodos y los atributos, podemos generar el Javadoc haciendo  click con el botón derecho encima de nuestro proyecto y seleccionar `Generate Javadoc`
+
+![](imagenes/d5f115d5e598901a1bd29df044e83140.png)
+
+Esto nos genera toda la documentación de manera automática.
+
+Por último, podemos comprobar si el Javadoc está bien generado haciendo click en `Tools->Analyze Javadoc`, lo que nos muestra lo que falta por solucionar:
+
+![](imagenes/68a84d66205bac5e2b7e28bbfd7262cd.png)
+
+Y podemos arreglarlo haciendo click en el proyecto para que solucione todo de una:
+
+![](imagenes/d81c58b546a2b5d62f4767c77965b407.png)
