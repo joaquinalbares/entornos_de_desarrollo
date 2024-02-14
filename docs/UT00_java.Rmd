@@ -1,0 +1,41 @@
+---
+title: "UT00 - INSTALAR JAVA"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## INSTALAR JAVA EN WINDOWS 10
+
+Comprobamos si está instalado java:
+![Ventana de terminal](imagenes/295f29d858af8ee46c8d38a620a059a2.png)
+
+Vamos a la página de Eclipse temurin:
+
+[](https://adoptium.net/es/temurin/releases/)
+
+Y nos descargamos la versión adecuada, en el caso de Windows:
+![Elegimos la versión adecuada](imagenes/26ac5c59c5cf505cc8adc25dc08405ea.png)
+
+> DEBEMOS ELEGIR UNA VERSIÓN **LTS**.
+
+Y seguimos los pasos:
+![](imagenes/adf361f30da2565da8ed2d3eb1d907b7.png)
+
+> MUY IMPORTANTE: En el segundo paso hay que marcar para instalar la opción de JAVA_HOME para que podamos ejecutar todos los comandos de JAVA desde el terminal:
+
+![](imagenes/fec92a7a0b708120a184e569b4b8e693.png)
+
+Y terminamos la instalación:
+
+![](imagenes/217f93eab1c6f82901f4f6ddeaeafbce.png)
+
+Una vez ha finalizado, abrimos una ventana de terminal:
+
+![](imagenes/a30bdd3d8cad5a67012e8f210deabc44.png)
+
+Y comprobamos que se ha instalado correctamente, para ellos comprobamos la versión de java y que se puede ejecutar el comando javadoc:
+
+![](imagenes/093bdfbbc4768c025ca9fc1e94706cf6.png)

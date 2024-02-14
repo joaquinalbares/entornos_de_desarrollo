@@ -7,6 +7,10 @@ navbar:
   left:
     - text: "INICIO"
       href: index.html
+    - text: "UT00"
+      menu: 
+        - text: "INSTALAR JAVA"
+          href: UT00_java.html
     - text: "UT01"
       menu: 
         - text: "Contenido"
