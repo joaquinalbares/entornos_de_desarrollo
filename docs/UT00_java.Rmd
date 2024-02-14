@@ -14,7 +14,7 @@ Comprobamos si está instalado java:
 
 Vamos a la página de Eclipse temurin:
 
-[](https://adoptium.net/es/temurin/releases/)
+[https://adoptium.net/es/temurin/releases/](https://adoptium.net/es/temurin/releases/)
 
 Y nos descargamos la versión adecuada, en el caso de Windows:
 ![Elegimos la versión adecuada](imagenes/26ac5c59c5cf505cc8adc25dc08405ea.png)
