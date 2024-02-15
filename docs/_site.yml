@@ -52,4 +52,6 @@ navbar:
           href: UT04_ejemplo.html
         - text: "Ejercicios de clase"
           href: UT04_ejercicios.html
+        - text: "EXAMEN"
+          href: assets/examen_03.zip
 output_dir: "."
