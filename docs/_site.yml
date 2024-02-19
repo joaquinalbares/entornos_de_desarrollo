@@ -55,6 +55,6 @@ navbar:
           href: assets/examen_03.zip
     - text: "UT05"
       menu: 
-        - text: "Contenido"
-          href: UT05_index.html
+        - text: "Contenidos"
+          href: UT05_contenido.html
 output_dir: "."
