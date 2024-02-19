@@ -1,0 +1,144 @@
+---
+title: "UT05 - CONTROL DE VERSIONES"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+--- 
+
+# INTRODUCCIÓN
+A la hora de abordar un proyecto, una de las tareas que más trabajo nos lleva es el control de las modificaciones y mejoras realizadas a nuestro código.
+
+Esto se hace especialmente complicado si nuestro proyecto contiene mucho código y se va a ir desarrollando en un espacio de tiempo más largo de una tarde, claro.
+
+Existen en el mercado una serie de herramientas de control de versiones, herramientas para documentar los programas y herramientas de refactorización que nos van a ayudar mucho en nuestro quehacer como programador si aprendemos a manejarlas con soltura.
+
+El uso de este tipo de herramientas nos garantizan por un lado que los proyectos mantengan una trazabilidad de todos los cambios sufridos, y quién o quienes han realizado los cambios, dos aspectos de vital importancia cuando se trabaja en equipos de software.
+
+Además, el uso de este tipo de herramientas garantiza que nuestros proyectos estén correctamente documentados, y que ofrezcan información útil de lo que hace cada una de las clases y métodos que los forman, y bien refactorizados simplificando el código de los programas y favoreciendo su lectura, entendimiento y fácil mantenimiento.
+
+Todas estas cuestiones son muy importantes si queremos llegar a ser unos buenos programadores.
+
+\newpage
+# CONTROL DE VERSIONES
+Según encontramos en la [Wikipedia\ldots](https://es.wikipedia.org/wiki/Control_de_versiones)
+
+> "Se llama control de versiones a la gestión de los diversos cambios que se realizan sobre los elementos de algún producto o una configuración del mismo. Una versión, revisión o edición de un producto, es el estado en el que se encuentra el mismo en un momento dado de su desarrollo o modificación."
+
+De una manera sencilla es como un diario donde se guardan las modificaciones que hacemos a nuestro código, y que es es de mucha utilidad cuando queremos recuperar un documento, o una carpeta, o un proyecto en un momento concreto de su desarrollo.
+
+También es muy útil cuando se necesita mantener un cierto control de los cambios que se realizan sobre documentos, archivos o proyectos que comparten varias personas o un equipo de trabajo, se hace necesario saber qué cambios se hacen, quien los hace y cuando se realizan.
+
+**TERMINOLOGIA**
+
+Antes de entrar en la instalación y manejo de herramientas de control de versiones veamos los términos que se utilizan y son comunes para la mayoría de estas herramientas:
+
+* **Repositorio**. Lugar donde se almacenan todos los datos y los cambios. Puede ser un sistema de archivos en un disco duro, un servidor, etc.
+* **Revisión o versión**. Una revisión es una versión concreta de los datos almacenados.
+Algunos sistemas identifican las revisiones con un numero contador (como Subversion).
+Otros identifican las revisiones mediante un código de detección de modificaciones (en Git usa SHA1). La ultima versión se la identifica como la cabeza o HEAD.
+* **Etiquetar o Rotular (tag)**. Cuando se crea una versión concreta en un momento determinado del desarrollo de un proyecto se le pone una etiqueta, de forma que se pueda localizar y recuperar en cualquier momento. Las etiquetas permiten identificar de forma fácil revisiones importantes en el proyecto (por ejemplo una versión publicada). En algunos sistemas se considera una etiqueta cuando se crea una rama en la que los ficheros no evolucionan, es decir se congela.
+* **Tronco (trunk)**, es el tronco o la linea principal de desarrollo de un proyecto.
+* **Rama o ramificar (branch)**. Las ramas son copias de archivos, carpetas 0 proyectos.
+Cuando se crea una rama se crea una bifurcación del proyecto y se crean dos lineas de desarrollo. Son motivos habituales de creación de ramas la creación de nuevas funcionalidades o la corrección de errores.
+* **Desplegar (Checkout)**. Crear una copia de trabajo del proyecto, o de archivos y carpetas del repositorio en el equipo local. Por defecto se obtiene la ultima versión, aunque también se puede indicar una versión concreta. Con el checkout se vincula la carpeta de trabajo del equipo local con el repositorio, y se crean los metadatos de control de versiones (carpetas y archivos ocultos que se crean de tipo .svn).
+* **Confirmar (commit o check-in)**. Se realiza commit cuando se confirman los cambios realizados en local para integrarlos al repositorio.
+* **Exportación (export)**. Similar a Checkout, pero en esta ocasión no vincula la copia con el repositorio. Es una copia limpia sin los metadatos de control de versiones.
+* **Importación (import)**. Es la subida de carpetas y archivos del equipo local al repositorio.
+Se puede hacer en cualquier momento desde el sistema de archivos.
+* **Actualizar (update)**. Se realiza una actualización cuando se desea integrar los cambios realizados en el repositorio en la copia de trabajo local. Los cambios pueden ser realizados por personas del equipo de trabajo.
+* **Fusion (merge)**. Una fusión consiste en unir los cambios realizados sobre uno o varios archivos en una única revisión. Se suele realizar cuando hay varias lineas de desarrollo Separadas en ramas y en alguna etapa se necesitan fusionar los cambios hechos entre ramas 0 en una rama con el tronco principal, o viceversa.
+* **Conflicto**. Ocurre cuando dos usuarios crean una copia local (Checkout) de la misma versión de un archivo, uno de ellos realiza cambios y envía los cambios (commit) al repositorio, y el otro no actualiza (update) esos cambios y realiza cambios sobre el archivo e intenta enviar luego sus cambios al repositorio. Entonces se produce el conflicto y el sistema no es capaz de fusionar los cambios. Este usuario deberá resolver el conflicto combinando los cambios o eligiendo uno de ellos.
+* **Resolver conflicto**.
+La actuación del usuario para atender un conflicto entre diferentes cambios al mismo documento.
+Para trabajar en proyectos utilizando un sistema de control de versiones, lo primero que hay que hacer es crearse una copia en local de la información del repositorio con checkout, de esta manera se vincula la copia con el repositorio, a continuación el usuario realizara sus modificaciones y una vez finalizadas sube las modificaciones al repositorio con commit. Si la copia del usuario ya esta vinculada al repositorio, antes de modificar y realizar cambios tiene que hacer Update, para asegurarse que los cambios se realizan sobre la versión última del repositorio.
+
+\pagebreak
+
+## 2.1. Subversion. Ciclo de vida de subversion.
+En el mercado existen dos vías de trabajo para el control de versiones: [Subversion](http://subversion.apache.org) y [Git](https://git-scm.com/). Podemos decantarnos por una u otra dependiendo de nuestras necesidades.
+
+En nuestro caso hemos elegido Subversion pues se integra de manera sencilla con Eclipse y la curva de aprendizaje es menos pronunciada que Git.
+
+Subversion es una herramienta multiplataforma (Win32, Linux, Mac, etc.) de código abierto para el control de versiones. Usa una base de datos central, el repositorio, que contiene los archivos cuyas versiones y respectivas historias se controlan. El repositorio actúa como un servidor de ficheros, con la capacidad de recordar todos los cambios que se hacen tanto en sus directorios como en sus ficheros.
+
+Cuando un proyecto de software es desarrollado por un equipo de personas es indispensable llevar un control bajo un método de trabajo, seguir unas normas y aplicar las buenas prácticas en el uso de las herramientas. Así, el proyecto debe verse como un árbol que tiene su tronco (*trunk*) donde esta la linea principal de su desarrollo; que tiene sus ramas (*branches*) en la que se añadirán nuevas funciones o se corregirán errores; y que ademas tiene sus etiquetas (*tags*) para marcar situaciones importantes, o versiones finalizadas.
+
+Con esta filosofía de trabajo en la cabeza, la estructura de carpetas recomendada en la creación de proyectos utilizando estas herramientas y la funcionalidad que se le debe dar a cada carpeta dentro del repositorio son las siguientes:
+
+* **Trunk (tronco):** base común para guardar las carpetas del proyecto o trabajo a controlar.
+Es donde esta la versión básica, es decir, la rama de desarrollo principal.
+* **Tags (etiquetas):** una etiqueta es una copia del proyecto, de una carpeta o de un archivo que se hace con el objetivo de obtener una versión que no se va a modificar. Deben ser copias del tronco (trunk). Util para crear versiones ya finalizadas, aquí se guardaran las versiones cerradas de los proyectos.
+* **Branches (ramas):** en las ramas se desarrollan versiones que luego se van a publicar. Es una copia del trunk, de un proyecto, de una carpeta o de un archivo con la intención de modificar sobre ella, para conseguir un producto final diferente y alternativo al original. Es la ramificación del código, es decir, modificaciones de versiones cerradas.
+
+El diagrama de la Figura 1 muestra el ciclo de vida de subversion.
+
+![FIGURA 1](imagen1.png)
+
+Donde:
+
+A) Partimos del desarrollo inicial, en el **trunk**.
+
+B) Se crea una rama porque hay que afiadir una nueva funcionalidad.
+
+C) Mientras tanto se ha corregido un bug en el tronco principal `(C)`. Una vez que esta lista la rama se fusiona en el **trunk**. Cuando esté lista esta version libre de bugs y con nueva funcionalidad se crea la primera disponible para el publico (*Tag 1.0* ).
+
+D) Después de salir la primera version, se han detectado nuevos bugs, y se necesita anadir nuevas funcionalidades. Entonces se crea una rama para desarrollar una nueva funcionalidad.
+
+E) Se ha creado otra rama porque se necesitan otras funcionalidades.
+
+F) Se realiza la de las dos ramas, primero se realiza una copia de una de ellas y luego se fusiona con la otra.
+
+G) Se incorporan las nuevas funcionalidades al tronco principal. Una vez que esta lista esta revision se crea una nueva version para el publico (*Tag 1.1*).
+
+H) Se han detectado nuevos bugs y se necesita añadir nuevas funcionalidades. Se crea una nueva rama para desarrollar una nueva funcionalidad.
+
+I) Se incorporan las nuevas funcionalidades al tronco principal. Se crea una nueva version para el publico (*Tag 1.2*).
+
+### Instalación de Subversion
+El primer paso es instalar Subversion en nuestro equipo, para ello, debemos descargar la versión adecuada para nuestro Sistema. La podemos encontrar en su [**Web Oficial**](https://subversion.apache.org/packages.html).
+
+Nos descargamos el binario correspondiente a nuestro sistema operativo y comprobamos, desde el terminal, que se ha instalado correctamente:
+
+![Probando desde la terminal](imagen2.png)
+Ahora que ya tenemos correctamente instalado nuestro software, vamos a proceder a configurar nuestro entorno de trabajo. Para ello, 
+
+
+Como ya hemos dicho anteriormente, un repositorio de Subversion es un lugar central donde almacenar archivos y directorios que están bajo control de revisión, así como datos adicionales como un historial completo de cambios o información sobre quién realizó esos cambios y cuándo. Un repositorio típico de Subversion almacena múltiples proyectos en subdirectorios separados. Cuando es de acceso público, permite a varios desarrolladores crear una copia de trabajo de cualquiera de los subdirectorios, realizar cambios y compartir estos cambios con otros enviándolos nuevamente al repositorio.
+
+#### Inicializando un repositorio vacío
+Para crear un nuevo repositorio de Subversion vacío en el directorio que queramos, ejecutamos el siguiente comando:
+
+```{java  eval=FALSE}
+svnadmin create /ruta/a/mi/proyecto
+```
+
+Hay que tener en cuenta que la ruta puede ser una ruta absoluta o relativa al directorio en el que queremos almacenar el repositorio (por ejemplo, /var/svn/).
+Si el directorio no existe, `svnadmin create` lo crea por nostros.
+
+
+#### Importar datos a un repositorio
+Si ya tenemos un proyecto existente (ej. dentro de nuestra carpeta de eclipse-workspace) lo podemos poner bajo control de revisión, ejecutando el siguiente comando:
+
+```{java tidy=TRUE}
+svn import ruta/de/nuestro/proyecto /repositorio_svn/proyecto/trunk
+-m "mensaje de importación"
+```
+
+Hay que tener en cuenta que ruta/de/nuestro/proyecto es una ruta absoluta o relativa al directorio en el que mantiene el proyecto,  /repositorio_svn/ es la URL del repositorio de Subversion y proyecto/trunk es el directorio de destino en el repositorio de Subversion. El uso de *trunk* es recomendable y lo comentaremos en las rutas de
+
+>NOTA: El modificador -m es obligatorio cada vez que hacemos alguna acción con Subversion, ya que se debe escribir un resumen de lo que se está haciendo (es decir, el mensaje de información), pues si no, nos dará un error. El error se debe a que Subversion está intentando iniciar un editor de texto para que pueda escribir un mensaje de confirmación, pero el editor no se a iniciado.
+
+dsd
+
+> Podemos solucionarlo estableciendo el parámetro SVN_EDITOR en nuestro .bash_profile.
+
+```
+svn checkout file:///Users/joaquinrios/svnroot/ClaseEntornos/trunk
+```
+
+[Instalar en eclipse](https://www.eclipse.org/subversive/documentation/gettingStarted/aboutSubversive/install.php)
+

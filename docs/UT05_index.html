@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>UT05 - CONTROL DE VERSIONES</title>
+
+<script src="site_libs/header-attrs-2.25/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html"></a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">INICIO</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    UT00
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="UT00_java.html">INSTALAR JAVA</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    UT01
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="UT01_index.html">Contenido</a>
+    </li>
+    <li>
+      <a href="UT01_programacion.html">Programación</a>
+    </li>
+    <li>
+      <a href="UT01_lectura.html">Artículo de opinión</a>
+    </li>
+    <li>
+      <a href="UT01_ejercicios.html">Ejercicios de clase</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    UT02
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="UT02_index.html">Contenido</a>
+    </li>
+    <li>
+      <a href="UT02_ejercicios.html">Ejercicios de clase</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    UT03
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="UT03_index.html">Programación</a>
+    </li>
+    <li>
+      <a href="UT03_parte00.html">INTRO</a>
+    </li>
+    <li>
+      <a href="UT03_parte01.html">PARTE 1</a>
+    </li>
+    <li>
+      <a href="UT03_parte02.html">PARTE 2</a>
+    </li>
+    <li>
+      <a href="UT03_ejercicios.html">Ejercicios de clase</a>
+    </li>
+    <li>
+      <a href="UT03_examen_B.html">Examen de test unitarios</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    UT04
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="UT04_index.html">Programación</a>
+    </li>
+    <li>
+      <a href="UT04_contenido.html">Contenidos</a>
+    </li>
+    <li>
+      <a href="UT04_ejemplo.html">Ejemplo</a>
+    </li>
+    <li>
+      <a href="UT04_ejercicios.html">Ejercicios de clase</a>
+    </li>
+    <li>
+      <a href="assets/examen_03.zip">EXAMEN</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    UT05
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="UT04_index.html">Contenido</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">UT05 - CONTROL DE VERSIONES</h1>
+
+</div>
+
+
+<hr />
+<div id="introducción" class="section level1">
+<h1>INTRODUCCIÓN</h1>
+<p>A la hora de abordar un proyecto, una de las tareas que más trabajo
+nos lleva es el control de las modificaciones y mejoras realizadas a
+nuestro código.</p>
+<p>Esto se hace especialmente complicado si nuestro proyecto contiene
+mucho código y se va a ir desarrollando en un espacio de tiempo más
+largo de una tarde, claro.</p>
+<p>Existen en el mercado una serie de herramientas de control de
+versiones, herramientas para documentar los programas y herramientas de
+refactorización que nos van a ayudar mucho en nuestro quehacer como
+programador si aprendemos a manejarlas con soltura.</p>
+<p>El uso de este tipo de herramientas nos garantizan por un lado que
+los proyectos mantengan una trazabilidad de todos los cambios sufridos,
+y quién o quienes han realizado los cambios, dos aspectos de vital
+importancia cuando se trabaja en equipos de software.</p>
+<p>Además, el uso de este tipo de herramientas garantiza que nuestros
+proyectos estén correctamente documentados, y que ofrezcan información
+útil de lo que hace cada una de las clases y métodos que los forman, y
+bien refactorizados simplificando el código de los programas y
+favoreciendo su lectura, entendimiento y fácil mantenimiento.</p>
+<p>Todas estas cuestiones son muy importantes si queremos llegar a ser
+unos buenos programadores.</p>
+<div style="page-break-after: always;"></div>
+</div>
+<div id="control-de-versiones" class="section level1">
+<h1>CONTROL DE VERSIONES</h1>
+<p>Según encontramos en la <a
+href="https://es.wikipedia.org/wiki/Control_de_versiones">Wikipedia</a></p>
+<blockquote>
+<p>“Se llama control de versiones a la gestión de los diversos cambios
+que se realizan sobre los elementos de algún producto o una
+configuración del mismo. Una versión, revisión o edición de un producto,
+es el estado en el que se encuentra el mismo en un momento dado de su
+desarrollo o modificación.”</p>
+</blockquote>
+<p>De una manera sencilla es como un diario donde se guardan las
+modificaciones que hacemos a nuestro código, y que es es de mucha
+utilidad cuando queremos recuperar un documento, o una carpeta, o un
+proyecto en un momento concreto de su desarrollo.</p>
+<p>También es muy útil cuando se necesita mantener un cierto control de
+los cambios que se realizan sobre documentos, archivos o proyectos que
+comparten varias personas o un equipo de trabajo, se hace necesario
+saber qué cambios se hacen, quien los hace y cuando se realizan.</p>
+<p><strong>TERMINOLOGIA</strong></p>
+<p>Antes de entrar en la instalación y manejo de herramientas de control
+de versiones veamos los términos que se utilizan y son comunes para la
+mayoría de estas herramientas:</p>
+<ul>
+<li><strong>Repositorio</strong>. Lugar donde se almacenan todos los
+datos y los cambios. Puede ser un sistema de archivos en un disco duro,
+un servidor, etc.</li>
+<li><strong>Revisión o versión</strong>. Una revisión es una versión
+concreta de los datos almacenados. Algunos sistemas identifican las
+revisiones con un numero contador (como Subversion). Otros identifican
+las revisiones mediante un código de detección de modificaciones (en Git
+usa SHA1). La ultima versión se la identifica como la cabeza o
+HEAD.</li>
+<li><strong>Etiquetar o Rotular (tag)</strong>. Cuando se crea una
+versión concreta en un momento determinado del desarrollo de un proyecto
+se le pone una etiqueta, de forma que se pueda localizar y recuperar en
+cualquier momento. Las etiquetas permiten identificar de forma fácil
+revisiones importantes en el proyecto (por ejemplo una versión
+publicada). En algunos sistemas se considera una etiqueta cuando se crea
+una rama en la que los ficheros no evolucionan, es decir se
+congela.</li>
+<li><strong>Tronco (trunk)</strong>, es el tronco o la linea principal
+de desarrollo de un proyecto.</li>
+<li><strong>Rama o ramificar (branch)</strong>. Las ramas son copias de
+archivos, carpetas 0 proyectos. Cuando se crea una rama se crea una
+bifurcación del proyecto y se crean dos lineas de desarrollo. Son
+motivos habituales de creación de ramas la creación de nuevas
+funcionalidades o la corrección de errores.</li>
+<li><strong>Desplegar (Checkout)</strong>. Crear una copia de trabajo
+del proyecto, o de archivos y carpetas del repositorio en el equipo
+local. Por defecto se obtiene la ultima versión, aunque también se puede
+indicar una versión concreta. Con el checkout se vincula la carpeta de
+trabajo del equipo local con el repositorio, y se crean los metadatos de
+control de versiones (carpetas y archivos ocultos que se crean de tipo
+.svn).</li>
+<li><strong>Confirmar (commit o check-in)</strong>. Se realiza commit
+cuando se confirman los cambios realizados en local para integrarlos al
+repositorio.</li>
+<li><strong>Exportación (export)</strong>. Similar a Checkout, pero en
+esta ocasión no vincula la copia con el repositorio. Es una copia limpia
+sin los metadatos de control de versiones.</li>
+<li><strong>Importación (import)</strong>. Es la subida de carpetas y
+archivos del equipo local al repositorio. Se puede hacer en cualquier
+momento desde el sistema de archivos.</li>
+<li><strong>Actualizar (update)</strong>. Se realiza una actualización
+cuando se desea integrar los cambios realizados en el repositorio en la
+copia de trabajo local. Los cambios pueden ser realizados por personas
+del equipo de trabajo.</li>
+<li><strong>Fusion (merge)</strong>. Una fusión consiste en unir los
+cambios realizados sobre uno o varios archivos en una única revisión. Se
+suele realizar cuando hay varias lineas de desarrollo Separadas en ramas
+y en alguna etapa se necesitan fusionar los cambios hechos entre ramas 0
+en una rama con el tronco principal, o viceversa.</li>
+<li><strong>Conflicto</strong>. Ocurre cuando dos usuarios crean una
+copia local (Checkout) de la misma versión de un archivo, uno de ellos
+realiza cambios y envía los cambios (commit) al repositorio, y el otro
+no actualiza (update) esos cambios y realiza cambios sobre el archivo e
+intenta enviar luego sus cambios al repositorio. Entonces se produce el
+conflicto y el sistema no es capaz de fusionar los cambios. Este usuario
+deberá resolver el conflicto combinando los cambios o eligiendo uno de
+ellos.</li>
+<li><strong>Resolver conflicto</strong>. La actuación del usuario para
+atender un conflicto entre diferentes cambios al mismo documento. Para
+trabajar en proyectos utilizando un sistema de control de versiones, lo
+primero que hay que hacer es crearse una copia en local de la
+información del repositorio con checkout, de esta manera se vincula la
+copia con el repositorio, a continuación el usuario realizara sus
+modificaciones y una vez finalizadas sube las modificaciones al
+repositorio con commit. Si la copia del usuario ya esta vinculada al
+repositorio, antes de modificar y realizar cambios tiene que hacer
+Update, para asegurarse que los cambios se realizan sobre la versión
+última del repositorio.</li>
+</ul>
+<div style="page-break-after: always;"></div>
+<div id="subversion.-ciclo-de-vida-de-subversion."
+class="section level2">
+<h2>2.1. Subversion. Ciclo de vida de subversion.</h2>
+<p>En el mercado existen dos vías de trabajo para el control de
+versiones: <a href="http://subversion.apache.org">Subversion</a> y <a
+href="https://git-scm.com/">Git</a>. Podemos decantarnos por una u otra
+dependiendo de nuestras necesidades.</p>
+<p>En nuestro caso hemos elegido Subversion pues se integra de manera
+sencilla con Eclipse y la curva de aprendizaje es menos pronunciada que
+Git.</p>
+<p>Subversion es una herramienta multiplataforma (Win32, Linux, Mac,
+etc.) de código abierto para el control de versiones. Usa una base de
+datos central, el repositorio, que contiene los archivos cuyas versiones
+y respectivas historias se controlan. El repositorio actúa como un
+servidor de ficheros, con la capacidad de recordar todos los cambios que
+se hacen tanto en sus directorios como en sus ficheros.</p>
+<p>Cuando un proyecto de software es desarrollado por un equipo de
+personas es indispensable llevar un control bajo un método de trabajo,
+seguir unas normas y aplicar las buenas prácticas en el uso de las
+herramientas. Así, el proyecto debe verse como un árbol que tiene su
+tronco (<em>trunk</em>) donde esta la linea principal de su desarrollo;
+que tiene sus ramas (<em>branches</em>) en la que se añadirán nuevas
+funciones o se corregirán errores; y que ademas tiene sus etiquetas
+(<em>tags</em>) para marcar situaciones importantes, o versiones
+finalizadas.</p>
+<p>Con esta filosofía de trabajo en la cabeza, la estructura de carpetas
+recomendada en la creación de proyectos utilizando estas herramientas y
+la funcionalidad que se le debe dar a cada carpeta dentro del
+repositorio son las siguientes:</p>
+<ul>
+<li><strong>Trunk (tronco):</strong> base común para guardar las
+carpetas del proyecto o trabajo a controlar. Es donde esta la versión
+básica, es decir, la rama de desarrollo principal.</li>
+<li><strong>Tags (etiquetas):</strong> una etiqueta es una copia del
+proyecto, de una carpeta o de un archivo que se hace con el objetivo de
+obtener una versión que no se va a modificar. Deben ser copias del
+tronco (trunk). Util para crear versiones ya finalizadas, aquí se
+guardaran las versiones cerradas de los proyectos.</li>
+<li><strong>Branches (ramas):</strong> en las ramas se desarrollan
+versiones que luego se van a publicar. Es una copia del trunk, de un
+proyecto, de una carpeta o de un archivo con la intención de modificar
+sobre ella, para conseguir un producto final diferente y alternativo al
+original. Es la ramificación del código, es decir, modificaciones de
+versiones cerradas.</li>
+</ul>
+<p>El diagrama de la Figura 1 muestra el ciclo de vida de
+subversion.</p>
+<div class="float">
+<img src="imagen1.png" alt="FIGURA 1" />
+<div class="figcaption">FIGURA 1</div>
+</div>
+<p>Donde:</p>
+<ol style="list-style-type: upper-alpha">
+<li><p>Partimos del desarrollo inicial, en el
+<strong>trunk</strong>.</p></li>
+<li><p>Se crea una rama porque hay que afiadir una nueva
+funcionalidad.</p></li>
+<li><p>Mientras tanto se ha corregido un bug en el tronco principal
+<code>(C)</code>. Una vez que esta lista la rama se fusiona en el
+<strong>trunk</strong>. Cuando esté lista esta version libre de bugs y
+con nueva funcionalidad se crea la primera disponible para el publico
+(<em>Tag 1.0</em> ).</p></li>
+<li><p>Después de salir la primera version, se han detectado nuevos
+bugs, y se necesita anadir nuevas funcionalidades. Entonces se crea una
+rama para desarrollar una nueva funcionalidad.</p></li>
+<li><p>Se ha creado otra rama porque se necesitan otras
+funcionalidades.</p></li>
+<li><p>Se realiza la de las dos ramas, primero se realiza una copia de
+una de ellas y luego se fusiona con la otra.</p></li>
+<li><p>Se incorporan las nuevas funcionalidades al tronco principal. Una
+vez que esta lista esta revision se crea una nueva version para el
+publico (<em>Tag 1.1</em>).</p></li>
+<li><p>Se han detectado nuevos bugs y se necesita añadir nuevas
+funcionalidades. Se crea una nueva rama para desarrollar una nueva
+funcionalidad.</p></li>
+<li><p>Se incorporan las nuevas funcionalidades al tronco principal. Se
+crea una nueva version para el publico (<em>Tag 1.2</em>).</p></li>
+</ol>
+<div id="instalación-de-subversion" class="section level3">
+<h3>Instalación de Subversion</h3>
+<p>El primer paso es instalar Subversion en nuestro equipo, para ello,
+debemos descargar la versión adecuada para nuestro Sistema. La podemos
+encontrar en su <a
+href="https://subversion.apache.org/packages.html"><strong>Web
+Oficial</strong></a>.</p>
+<p>Nos descargamos el binario correspondiente a nuestro sistema
+operativo y comprobamos, desde el terminal, que se ha instalado
+correctamente:</p>
+<p><img src="imagen2.png" alt="Probando desde la terminal" /> Ahora que
+ya tenemos correctamente instalado nuestro software, vamos a proceder a
+configurar nuestro entorno de trabajo. Para ello,</p>
+<p>Como ya hemos dicho anteriormente, un repositorio de Subversion es un
+lugar central donde almacenar archivos y directorios que están bajo
+control de revisión, así como datos adicionales como un historial
+completo de cambios o información sobre quién realizó esos cambios y
+cuándo. Un repositorio típico de Subversion almacena múltiples proyectos
+en subdirectorios separados. Cuando es de acceso público, permite a
+varios desarrolladores crear una copia de trabajo de cualquiera de los
+subdirectorios, realizar cambios y compartir estos cambios con otros
+enviándolos nuevamente al repositorio.</p>
+<div id="inicializando-un-repositorio-vacío" class="section level4">
+<h4>Inicializando un repositorio vacío</h4>
+<p>Para crear un nuevo repositorio de Subversion vacío en el directorio
+que queramos, ejecutamos el siguiente comando:</p>
+<pre class="java"><code>svnadmin create /ruta/a/mi/proyecto</code></pre>
+<p>Hay que tener en cuenta que la ruta puede ser una ruta absoluta o
+relativa al directorio en el que queremos almacenar el repositorio (por
+ejemplo, /var/svn/). Si el directorio no existe,
+<code>svnadmin create</code> lo crea por nostros.</p>
+</div>
+<div id="importar-datos-a-un-repositorio" class="section level4">
+<h4>Importar datos a un repositorio</h4>
+<p>Si ya tenemos un proyecto existente (ej. dentro de nuestra carpeta de
+eclipse-workspace) lo podemos poner bajo control de revisión, ejecutando
+el siguiente comando:</p>
+<pre class="java"><code>svn import ruta/de/nuestro/proyecto /repositorio_svn/proyecto/trunk
+-m &quot;mensaje de importación&quot;</code></pre>
+<p>Hay que tener en cuenta que ruta/de/nuestro/proyecto es una ruta
+absoluta o relativa al directorio en el que mantiene el proyecto,
+/repositorio_svn/ es la URL del repositorio de Subversion y
+proyecto/trunk es el directorio de destino en el repositorio de
+Subversion. El uso de <em>trunk</em> es recomendable y lo comentaremos
+en las rutas de</p>
+<blockquote>
+<p>NOTA: El modificador -m es obligatorio cada vez que hacemos alguna
+acción con Subversion, ya que se debe escribir un resumen de lo que se
+está haciendo (es decir, el mensaje de información), pues si no, nos
+dará un error. El error se debe a que Subversion está intentando iniciar
+un editor de texto para que pueda escribir un mensaje de confirmación,
+pero el editor no se a iniciado.</p>
+</blockquote>
+<p>dsd</p>
+<blockquote>
+<p>Podemos solucionarlo estableciendo el parámetro SVN_EDITOR en nuestro
+.bash_profile.</p>
+</blockquote>
+<pre><code>svn checkout file:///Users/joaquinrios/svnroot/ClaseEntornos/trunk</code></pre>
+<p><a
+href="https://www.eclipse.org/subversive/documentation/gettingStarted/aboutSubversive/install.php">Instalar
+en eclipse</a></p>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

@@ -21,7 +21,6 @@ navbar:
           href: UT01_lectura.html 
         - text: "Ejercicios de clase"
           href: UT01_ejercicios.html 
-          
     - text: "UT02"
       menu: 
         - text: "Contenido"
