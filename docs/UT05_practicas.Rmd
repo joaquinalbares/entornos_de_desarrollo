@@ -1,0 +1,35 @@
+---
+title: "UT05 - EJERCICIOS PRÁCTICOS"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+--- 
+
+# PRÁCTICA 1 (POR PAREJAS)
+- Cada alumno debe elegir un colaborador para su repositorio.
+- Cada alumno debe crear una carpeta llamada "UT05-PRACTICA1".
+- Dentro de la carpeta, se debe crear un archivo "README.md" donde se describa el 
+trabajo que va a desarrollar y el nombre del colaborador (incluido el NRE).
+- El colaborador debe crear una rama y añadir el contenido propio.
+- El alumno propietario del repositorio también debe crear su contenido en la rama principal.
+- Cuando hayan subido los contenidos, el colaborador debe fusionar su rama con la principal haciendo un "pull request".
+- El dueño del respoitorio debe comprobar si hay conflictos, resolverlos si es necesario y fusionar las dos ramas.
+- Todo eso debe quedar documentado en un archivo de texto (libreoffice) que incluya pantallazos del trabajo realizado.
+
+
+# PRÁCTICA 2
+Hacer las siguientes prácticas de la web [https://learngitbranching.js.org/?locale=es_ES](https://learngitbranching.js.org/?locale=es_ES):
+
+- **Secuencia Introductoria**--> las cuatro tareas
+- **Acelerando** --> nada
+- **Moviendo el trabajo por ahí** --> Tarea 1
+- **Un poco de todo** --> Las tres primeras (opcionales)
+
+- Todo eso debe quedar documentado en un archivo de texto (libreoffice) que incluya pantallazos Los comandos escritos y pantallazos con el resultado correcto del trabajo realizado. Cada pantallazo debe incluir la fecha y hora e incluir algún elemento que pueda identificar al autor.
+
+
+

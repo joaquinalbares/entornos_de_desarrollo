@@ -57,5 +57,7 @@ navbar:
     - text: "UT05"
       menu: 
         - text: "Contenidos"
-          href: UT05_contenido.html
+          href: UT05_index.html
+        - text: "Prácticas"
+          href: UT05_practicas.html
 output_dir: "."

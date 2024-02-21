@@ -9,11 +9,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="Joaquin Rios" />
 
-<meta name="date" content="2023-11-06" />
 
-<title>UT03 - DISEÑO Y REALIZACIÓN DE PRUEBAS. PRUEBAS UNITARIAS DE CAJA BLANCA</title>
+<title>UT05 - EJERCICIOS PRÁCTICOS</title>
 
 <script src="site_libs/header-attrs-2.25/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -346,8 +344,6 @@ $(document).ready(function () {
     </li>
   </ul>
 </li>
-<<<<<<< Updated upstream
-=======
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     UT05
@@ -363,7 +359,6 @@ $(document).ready(function () {
     </li>
   </ul>
 </li>
->>>>>>> Stashed changes
       </ul>
       <ul class="nav navbar-nav navbar-right">
         
@@ -376,134 +371,50 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">UT03 - DISEÑO Y REALIZACIÓN DE PRUEBAS.
-PRUEBAS UNITARIAS DE CAJA BLANCA</h1>
-<h4 class="author">Joaquin Rios</h4>
-<h4 class="date">2023-11-06</h4>
+<h1 class="title toc-ignore">UT05 - EJERCICIOS PRÁCTICOS</h1>
 
 </div>
 
 
-<div id="introducción" class="section level2">
-<h2>Introducción</h2>
-<p>Las pruebas son necesarias en la fabricación de cualquier producto
-industrial y, análogamente, en el desarrollo de proyectos informáticos.
-¿Quién pondría a la venta una aspiradora sin estar seguro de que aspira
-correctamente? ¿O una radio digital sin haber comprobado que pueda
-sintonizar los canales?</p>
-<p>Una aplicación informática no puede llegar a manos de un usuario
-final con errores, y menos si éstos son suficientemente visibles y
-claros como para haber sido detectados por los desarrolladores. Se daría
-una situación de falta de profesionalidad y disminuiría la confianza por
-parte de los usuarios, que podría mermar oportunidades futuras.</p>
-<p>¿Cuándo es necesario llevar a cabo las pruebas? ¿Qué es necesario
-probar? Todas las fases establecidas en el desarrollo del software son
-importantes. La falta o mala ejecución de alguna de ellas puede provocar
-que el resto del proyecto arrastre uno o varios errores que serán
-determinantes para su éxito. Cuanto antes se detecte un error, menos
-costoso será solucionarlo.</p>
-<p>También serán muy importantes las pruebas que se llevarán a cabo una
-vez finalizado el proyecto. Es por ello que la fase de pruebas del
-desarrollo de un proyecto de software se considera básica antes de
-realizar la transferencia del proyecto al usuario final. ¿Quién daría un
-coche por construido y finalizado si al intentar arrancarlo no
-funcionara?</p>
-<p>Es posible desarrollar varios tipos de pruebas del sistema, como
-pruebas funcionales, de usabilidad, de seguridad y de navegación.</p>
-</div>
-<div id="tipo-de-pruebas" class="section level2">
-<h2>Tipo de pruebas</h2>
-<p>Puesto que el proceso de prueba puede ser repetitivo y laborioso, es
-posible automatizar algunos procesos de forma que los procedimientos de
-prueba se puedan realizar con la ayuda de software. Este software debe
-ser preparado y recibe el nombre de componentes de prueba. Su
-utilización es muy frecuente en las pruebas de integración.</p>
-<p>Existen diferentes tipos de pruebas que se realizan en el sistema.
-Según el momento de realización, existen las descritas en la siguiente
-tabla:</p>
-<blockquote>
-<p>Tabla: Descripción de los tipos de prueba del software.</p>
-</blockquote>
-<table>
-<colgroup>
-<col width="50%" />
-<col width="25%" />
-<col width="25%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="center">Tipos de pruebas</th>
-<th>Fases de realización</th>
-<th>Descripción</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="center">Unitarias</td>
-<td>Durante la construcción del sistema</td>
-<td>Prueban el diseño y el comportamiento de cada uno de los componentes
-del sistema una vez construidos.</td>
-</tr>
-<tr class="even">
-<td align="center">Integración</td>
-<td>Durante la construcción del sistema</td>
-<td>Comprueban la correcta unión de los componentes entre sí a través de
-sus interfaces, y si cumplen con la funcionalidad establecida.</td>
-</tr>
-<tr class="odd">
-<td align="center">Sistema</td>
-<td>Después de la construcción del sistema</td>
-<td>Prueban a fondo el sistema, comprobando su funcionalidad e
-integridad globalmente, en un entorno lo más parecido posible al entorno
-final de producción.</td>
-</tr>
-<tr class="even">
-<td align="center">Implantación</td>
-<td>Durante la implantación en el entorno de producción</td>
-<td>Comprueba el correcto funcionamiento del sistema dentro del entorno
-real de producción.</td>
-</tr>
-<tr class="odd">
-<td align="center">Validación</td>
-<td>Después de la implantación en el entorno de producción</td>
-<td>Verifican que el sistema cumple con todos los requisitos indicados y
-permite que los usuarios del sistema den el visto bueno definitivo.</td>
-</tr>
-<tr class="even">
-<td align="center">Regresión</td>
-<td>Después de realizar modificaciones al sistema</td>
-<td>El objetivo es comprobar que los cambios sobre un componente del
-sistema, no generan errores adicionales en otros componentes no
-modificados.</td>
-</tr>
-</tbody>
-</table>
-<div id="pruebas-unitarias" class="section level3">
-<h3>Pruebas unitarias</h3>
-<p>Es posible clasificar las pruebas unitarias en dos grandes
-grupos:</p>
+<hr />
+<div id="práctica-1-por-parejas" class="section level1">
+<h1>PRÁCTICA 1 (POR PAREJAS)</h1>
 <ul>
-<li>Las pruebas de <strong>caja blanca</strong> tienen como objetivo
-recorrer la estructura del código comprobando la ejecución de todos los
-posibles caminos de ejecución.</li>
-<li>Las pruebas de <strong>caja negra</strong>, en cambio, se centran en
-los requisitos o resultados del sistema software.</li>
-</ul>
-<p>La siguiente imagen describe de manerá simbólica qué persiguen estos
-dos tipos de prueba: <img
-src="imagenes/3828b5123038f66b58249b87f31644ac.png" /></p>
-<p>Por otro lado, dependiendo del proceso de realización, las pruebas
-pueden ser manuales o automáticas:</p>
-<ul>
-<li>Las <strong>pruebas automáticas</strong> son aquellas realizadas por
-un programa o herramienta que prueba el sistema sin necesidad de la
-interacción de una persona.</li>
-<li>Las <strong>pruebas manuales</strong>, en cambio, son aquellas
-pruebas realizadas por una o más personas que interactúan directamente
-con el sistema. Estas personas verifican si los resultados obtenidos son
-válidos o no.</li>
+<li>Cada alumno debe elegir un colaborador para su repositorio.</li>
+<li>Cada alumno debe crear una carpeta llamada “UT05-PRACTICA1”.</li>
+<li>Dentro de la carpeta, se debe crear un archivo “README.md” donde se
+describa el trabajo que va a desarrollar y el nombre del colaborador
+(incluido el NRE).</li>
+<li>El colaborador debe crear una rama y añadir el contenido
+propio.</li>
+<li>El alumno propietario del repositorio también debe crear su
+contenido en la rama principal.</li>
+<li>Cuando hayan subido los contenidos, el colaborador debe fusionar su
+rama con la principal haciendo un “pull request”.</li>
+<li>El dueño del respoitorio debe comprobar si hay conflictos,
+resolverlos si es necesario y fusionar las dos ramas.</li>
+<li>Todo eso debe quedar documentado en un archivo de texto
+(libreoffice) que incluya pantallazos del trabajo realizado.</li>
 </ul>
 </div>
+<div id="práctica-2" class="section level1">
+<h1>PRÁCTICA 2</h1>
+<p>Hacer las siguientes prácticas de la web <a
+href="https://learngitbranching.js.org/?locale=es_ES">https://learngitbranching.js.org/?locale=es_ES</a>:</p>
+<ul>
+<li><p><strong>Secuencia Introductoria</strong>–&gt; las cuatro
+tareas</p></li>
+<li><p><strong>Acelerando</strong> –&gt; nada</p></li>
+<li><p><strong>Moviendo el trabajo por ahí</strong> –&gt; Tarea
+1</p></li>
+<li><p><strong>Un poco de todo</strong> –&gt; Las tres primeras
+(opcionales)</p></li>
+<li><p>Todo eso debe quedar documentado en un archivo de texto
+(libreoffice) que incluya pantallazos Los comandos escritos y
+pantallazos con el resultado correcto del trabajo realizado. Cada
+pantallazo debe incluir la fecha y hora e incluir algún elemento que
+pueda identificar al autor.</p></li>
+</ul>
 </div>
 
 
