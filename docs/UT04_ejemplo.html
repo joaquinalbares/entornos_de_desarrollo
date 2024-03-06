@@ -11,9 +11,9 @@
 
 <meta name="author" content="Joaquin Rios" />
 
-<meta name="date" content="2023-11-06" />
+<meta name="date" content="2024-01-24" />
 
-<title>UT03 - DISEÑO Y REALIZACIÓN DE PRUEBAS. PRUEBAS UNITARIAS DE CAJA BLANCA</title>
+<title>UT04 - EJMPLO DE OPTIMIZACIÓN Y DOCUMENTACIÓN</title>
 
 <script src="site_libs/header-attrs-2.25/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -376,134 +376,49 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">UT03 - DISEÑO Y REALIZACIÓN DE PRUEBAS.
-PRUEBAS UNITARIAS DE CAJA BLANCA</h1>
+<h1 class="title toc-ignore">UT04 - EJMPLO DE OPTIMIZACIÓN Y
+DOCUMENTACIÓN</h1>
 <h4 class="author">Joaquin Rios</h4>
-<h4 class="date">2023-11-06</h4>
+<h4 class="date">2024-01-24</h4>
 
 </div>
 
 
-<div id="introducción" class="section level2">
-<h2>Introducción</h2>
-<p>Las pruebas son necesarias en la fabricación de cualquier producto
-industrial y, análogamente, en el desarrollo de proyectos informáticos.
-¿Quién pondría a la venta una aspiradora sin estar seguro de que aspira
-correctamente? ¿O una radio digital sin haber comprobado que pueda
-sintonizar los canales?</p>
-<p>Una aplicación informática no puede llegar a manos de un usuario
-final con errores, y menos si éstos son suficientemente visibles y
-claros como para haber sido detectados por los desarrolladores. Se daría
-una situación de falta de profesionalidad y disminuiría la confianza por
-parte de los usuarios, que podría mermar oportunidades futuras.</p>
-<p>¿Cuándo es necesario llevar a cabo las pruebas? ¿Qué es necesario
-probar? Todas las fases establecidas en el desarrollo del software son
-importantes. La falta o mala ejecución de alguna de ellas puede provocar
-que el resto del proyecto arrastre uno o varios errores que serán
-determinantes para su éxito. Cuanto antes se detecte un error, menos
-costoso será solucionarlo.</p>
-<p>También serán muy importantes las pruebas que se llevarán a cabo una
-vez finalizado el proyecto. Es por ello que la fase de pruebas del
-desarrollo de un proyecto de software se considera básica antes de
-realizar la transferencia del proyecto al usuario final. ¿Quién daría un
-coche por construido y finalizado si al intentar arrancarlo no
-funcionara?</p>
-<p>Es posible desarrollar varios tipos de pruebas del sistema, como
-pruebas funcionales, de usabilidad, de seguridad y de navegación.</p>
+<div id="refactorizando" class="section level2">
+<h2>1. REFACTORIZANDO</h2>
+<p>Para comenzar, crearemos un preoyecto basado en Ant:</p>
+<p><img src="imagenes/26ff138084cb446d7d926ab3430264cd.png" /></p>
+<p>El proyecto se organiza dentro de un package y con un archivo que
+contiene el Main:</p>
+<p><img src="imagenes/d24ca7e4f2f406e8dc8ee617a1f7f2d7.png" /></p>
+<p>Ahora procedemos a borrar y pegar el archivo java que queremos
+refactorizar. Vamos analizando uno por uno los errores que nos salen y
+solucinándolos.</p>
+<p>Aplicamos los cuatro procedimientos de refactorización: 1.
+<strong>Encapsular atributos</strong>. Creamos los getter y setter que
+falten. 2. <strong>Organizar clases</strong>. Cada clase dentro de su
+package. 3. <strong>Renombrar</strong> atributos y métodos por valores
+significativos. 4. <strong>Crear métodos</strong> para trozos de código
+grandes.</p>
 </div>
-<div id="tipo-de-pruebas" class="section level2">
-<h2>Tipo de pruebas</h2>
-<p>Puesto que el proceso de prueba puede ser repetitivo y laborioso, es
-posible automatizar algunos procesos de forma que los procedimientos de
-prueba se puedan realizar con la ayuda de software. Este software debe
-ser preparado y recibe el nombre de componentes de prueba. Su
-utilización es muy frecuente en las pruebas de integración.</p>
-<p>Existen diferentes tipos de pruebas que se realizan en el sistema.
-Según el momento de realización, existen las descritas en la siguiente
-tabla:</p>
-<blockquote>
-<p>Tabla: Descripción de los tipos de prueba del software.</p>
-</blockquote>
-<table>
-<colgroup>
-<col width="50%" />
-<col width="25%" />
-<col width="25%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="center">Tipos de pruebas</th>
-<th>Fases de realización</th>
-<th>Descripción</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="center">Unitarias</td>
-<td>Durante la construcción del sistema</td>
-<td>Prueban el diseño y el comportamiento de cada uno de los componentes
-del sistema una vez construidos.</td>
-</tr>
-<tr class="even">
-<td align="center">Integración</td>
-<td>Durante la construcción del sistema</td>
-<td>Comprueban la correcta unión de los componentes entre sí a través de
-sus interfaces, y si cumplen con la funcionalidad establecida.</td>
-</tr>
-<tr class="odd">
-<td align="center">Sistema</td>
-<td>Después de la construcción del sistema</td>
-<td>Prueban a fondo el sistema, comprobando su funcionalidad e
-integridad globalmente, en un entorno lo más parecido posible al entorno
-final de producción.</td>
-</tr>
-<tr class="even">
-<td align="center">Implantación</td>
-<td>Durante la implantación en el entorno de producción</td>
-<td>Comprueba el correcto funcionamiento del sistema dentro del entorno
-real de producción.</td>
-</tr>
-<tr class="odd">
-<td align="center">Validación</td>
-<td>Después de la implantación en el entorno de producción</td>
-<td>Verifican que el sistema cumple con todos los requisitos indicados y
-permite que los usuarios del sistema den el visto bueno definitivo.</td>
-</tr>
-<tr class="even">
-<td align="center">Regresión</td>
-<td>Después de realizar modificaciones al sistema</td>
-<td>El objetivo es comprobar que los cambios sobre un componente del
-sistema, no generan errores adicionales en otros componentes no
-modificados.</td>
-</tr>
-</tbody>
-</table>
-<div id="pruebas-unitarias" class="section level3">
-<h3>Pruebas unitarias</h3>
-<p>Es posible clasificar las pruebas unitarias en dos grandes
-grupos:</p>
-<ul>
-<li>Las pruebas de <strong>caja blanca</strong> tienen como objetivo
-recorrer la estructura del código comprobando la ejecución de todos los
-posibles caminos de ejecución.</li>
-<li>Las pruebas de <strong>caja negra</strong>, en cambio, se centran en
-los requisitos o resultados del sistema software.</li>
-</ul>
-<p>La siguiente imagen describe de manerá simbólica qué persiguen estos
-dos tipos de prueba: <img
-src="imagenes/3828b5123038f66b58249b87f31644ac.png" /></p>
-<p>Por otro lado, dependiendo del proceso de realización, las pruebas
-pueden ser manuales o automáticas:</p>
-<ul>
-<li>Las <strong>pruebas automáticas</strong> son aquellas realizadas por
-un programa o herramienta que prueba el sistema sin necesidad de la
-interacción de una persona.</li>
-<li>Las <strong>pruebas manuales</strong>, en cambio, son aquellas
-pruebas realizadas por una o más personas que interactúan directamente
-con el sistema. Estas personas verifican si los resultados obtenidos son
-válidos o no.</li>
-</ul>
-</div>
+<div id="generando-la-documentación." class="section level2">
+<h2>2. GENERANDO LA DOCUMENTACIÓN.</h2>
+<p>Para hacer la documentación es hacer click en la linea del metodo que
+vamos a documentar. Aparece la bombilla a la izquierda y podemos elegir
+<code>generate Javadoc for ...</code> para cada método y cada
+atributo.</p>
+<p>Cuando ya hayamos comentado los métodos y los atributos, podemos
+generar el Javadoc haciendo click con el botón derecho encima de nuestro
+proyecto y seleccionar <code>Generate Javadoc</code></p>
+<p><img src="imagenes/d5f115d5e598901a1bd29df044e83140.png" /></p>
+<p>Esto nos genera toda la documentación de manera automática.</p>
+<p>Por último, podemos comprobar si el Javadoc está bien generado
+haciendo click en <code>Tools-&gt;Analyze Javadoc</code>, lo que nos
+muestra lo que falta por solucionar:</p>
+<p><img src="imagenes/68a84d66205bac5e2b7e28bbfd7262cd.png" /></p>
+<p>Y podemos arreglarlo haciendo click en el proyecto para que solucione
+todo de una:</p>
+<p><img src="imagenes/d81c58b546a2b5d62f4767c77965b407.png" /></p>
 </div>
 
 

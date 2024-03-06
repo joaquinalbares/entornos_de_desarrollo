@@ -47,7 +47,17 @@ navbar:
         - text: "Programación"
           href: UT04_index.html
         - text: "Contenidos"
-          href: UT04_contenido.html 
+          href: UT04_contenido.html
+        - text: "Ejemplo"
+          href: UT04_ejemplo.html
         - text: "Ejercicios de clase"
           href: UT04_ejercicios.html
+        - text: "EXAMEN"
+          href: assets/examen_03.zip
+    - text: "UT05"
+      menu: 
+        - text: "Contenidos"
+          href: UT05_index.html
+        - text: "Prácticas"
+          href: UT05_practicas.html
 output_dir: "."
