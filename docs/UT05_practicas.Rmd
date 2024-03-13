@@ -31,5 +31,20 @@ Hacer las siguientes prácticas de la web [https://learngitbranching.js.org/?loc
 
 - Todo eso debe quedar documentado en un archivo de texto (libreoffice) que incluya pantallazos Los comandos escritos y pantallazos con el resultado correcto del trabajo realizado. Cada pantallazo debe incluir la fecha y hora e incluir algún elemento que pueda identificar al autor.
 
+# PRÁCTICA 3
+Crear una Web personal de GitHub con un resumen de cada una de las unidades trabajadas en clase usando GitHub Pages.
+
+La información para crear y publicar en GitHub Pages la puedes encontrar en el siguiente enlace:
+
+[https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site)
+
+### OPCIONAL (PARA SUBIR NOTA)
+Crear la web usando la herramienta [Jekyll](https://jekyllrb.com). Esta herramienta permite crear páginas usando plantillas y formato CSS.
+
+Puedes usar los siguientes enlaces para que te sirvan de referencia:
+
+- [https://nainagurung.medium.com/publish-github-pages-using-jekyll-369a8e2800b7](https://nainagurung.medium.com/publish-github-pages-using-jekyll-369a8e2800b7)
+
+- [https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll)
 
 

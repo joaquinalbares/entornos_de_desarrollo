@@ -123,3 +123,56 @@ Una vez configurado, Lo primero que debemos hacer para iniciar a trabajar con gi
 `$ git init`
 
 este comando nos servirá para iniciar un repositorio, si nosotros lo dejamos así con un espacio en blanco lo que hará es crear la carpeta .git(Es una carpeta oculta por lo cual debemos de seleccionar la opción de mostrar carpetas ocultas) dentro de nuestro proyecto seleccionado.
+
+Para verificar que se han hecho modificaciones en nuestro proyecto podemos ejecutar el comando:
+
+`$ git status`
+
+Este comando nos sirve para ver que archivos se encuentran dentro del working directory que es uno de los 3 estados de git, si un archivo esta siendo traqueado nos aparecerá en letras verdes, mientras que si no, nos dirá en letras rojas, además de que arriba de las letras de colores nos aparecerá una descripción de si el archivo es tracked o untracked
+
+### GESTIÓN DE RAMAS CON GIT
+**Creación y Gestión de Ramas con Git**
+
+**1. Introducción a las Ramas en Git:**
+   - Las ramas en Git son líneas de desarrollo independientes que permiten trabajar en diferentes características, correcciones de errores o experimentos de forma aislada.
+   - La rama principal es comúnmente conocida como `master` o `main`, aunque este nombre puede variar según las convenciones de nombres del proyecto.
+
+**2. Creación de Ramas:**
+   - Para crear una nueva rama, se utiliza el comando `git branch <nombre-de-la-rama>`.
+   - Por ejemplo, para crear una rama llamada "nueva-funcionalidad": `git branch nueva-funcionalidad`.
+
+**3. Cambio entre Ramas:**
+   - Para cambiar a una rama diferente, se utiliza el comando `git checkout <nombre-de-la-rama>`.
+   - Por ejemplo, para cambiar a la rama "nueva-funcionalidad": `git checkout nueva-funcionalidad`.
+
+**4. Creación y Cambio de Ramas en un Solo Paso:**
+   - Git permite crear y cambiar a una nueva rama en un solo paso utilizando el comando `git checkout -b <nombre-de-la-rama>`.
+   - Por ejemplo, para crear y cambiar a una rama llamada "correccion-bug": `git checkout -b correccion-bug`.
+
+**5. Visualización de Ramas:**
+   - Para ver todas las ramas en el repositorio y resaltar la rama actual, se utiliza el comando `git branch`.
+   - Para ver las ramas junto con los últimos commits en cada una, se puede usar `git branch -v`.
+
+**6. Eliminación de Ramas:**
+   - Para eliminar una rama después de que su trabajo se haya fusionado con éxito en otra rama, se utiliza el comando `git branch -d <nombre-de-la-rama>`.
+   - Si se necesita forzar la eliminación de una rama que aún no se ha fusionado completamente, se usa `git branch -D <nombre-de-la-rama>`.
+
+**7. Fusión de Ramas:**
+   - Para fusionar una rama con la rama actual, primero se cambia a la rama destino y luego se utiliza el comando `git merge <nombre-de-la-rama-a-fusionar>`.
+   - Por ejemplo, para fusionar la rama "nueva-funcionalidad" en la rama actual: `git merge nueva-funcionalidad`.
+
+**8. Resolución de Conflictos de Fusión:**
+   - En caso de conflictos durante la fusión, Git indicará los archivos conflictivos. Se debe editar manualmente estos archivos para resolver los conflictos, luego agregar los cambios y realizar un commit para completar la fusión.
+
+**9. Buenas Prácticas:**
+   - Es recomendable crear ramas específicas para cada tarea o característica.
+   - Mantener las ramas actualizadas con la rama principal (o la rama de desarrollo) para evitar conflictos mayores durante la fusión.
+   - Nombrar las ramas de manera descriptiva según su propósito para facilitar la comprensión y el seguimiento del trabajo realizado.
+
+
+Estos apuntes proporcionan una visión general sobre la creación y gestión de ramas en Git, pero es importante profundizar en cada tema y practicar regularmente para dominar completamente estas habilidades.
+
+¿Qué sucede cuando creas una nueva rama? Bueno…​, simplemente se crea un nuevo apuntador para que lo puedas mover libremente. Por ejemplo, supongamos que quieres crear una rama nueva denominada "testing". Para ello, usarás el comando git branch:
+
+$ git branch testing
+
