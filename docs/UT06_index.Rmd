@@ -72,7 +72,7 @@ Atributos - nombre: tipo
 Operaciones - nombre del método (lista de parámetros): tipo del valor de retorno
 
 
-![imagenes/b7abc68c8724a2d69b953a2b7b5c7e19.png](:/3eb3b2d78dff48b6b8bdcce781008105)
+![b7abc68c8724a2d69b953a2b7b5c7e19.png](imagenes//3eb3b2d78dff48b6b8bdcce781008105)
 
 El símbolo delante del nombre del atributo o método indica su visibilidad - public (+), protected (#), private (-), derived (/) o package (~).
 
@@ -84,14 +84,14 @@ Al dibujar un elemento de clase en un diagrama de clases, debe utilizar el compa
 Cuando una clase hija tiene las mismas operaciones y atributos que su clase padre, pero añade algunos extras propios, eso es herencia. La herencia es una característica esencial de la programación orientada a objetos. Puedes indicarlo en tu diagrama dibujando una flecha sin relleno desde la clase hija a la clase padre.
 
 
-![imagenes/46bbb4f2e053f9bdfca272cdcad45fd5.png](:/c3ba9b6cee184467981f656159326f8d)
+![46bbb4f2e053f9bdfca272cdcad45fd5.png](imagenes/c3ba9b6cee184467981f656159326f8d)
 
 Consejo: Las clases abstractas pueden indicarse poniendo en cursiva el nombre de la clase.
 
 
 ## Asociaciones
 Cuando existe un vínculo entre clases puedes indicarlo de varias maneras.
-![imagenes/e946d542f26479db20f5df07ad170ab5.png](:/5b01442e3a044d16803afeb054796646)
+![e946d542f26479db20f5df07ad170ab5.png](imagenes/5b01442e3a044d16803afeb054796646)
 
 - **Bidireccional**: Ambas clases conocen la asociación - dibuja una línea continua entre las clases, sin flechas.
 - **Unidireccional**: Sólo una clase conoce a la otra - utilice una punta de flecha abierta. Por ejemplo: FailedStudentsList conocerá la clase Student, pero la clase Student no conoce la clase FailedStudentsList.
@@ -100,7 +100,7 @@ Cuando existe un vínculo entre clases puedes indicarlo de varias maneras.
 - **Composición**: Es similar a la agregación, pero cuando se elimina la clase contenedora, también se eliminan las instancias de las otras clases. La clase contenedora está "compuesta" por instancias de las otras clases. Utilice un rombo sólido para indicar la clase contenedora.
 - **Multiplicidad**: Donde se indica cuántas instancias de cada clase están relacionadas con la otra clase. Puede ser cero o más (0..*), uno a uno (1..1), o 1 a un número específico (1..5).
 Existen muchas otras formas de indicar asociaciones, como las clases de asociación, las asociaciones reflexivas, los paquetes, etc. Para una visión completa del modelado de clases en UML, IBM ha proporcionado un gran tutorial.
-![imagenes/03fa5d0e325ca0445e258be820d2c7d0.png](:/cf98c12f34cf44cbbd51d87b787773db)
+![03fa5d0e325ca0445e258be820d2c7d0.png](imagenes/cf98c12f34cf44cbbd51d87b787773db)
 
 
 ### FUENTES:
