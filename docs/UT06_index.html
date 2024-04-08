@@ -11,7 +11,7 @@
 
 
 
-<title>UT02 - INSTALACIÓN Y USO DE ENTORNOS DE DESARROLLO INTEGRADO</title>
+<title>UT06 - DIAGRAMAS DE CLASES</title>
 
 <script src="site_libs/header-attrs-2.26/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -383,15 +383,175 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">UT02 - INSTALACIÓN Y USO DE ENTORNOS DE
-DESARROLLO INTEGRADO</h1>
+<h1 class="title toc-ignore">UT06 - DIAGRAMAS DE CLASES</h1>
 
 </div>
 
 
-<div id="examen-de-test-unitarios" class="section level2">
-<h2>EXAMEN DE TEST UNITARIOS</h2>
-<p><a href="assets/examen2324.zip">Descargar ejemplo</a></p>
+<hr />
+<div id="resultado-de-aprendizaje" class="section level3">
+<h3>RESULTADO DE APRENDIZAJE:</h3>
+<p>Genera diagramas de clases valorando su importancia en el desarrollo
+de aplicaciones y empleando las herramientas disponibles en el
+entorno.</p>
+<div id="criterios-de-evaluación" class="section level4">
+<h4>CRITERIOS DE EVALUACIÓN:</h4>
+<ol style="list-style-type: lower-alpha">
+<li>Se han identificado los conceptos básicos de la programación
+orientada a objetos.</li>
+<li>Se ha instalado el módulo del entorno integrado de desarrollo que
+permite la utilización de diagramas de clases.</li>
+<li>Se han identificado las herramientas para la elaboración de
+diagramas de clases.</li>
+<li>Se ha interpretado el significado de diagramas de clases.</li>
+<li>Se han trazado diagramas de clases a partir de las especificaciones
+de las mismas.</li>
+<li>Se ha generado código a partir de un diagrama de clases.</li>
+<li>Se ha generado un diagrama de clases mediante ingeniería
+inversa.</li>
+</ol>
+</div>
+<div id="contenidos" class="section level4">
+<h4>CONTENIDOS:</h4>
+<p>Introducción al lenguaje unificado de modelado (UML Unified Modeling
+Language):</p>
+<ul>
+<li>Características.<br />
+</li>
+<li>Versiones.<br />
+</li>
+<li>Diagramas UML.<br />
+</li>
+<li>Utilización en metodologías de desarrollo orientado a objetos.</li>
+<li>Herramientas CASE con soporte UML.</li>
+<li>Elaboración de diagramas de clases.</li>
+<li>Notación de los diagramas de clases.
+<ul>
+<li>Clases. Atributos, métodos y visibilidad.</li>
+<li>Objetos. «Instanciación».</li>
+<li>Relaciones. Asociación, herencia, composición,
+agregación,dependencia, navegabilidad.</li>
+<li>Clases abstractas. Interfaces.</li>
+<li>Paquetes.</li>
+<li>Grado de detalle.</li>
+</ul></li>
+<li>Utilización de herramientas CASE para elaborar diagramas de clases
+con UML.</li>
+<li>Módulos integrados en entornos de desarrollo para elaborar diagramas
+de clases.</li>
+<li>Creación de código a partir de diagramas de clases.</li>
+<li>Generación de diagramas de clases a partir de código (ingeniería
+inversa).</li>
+</ul>
+</div>
+<div id="calficación" class="section level4">
+<h4>CALFICACIÓN:</h4>
+<hr />
+</div>
+</div>
+<div id="uml" class="section level1">
+<h1>UML</h1>
+<p>El Lenguaje Unificado de Modelado o notación UML es probablemente la
+representación visual de programas más conocida y utilizada
+habitualmente en el desarrollo de software. Existe una amplia gama de
+diagramas que le ayudarán a especificar sus datos y procesos antes de
+empezar a programar. Le ayudan a aclarar requisitos y limitaciones,
+aceleran la implementación, proporcionan una guía para realizar pruebas
+exhaustivas y evitan que se cuelen errores a lo largo de todo el proceso
+de desarrollo de software.</p>
+<p>Nos vamos a centrar en una categoría de diagramas UML: los diagramas
+estructurales. Probablemente los diagramas estructurales más conocidos
+son los diagramas de clases, que especifican las estructuras de datos y
+sus relaciones dentro de tu programa.</p>
+<p>Los diagramas de clase no sólo se utilizan para programar. Por
+ejemplo, los analistas de negocio pueden modelar la estructura
+empresarial de los activos y los procesos asociados a ellos.</p>
+<div id="notación-del-diagrama-de-clases-uml" class="section level2">
+<h2>Notación del diagrama de clases UML</h2>
+<p>Como es lógico, las clases de su programa van en un diagrama de
+clases, incluyendo sus atributos (variables) y métodos (funciones).
+Estos diagramas constituyen la base de la programación orientada a
+objetos.</p>
+</div>
+<div id="clases" class="section level2">
+<h2>Clases</h2>
+<p>Cada clase se representa mediante una caja con tres secciones
+apiladas una sobre otra con el siguiente formato. Sólo el nombre de la
+clase es obligatorio</p>
+<p>Nombre de la clase Atributos - nombre: tipo Operaciones - nombre del
+método (lista de parámetros): tipo del valor de retorno</p>
+<div class="float">
+<img src=":/3eb3b2d78dff48b6b8bdcce781008105"
+alt="imagenes/b7abc68c8724a2d69b953a2b7b5c7e19.png" />
+<div
+class="figcaption">imagenes/b7abc68c8724a2d69b953a2b7b5c7e19.png</div>
+</div>
+<p>El símbolo delante del nombre del atributo o método indica su
+visibilidad - public (+), protected (#), private (-), derived (/) o
+package (~).</p>
+<p>Al dibujar un elemento de clase en un diagrama de clases, debe
+utilizar el compartimento superior, y los dos compartimentos inferiores
+son opcionales. (Los dos inferiores serían innecesarios en un diagrama
+que represente un mayor nivel de detalle en el que el propósito sea
+mostrar sólo la relación entre los clasificadores).</p>
+</div>
+<div id="herencia" class="section level2">
+<h2>Herencia</h2>
+<p>Cuando una clase hija tiene las mismas operaciones y atributos que su
+clase padre, pero añade algunos extras propios, eso es herencia. La
+herencia es una característica esencial de la programación orientada a
+objetos. Puedes indicarlo en tu diagrama dibujando una flecha sin
+relleno desde la clase hija a la clase padre.</p>
+<div class="float">
+<img src=":/c3ba9b6cee184467981f656159326f8d"
+alt="imagenes/46bbb4f2e053f9bdfca272cdcad45fd5.png" />
+<div
+class="figcaption">imagenes/46bbb4f2e053f9bdfca272cdcad45fd5.png</div>
+</div>
+<p>Consejo: Las clases abstractas pueden indicarse poniendo en cursiva
+el nombre de la clase.</p>
+</div>
+<div id="asociaciones" class="section level2">
+<h2>Asociaciones</h2>
+<p>Cuando existe un vínculo entre clases puedes indicarlo de varias
+maneras. <img src=":/5b01442e3a044d16803afeb054796646"
+alt="imagenes/e946d542f26479db20f5df07ad170ab5.png" /></p>
+<ul>
+<li><strong>Bidireccional</strong>: Ambas clases conocen la asociación -
+dibuja una línea continua entre las clases, sin flechas.</li>
+<li><strong>Unidireccional</strong>: Sólo una clase conoce a la otra -
+utilice una punta de flecha abierta. Por ejemplo: FailedStudentsList
+conocerá la clase Student, pero la clase Student no conoce la clase
+FailedStudentsList.</li>
+<li><strong>Dependencia</strong>: Cuando los cambios en una clase causan
+cambios en otra clase, son dependientes. Utilice una línea discontinua
+para mostrar la dependencia.</li>
+<li><strong>Agregación</strong>: Cuando una clase contiene varias
+instancias de otra clase, pero esas instancias siguen existiendo aunque
+se elimine la clase contenedora, eso es agregación. Utilice un rombo
+hueco para indicar la clase contenedora.</li>
+<li><strong>Composición</strong>: Es similar a la agregación, pero
+cuando se elimina la clase contenedora, también se eliminan las
+instancias de las otras clases. La clase contenedora está “compuesta”
+por instancias de las otras clases. Utilice un rombo sólido para indicar
+la clase contenedora.</li>
+<li><strong>Multiplicidad</strong>: Donde se indica cuántas instancias
+de cada clase están relacionadas con la otra clase. Puede ser cero o más
+(0..*), uno a uno (1..1), o 1 a un número específico (1..5). Existen
+muchas otras formas de indicar asociaciones, como las clases de
+asociación, las asociaciones reflexivas, los paquetes, etc. Para una
+visión completa del modelado de clases en UML, IBM ha proporcionado un
+gran tutorial. <img src=":/cf98c12f34cf44cbbd51d87b787773db"
+alt="imagenes/03fa5d0e325ca0445e258be820d2c7d0.png" /></li>
+</ul>
+<div id="fuentes" class="section level3">
+<h3>FUENTES:</h3>
+<p><a href="https://drawio-app.com/blog/uml-class-diagrams-in-draw-io/"
+class="uri">https://drawio-app.com/blog/uml-class-diagrams-in-draw-io/</a></p>
+<p><a href="https://developer.ibm.com/articles/the-class-diagram/"
+class="uri">https://developer.ibm.com/articles/the-class-diagram/</a></p>
+</div>
+</div>
 </div>
 
 
