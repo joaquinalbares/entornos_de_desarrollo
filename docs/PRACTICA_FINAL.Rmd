@@ -1,0 +1,79 @@
+---
+title: "EJERCICIO FINAL"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+--- 
+
+# PPROYECTO FINAL
+
+Crea un proyecto personal que simule una de las dos situaciones siguientes:
+
+- Una tienda virtual que consta de las siguientes clases:
+  - Producto: Clase generica que contendrá los atributos genéricos (cantidad, precio, disponibilidad, ... ).
+  - Tres clases de que hereden de producto y definan categorías más específicas.
+  - Gestión: se encargará de mostrar la lista de porductos, los datos de un producto específico, vender y reponer un producto. Para poder vender un producto debe de haber existencias disponibles y se debe reponer un producto cuando hay menos de 5 elementos del mismo.
+  
+- Una competición deportiva que conste de las siguientes clases:
+  - Una clase genérica persona.
+  - Treas clases deportistas que hereden de pesona con características específicas del deporte que practican.
+  - Una clase competición donde participarán varios deportistas y que guardará el puesto, la marca obtenida y los datos de la competición. Deberá gestionar la participiación de los deporttistas habrá una clase auxiliar que muestre los dotos de las competiciones en las que ha participado cada deportista.
+
+
+
+## CLASE AUXILIAR
+
+Para leer los datos, podéis usar la siguiente clase auxiliar
+
+```java
+package leer;
+
+import java.io.*;
+
+public class Leer {
+
+    public static String dato() {
+        String sdato = " ";
+        try {
+            InputStreamReader isr = new InputStreamReader(System.in);
+            BufferedReader flujoE = new BufferedReader(isr);
+            sdato = flujoE.readLine();
+        } catch (IOException e) {
+            System.out.println("Error " + e.getMessage());
+        }
+        return sdato;
+
+    }
+
+    public static int datoInt() {
+        return Integer.parseInt(dato());
+    }
+
+    public static float datoFloat() {
+        return Float.parseFloat(dato());
+    }
+
+    // Leer un char por teclado
+
+    public static char datoChar() {
+        char c = ' ';
+        try {
+            java.io.BufferedInputStream b = new BufferedInputStream(System.in);
+            c = (char) b.read();
+        } catch (IOException e) {
+            System.out.println("Error al leer");
+            e.printStackTrace();
+        }
+        return c;
+    }
+
+    public static long datoLong() {
+        return Long.parseLong(dato());
+    }
+}
+```
+
