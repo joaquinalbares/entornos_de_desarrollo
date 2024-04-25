@@ -1,0 +1,124 @@
+---
+title: "UT06 - EJERCICIO PRÁCTICO"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+--- 
+
+# Proyecto colonización del Sistema Solar 
+Crea un proyecto llamado **SistemaSolar**. 
+
+Se pide:
+
+- Definir una jerarquía de clases que permita almacenar datos sobre los planetas y satélites (lunas) que forman parte del sistema solar, y los equipos de personas que colonizarán estos astros.
+- Diagrama de clases UML que incluya herencia y asociaciones.
+- Modelo E/R que defina las estructuras de datos y las relaciones entre tablas.
+
+
+## Clases a desarrollar 
+
+### Persona 
+
+Las personas tendrán los siguientes atributos: 
+
+- Nombre y apellidos (mismo atributo nombre). 
+- País de procedencia. 
+
+En caso de ser **Colono**: 
+
+- Los idiomas que habla (una lista de Strings). 
+- Profesión. 
+- Número de hijos (numHijos). 
+
+En caso de ser **Piloto** de nave espacial: 
+
+- Horas de vuelo acumuladas (horasVuelo). 
+- Un booleano para saber si sabe pilotar naves de aterrizaje/alunizaje (sabeAterrizar). 
+
+Debes añadir los métodos adicionales que estimes necesarios para poder ejecutar el programa conforme a los requerimientos que se solicitarán en la clase principal 
+
+### Astro 
+
+Los astros tendrán los siguientes atributos: 
+
+- Nombre. 
+- Masa del cuerpo. 
+- Diámetro medio. 
+- Si es colonizable. 
+- Número de naves asociadas (numNaves). 
+- Lista de colonos (listaColonos). 
+
+Requisitos adicionales: 
+
+- Al crear un astro colonizable debe tener al menos una nave; es decir, si en el constructor no le pasamos el número de naves, por defecto, le asociará una. En caso contrario, el número de naves que se le hayan pasado por parámetro al constructor. Un astro no colonizable también puede tener naves asociadas. 
+- Un astro no colonizable no tendrá colonos (aunque podría tener en el futuro en caso de cambiar las condiciones). 
+- Es posible que un astro colonizable no tenga colonos en el momento de crear dicho astro. Por tanto, la lista de colonos que le pasamos por parámetro estará vacía o se indicará null. 
+
+### Planeta 
+
+Los atributos que tendrá son: 
+
+- Distancia media al sol (distanciaSol). 
+- Si tiene satélites (tieneSatelites). 
+- Lista de satélites, en caso de tener (listaSatelites). 
+
+**Nota**: un planeta puede tener uno o más satélites orbitando a su alrededor; o no tener satélites. En caso de no tener, la lista de satélites estará vacía o sin inicializar (null). Por lo tanto, no será necesario pasar el booleano tieneSatelites en el constructor, porque lo sabremos al utilizar el constructor con los parámetros correspondientes. 
+
+### Satelite 
+
+Los atributos que tendrá son: 
+
+- Planeta al que pertenece. 
+- Distancia media al planeta sobre el que orbita (distanciaPlaneta). 
+
+**Nota**: el planeta puede tener satélites (utiliza objetos de tipo satélite como atributo) y el satélite está asociado a un planeta (incluye un objeto de tipo planeta como atributo). Por lo tanto, uno debe ser creado antes que el otro y a continuación ser asociado, por lo que no sería necesario añadirlo al constructor. 
+
+## Comportamiento de las clases 
+
+Debes añadir los métodos adicionales que estimes necesarios para poder ejecutar el programa conforme a los requerimientos que se solicitarán en la clase principal. 
+
+Los métodos redefinidos **toString()** deben mostrar mensajes exactamente iguales a los indicados en las imágenes de la sección clase principal.
+
+Con respecto al comportamiento de los objetos, necesitaremos: 
+
+- Un método abandonar, el cual disminuye el número de horas de vuelo de un piloto en las unidades pasadas por parámetro. 
+- Un método agregar, el cual añade el número de horas de vuelo pasadas como parámetro a un piloto. 
+- Un método abandonar, el cual reduce el número de naves de un astro en el valor pasado como parámetro. 
+- Un método agregar, para añadir a un astro el número de naves parámetro. 
+- Un método para añadir un idioma a un colono (añadirIdioma). El idioma se pasará como parámetro de tipo String. 
+- Métodos para añadir satélites a los planetas (añadirSatelite). 
+- Métodos para añadir y eliminar colonos de un astro (añadirColono y eliminarColono). 
+- Método para mostrar la información del objeto redefiniendo el método disponible en la clase Object. 
+- Método para comparar dos objetos implementando el interfaz Comparable. Solo en la clase Colono comparando colonos. Un colono será más valioso que otro si domina más idiomas. En caso de conocer el mismo número de idiomas, el que tenga más hijos. Si también hay igualdad, consideramos que son iguales. 
+
+## EJEMPLO DE CREACIÓN DE TABLAS
+
+```sql
+-- Crear la base de datos
+CREATE DATABASE SistemaSolar;
+
+-- Usar la base de datos
+USE SistemaSolar;
+
+-- Crear tabla Persona
+CREATE TABLE Persona (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    pais VARCHAR(100) NOT NULL
+);
+
+-- Crear tabla Colono
+CREATE TABLE Colono (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_persona INT,
+    idioma VARCHAR(100) NOT NULL,
+    profesion VARCHAR(100) NOT NULL,
+    numHijos INT,
+    FOREIGN KEY (id_persona) REFERENCES Persona(id)
+);
+```
+

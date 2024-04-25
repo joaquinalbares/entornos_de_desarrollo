@@ -11,7 +11,7 @@
 
 
 
-<title>UT02 - INSTALACIÓN Y USO DE ENTORNOS DE DESARROLLO INTEGRADO</title>
+<title>UT06 - EJERCICIO PRÁCTICO</title>
 
 <script src="site_libs/header-attrs-2.26/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -386,62 +386,161 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">UT02 - INSTALACIÓN Y USO DE ENTORNOS DE
-DESARROLLO INTEGRADO</h1>
+<h1 class="title toc-ignore">UT06 - EJERCICIO PRÁCTICO</h1>
 
 </div>
 
 
-<div id="resultados-de-aprendizaje" class="section level2">
-<h2>RESULTADOS DE APRENDIZAJE</h2>
-<p>Evalúa entornos integrados de desarrollo analizando sus
-características para editar código fuente y generar ejecutables.</p>
+<hr />
+<div id="proyecto-colonización-del-sistema-solar"
+class="section level1">
+<h1>Proyecto colonización del Sistema Solar</h1>
+<p>Crea un proyecto llamado <strong>SistemaSolar</strong>.</p>
+<p>Se pide:</p>
+<ul>
+<li>Definir una jerarquía de clases que permita almacenar datos sobre
+los planetas y satélites (lunas) que forman parte del sistema solar, y
+los equipos de personas que colonizarán estos astros.</li>
+<li>Diagrama de clases UML que incluya herencia y asociaciones.</li>
+<li>Modelo E/R que defina las estructuras de datos y las relaciones
+entre tablas.</li>
+</ul>
+<div id="clases-a-desarrollar" class="section level2">
+<h2>Clases a desarrollar</h2>
+<div id="persona" class="section level3">
+<h3>Persona</h3>
+<p>Las personas tendrán los siguientes atributos:</p>
+<ul>
+<li>Nombre y apellidos (mismo atributo nombre).</li>
+<li>País de procedencia.</li>
+</ul>
+<p>En caso de ser <strong>Colono</strong>:</p>
+<ul>
+<li>Los idiomas que habla (una lista de Strings).</li>
+<li>Profesión.</li>
+<li>Número de hijos (numHijos).</li>
+</ul>
+<p>En caso de ser <strong>Piloto</strong> de nave espacial:</p>
+<ul>
+<li>Horas de vuelo acumuladas (horasVuelo).</li>
+<li>Un booleano para saber si sabe pilotar naves de aterrizaje/alunizaje
+(sabeAterrizar).</li>
+</ul>
+<p>Debes añadir los métodos adicionales que estimes necesarios para
+poder ejecutar el programa conforme a los requerimientos que se
+solicitarán en la clase principal</p>
 </div>
-<div id="criterios-de-evaluación" class="section level2">
-<h2>CRITERIOS DE EVALUACIÓN</h2>
-<ol style="list-style-type: lower-alpha">
-<li>Se han instalado entornos de desarrollo, propietarios y libres.</li>
-<li>Se han añadido y eliminado módulos en el entorno de desarrollo.</li>
-<li>Se ha personalizado y automatizado el entorno de desarrollo.</li>
-<li>Se ha configurado el sistema de actualización del entorno de
-desarrollo.</li>
-<li>Se han generado ejecutables a partir de código fuente de diferentes
-lenguajes en un mismo entorno de desarrollo.</li>
-<li>Se han generado ejecutables a partir de un mismo código fuente con
-varios entornos de desarrollo.</li>
-<li>Se han identificado las características comunes y específicas de
-diversos entornos de desarrollo.</li>
-</ol>
+<div id="astro" class="section level3">
+<h3>Astro</h3>
+<p>Los astros tendrán los siguientes atributos:</p>
+<ul>
+<li>Nombre.</li>
+<li>Masa del cuerpo.</li>
+<li>Diámetro medio.</li>
+<li>Si es colonizable.</li>
+<li>Número de naves asociadas (numNaves).</li>
+<li>Lista de colonos (listaColonos).</li>
+</ul>
+<p>Requisitos adicionales:</p>
+<ul>
+<li>Al crear un astro colonizable debe tener al menos una nave; es
+decir, si en el constructor no le pasamos el número de naves, por
+defecto, le asociará una. En caso contrario, el número de naves que se
+le hayan pasado por parámetro al constructor. Un astro no colonizable
+también puede tener naves asociadas.</li>
+<li>Un astro no colonizable no tendrá colonos (aunque podría tener en el
+futuro en caso de cambiar las condiciones).</li>
+<li>Es posible que un astro colonizable no tenga colonos en el momento
+de crear dicho astro. Por tanto, la lista de colonos que le pasamos por
+parámetro estará vacía o se indicará null.</li>
+</ul>
 </div>
-<div id="contenidos" class="section level2">
-<h2>CONTENIDOS</h2>
-<ol style="list-style-type: decimal">
-<li>Funciones de un entorno de desarrollo.</li>
-<li>Tipos de entornos de desarrollo. Entornos de desarrollo libres y
-propietarios. Características.</li>
-<li>Instalación de un entorno de desarrollo.</li>
-<li>Uso básico de un entorno de desarrollo.</li>
-</ol>
-<div id="calficación" class="section level4">
-<h4>CALFICACIÓN:</h4>
-<table>
-<thead>
-<tr class="header">
-<th align="center">CUADERNO DE CLASE</th>
-<th align="center">CUESTIONARIO</th>
-<th align="center">EJERCICIOS DE CLASE</th>
-<th align="center">PRÁCTICAS</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="center">10%</td>
-<td align="center">0%</td>
-<td align="center">30%</td>
-<td align="center">60%</td>
-</tr>
-</tbody>
-</table>
+<div id="planeta" class="section level3">
+<h3>Planeta</h3>
+<p>Los atributos que tendrá son:</p>
+<ul>
+<li>Distancia media al sol (distanciaSol).</li>
+<li>Si tiene satélites (tieneSatelites).</li>
+<li>Lista de satélites, en caso de tener (listaSatelites).</li>
+</ul>
+<p><strong>Nota</strong>: un planeta puede tener uno o más satélites
+orbitando a su alrededor; o no tener satélites. En caso de no tener, la
+lista de satélites estará vacía o sin inicializar (null). Por lo tanto,
+no será necesario pasar el booleano tieneSatelites en el constructor,
+porque lo sabremos al utilizar el constructor con los parámetros
+correspondientes.</p>
+</div>
+<div id="satelite" class="section level3">
+<h3>Satelite</h3>
+<p>Los atributos que tendrá son:</p>
+<ul>
+<li>Planeta al que pertenece.</li>
+<li>Distancia media al planeta sobre el que orbita
+(distanciaPlaneta).</li>
+</ul>
+<p><strong>Nota</strong>: el planeta puede tener satélites (utiliza
+objetos de tipo satélite como atributo) y el satélite está asociado a un
+planeta (incluye un objeto de tipo planeta como atributo). Por lo tanto,
+uno debe ser creado antes que el otro y a continuación ser asociado, por
+lo que no sería necesario añadirlo al constructor.</p>
+</div>
+</div>
+<div id="comportamiento-de-las-clases" class="section level2">
+<h2>Comportamiento de las clases</h2>
+<p>Debes añadir los métodos adicionales que estimes necesarios para
+poder ejecutar el programa conforme a los requerimientos que se
+solicitarán en la clase principal.</p>
+<p>Los métodos redefinidos <strong>toString()</strong> deben mostrar
+mensajes exactamente iguales a los indicados en las imágenes de la
+sección clase principal.</p>
+<p>Con respecto al comportamiento de los objetos, necesitaremos:</p>
+<ul>
+<li>Un método abandonar, el cual disminuye el número de horas de vuelo
+de un piloto en las unidades pasadas por parámetro.</li>
+<li>Un método agregar, el cual añade el número de horas de vuelo pasadas
+como parámetro a un piloto.</li>
+<li>Un método abandonar, el cual reduce el número de naves de un astro
+en el valor pasado como parámetro.</li>
+<li>Un método agregar, para añadir a un astro el número de naves
+parámetro.</li>
+<li>Un método para añadir un idioma a un colono (añadirIdioma). El
+idioma se pasará como parámetro de tipo String.</li>
+<li>Métodos para añadir satélites a los planetas (añadirSatelite).</li>
+<li>Métodos para añadir y eliminar colonos de un astro (añadirColono y
+eliminarColono).</li>
+<li>Método para mostrar la información del objeto redefiniendo el método
+disponible en la clase Object.</li>
+<li>Método para comparar dos objetos implementando el interfaz
+Comparable. Solo en la clase Colono comparando colonos. Un colono será
+más valioso que otro si domina más idiomas. En caso de conocer el mismo
+número de idiomas, el que tenga más hijos. Si también hay igualdad,
+consideramos que son iguales.</li>
+</ul>
+</div>
+<div id="ejemplo-de-creación-de-tablas" class="section level2">
+<h2>EJEMPLO DE CREACIÓN DE TABLAS</h2>
+<pre class="sql"><code>-- Crear la base de datos
+CREATE DATABASE SistemaSolar;
+
+-- Usar la base de datos
+USE SistemaSolar;
+
+-- Crear tabla Persona
+CREATE TABLE Persona (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    pais VARCHAR(100) NOT NULL
+);
+
+-- Crear tabla Colono
+CREATE TABLE Colono (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_persona INT,
+    idioma VARCHAR(100) NOT NULL,
+    profesion VARCHAR(100) NOT NULL,
+    numHijos INT,
+    FOREIGN KEY (id_persona) REFERENCES Persona(id)
+);</code></pre>
 </div>
 </div>
 

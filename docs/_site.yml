@@ -64,4 +64,6 @@ navbar:
       menu: 
         - text: "Contenidos"
           href: UT06_index.html
+        - text: "Prácticas"
+          href: UT06_practicas.html
 output_dir: "."
