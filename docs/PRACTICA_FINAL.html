@@ -11,7 +11,7 @@
 
 
 
-<title>UT01 - PROGRAMACIÓN DIDÁCTICA</title>
+<title>PPROYECTO FINAL</title>
 
 <script src="site_libs/header-attrs-2.26/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -268,9 +268,6 @@ $(document).ready(function () {
       <a href="UT01_index.html">Contenido</a>
     </li>
     <li>
-      <a href="UT01_programacion.html">Programación</a>
-    </li>
-    <li>
       <a href="UT01_lectura.html">Artículo de opinión</a>
     </li>
     <li>
@@ -307,10 +304,10 @@ $(document).ready(function () {
       <a href="UT03_parte00.html">INTRO</a>
     </li>
     <li>
-      <a href="UT03_parte01.html">PARTE 1</a>
+      <a href="UT03_parte01.html">Pruebas de Caja Blanca</a>
     </li>
     <li>
-      <a href="UT03_parte02.html">PARTE 2</a>
+      <a href="UT03_parte02.html">Test unitarios</a>
     </li>
     <li>
       <a href="UT03_ejercicios.html">Ejercicios de clase</a>
@@ -374,6 +371,9 @@ $(document).ready(function () {
     </li>
   </ul>
 </li>
+<li>
+  <a href="PRACTICA_FINAL.html">PPROYECTO FINAL</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         
@@ -386,98 +386,104 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">UT01 - PROGRAMACIÓN DIDÁCTICA</h1>
+<h1 class="title toc-ignore">PPROYECTO FINAL</h1>
 
 </div>
 
 
-<div id="resultado-de-aprendizaje" class="section level1">
-<h1>RESULTADO DE APRENDIZAJE</h1>
-<p>Reconoce los elementos y herramientas que intervienen en el
-desarrollo de un programa informático, analizando sus características y
-las fases en las que actúan hasta llegar a su puesta en
-funcionamiento.</p>
-</div>
-<div id="criterios-de-evaluación" class="section level1">
-<h1>CRITERIOS DE EVALUACIÓN</h1>
-<ol style="list-style-type: lower-alpha">
-<li>Se ha reconocido la relación de los programas con los componentes
-del sistema informático: memoria, procesador, periféricos, entre
-otros.<br />
-</li>
-<li>Se han identificado las fases de desarrollo de una aplicación
-informática.<br />
-</li>
-<li>Se han diferenciado los conceptos de código fuente, objeto y
-ejecutable.<br />
-</li>
-<li>Se han reconocido las características de la generación de código
-intermedio para su ejecución en máquinas virtuales.<br />
-</li>
-<li>Se han clasificado los lenguajes de programación.<br />
-</li>
-<li>Se ha evaluado la funcionalidad ofrecida por las herramientas
-utilizadas en programación.</li>
-</ol>
-</div>
-<div id="contenidos" class="section level1">
-<h1>CONTENIDOS</h1>
+<hr />
+<p>Crea un proyecto personal que simule una de las dos situaciones
+siguientes:</p>
 <ul>
-<li>Concepto de programa informático.</li>
-<li>Instrucciones y datos.</li>
-<li>Ejecución de programas en ordenadores:
+<li>Una tienda virtual que consta de las siguientes clases:
 <ul>
-<li>Datos y programas.</li>
-<li>Hardware frente a software.</li>
-<li>Estructura funcional de un ordenador: procesador, memoria.</li>
-<li>Tipos de software. BIOS. Sistema. Aplicaciones.</li>
-<li>Código fuente, código objeto y código ejecutable; máquinas
-virtuales.</li>
+<li>Producto: Clase generica que contendrá los atributos genéricos
+(cantidad, precio, disponibilidad, … ).</li>
+<li>Tres clases de que hereden de producto y definan categorías más
+específicas.</li>
+<li>Gestión: se encargará de mostrar la lista de porductos, los datos de
+un producto específico, vender y reponer un producto. Para poder vender
+un producto debe de haber existencias disponibles y se debe reponer un
+producto cuando hay menos de 5 elementos del mismo.</li>
 </ul></li>
-<li>Lenguajes de programación:
+<li>Una competición deportiva que conste de las siguientes clases:
 <ul>
-<li>Tipos de lenguajes de programación.</li>
-<li>Características de los lenguajes más difundidos.</li>
+<li>Una clase genérica persona.</li>
+<li>Treas clases deportistas que hereden de pesona con características
+específicas del deporte que practican.</li>
+<li>Una clase competición donde participarán varios deportistas y que
+guardará el puesto, la marca obtenida y los datos de la competición.
+Deberá gestionar la participiación de los deporttistas habrá una clase
+auxiliar que muestre los dotos de las competiciones en las que ha
+participado cada deportista.</li>
 </ul></li>
-<li>Introducción a la ingeniería del software:
-<ul>
-<li>Proceso software y ciclo de vida del software.</li>
-<li>Fases del desarrollo de una aplicación: análisis, diseño,
-codificación, pruebas, documentación, explotación y mantenimiento, entre
-otras.</li>
-<li>Modelos de proceso de desarrollo software (cascada, iterativo,
-evolutivo).</li>
-<li>Metodologías de desarrollo software. Características. Técnicas.
-Objetivos. Tipos de metodologías.</li>
-<li>Herramientas CASE (Computer Aided Software Engineering).</li>
-</ul></li>
-<li>Proceso de obtención de código ejecutable a partir del código
-fuente. Herramientas implicadas: editores, compiladores, enlazadores,
-etc.</li>
-<li>Errores en el desarrollo de programas.</li>
-<li>Importancia de la reutilización de código.</li>
 </ul>
-<div id="criterios-de-calficación" class="section level4">
-<h4>CRITERIOS DE CALFICACIÓN:</h4>
-<table>
-<thead>
-<tr class="header">
-<th>CUADERNO DE CLASE</th>
-<th>CUESTIONARIO</th>
-<th>EJERCICIOS DE CLASE</th>
-<th>PRÁCTICAS</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>20%</td>
-<td>60%</td>
-<td>10%</td>
-<td>10%</td>
-</tr>
-</tbody>
-</table>
-</div>
+<p>Para el proyecto se pide:</p>
+<ul>
+<li>Test de caja blanca para al menos <strong>trés de los
+métodos</strong> generados (a elegir).</li>
+<li>Test unitarios para <strong>una de las clases</strong> generadas (a
+elegir).</li>
+<li>Documentación (JAVADOC) para <strong>una de las clases</strong>
+generadas (a elegir).</li>
+<li>Diagrama de clases UML para toda la aplicación que incluya herencia
+y asociaciones.</li>
+<li>Modelo E/R que defina las estructuras de datos y las relaciones
+entre tablas.</li>
+<li>Base de datos y tablas que modelicen las clases definidas.</li>
+<li>Implementación en JAVA del proyecto, incluyendo clases y conexión a
+base de datos.</li>
+<li>MEMORIA DEL PROYECTO: donde se incluya cualquier información
+relevante al desarrollo: problemas encontrados,</li>
+</ul>
+<p>Cada proyecto debe ser individual y original.</p>
+<div id="clase-auxiliar" class="section level2">
+<h2>CLASE AUXILIAR</h2>
+<p>Para leer los datos, podéis usar la siguiente clase auxiliar</p>
+<pre class="java"><code>package leer;
+
+import java.io.*;
+
+public class Leer {
+
+    public static String dato() {
+        String sdato = &quot; &quot;;
+        try {
+            InputStreamReader isr = new InputStreamReader(System.in);
+            BufferedReader flujoE = new BufferedReader(isr);
+            sdato = flujoE.readLine();
+        } catch (IOException e) {
+            System.out.println(&quot;Error &quot; + e.getMessage());
+        }
+        return sdato;
+
+    }
+
+    public static int datoInt() {
+        return Integer.parseInt(dato());
+    }
+
+    public static float datoFloat() {
+        return Float.parseFloat(dato());
+    }
+
+    // Leer un char por teclado
+    public static char datoChar() {
+        char c = &#39; &#39;;
+        try {
+            java.io.BufferedInputStream b = new BufferedInputStream(System.in);
+            c = (char) b.read();
+        } catch (IOException e) {
+            System.out.println(&quot;Error al leer&quot;);
+            e.printStackTrace();
+        }
+        return c;
+    }
+
+    public static long datoLong() {
+        return Long.parseLong(dato());
+    }
+}</code></pre>
 </div>
 
 

@@ -1,5 +1,5 @@
 ---
-title: "EJERCICIO FINAL"
+title: "PPROYECTO FINAL"
 output: html_document
 ---
 
@@ -7,9 +7,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
---- 
-
-# PPROYECTO FINAL
+---
 
 Crea un proyecto personal que simule una de las dos situaciones siguientes:
 
@@ -23,7 +21,18 @@ Crea un proyecto personal que simule una de las dos situaciones siguientes:
   - Treas clases deportistas que hereden de pesona con características específicas del deporte que practican.
   - Una clase competición donde participarán varios deportistas y que guardará el puesto, la marca obtenida y los datos de la competición. Deberá gestionar la participiación de los deporttistas habrá una clase auxiliar que muestre los dotos de las competiciones en las que ha participado cada deportista.
 
+Para el proyecto se pide:
 
+- Test de caja blanca para al menos **trés de los métodos** generados (a elegir).
+- Test unitarios para **una de las clases** generadas (a elegir).
+- Documentación (JAVADOC) para **una de las clases** generadas (a elegir).
+- Diagrama de clases UML para toda la aplicación que incluya herencia y asociaciones.
+- Modelo E/R que defina las estructuras de datos y las relaciones entre tablas.
+- Base de datos y tablas que modelicen las clases definidas.
+- Implementación en JAVA del proyecto, incluyendo clases y conexión a base de datos.
+- MEMORIA DEL PROYECTO: donde se incluya cualquier información relevante al desarrollo: problemas encontrados, 
+
+Cada proyecto debe ser individual y original.
 
 ## CLASE AUXILIAR
 
@@ -58,7 +67,6 @@ public class Leer {
     }
 
     // Leer un char por teclado
-
     public static char datoChar() {
         char c = ' ';
         try {

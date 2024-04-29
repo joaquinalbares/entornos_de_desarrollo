@@ -15,8 +15,6 @@ navbar:
       menu: 
         - text: "Contenido"
           href: UT01_index.html
-        - text: "Programación"
-          href: UT01_programacion.html 
         - text: "Artículo de opinión"
           href: UT01_lectura.html 
         - text: "Ejercicios de clase"
@@ -34,9 +32,9 @@ navbar:
           href: UT03_index.html
         - text: "INTRO"
           href: UT03_parte00.html 
-        - text: "PARTE 1"
+        - text: "Pruebas de Caja Blanca"
           href: UT03_parte01.html 
-        - text: "PARTE 2"
+        - text: "Test unitarios"
           href: UT03_parte02.html 
         - text: "Ejercicios de clase"
           href: UT03_ejercicios.html
@@ -66,4 +64,6 @@ navbar:
           href: UT06_index.html
         - text: "Prácticas"
           href: UT06_practicas.html
+    - text: "PPROYECTO FINAL"
+      href: PRACTICA_FINAL.html
 output_dir: "."

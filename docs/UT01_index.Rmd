@@ -23,7 +23,8 @@ Reconoce los elementos y herramientas que intervienen en el desarrollo de un pro
 ## [Errores en el desarrollo de programas.](#siete)
 ## [Importancia de la reutilización de código.](#ocho)
 ## [Criterios de Evalución](#nueve)
-## [Criterios de Calificación](#diez)
+## [Resultado de aprendizaje](#diez)
+## [Criterios de Calificación](#once)
 
 --- 
 
@@ -482,7 +483,6 @@ https://medium.com/forecast-en-espa%C3%B1ol/agile-vs-cascada-parte-1-de-5-qu%C3%
 
 https://www.northware.mx/blog/7-errores-comunes-en-proyectos-de-desarrollo-de-software/
 
-
 <a name="nueve"></a>
 ## CRITERIOS DE EVALUACIÓN
 
@@ -496,8 +496,12 @@ f) Se ha evaluado la funcionalidad ofrecida por las herramientas utilizadas en
 programación. 
 
 <a name="diez"></a>
-## CRITERIOS DE CALIFICACIÓN:
+## RESULTADO DE APRENDIZAJE
+Reconoce los elementos y herramientas que intervienen en el desarrollo de un programa informático, analizando sus características y las fases en las que actúan hasta llegar a su puesta en funcionamiento. 
 
-| CUADERNO DE CLASE | CUESTIONARIO | EJERCICIOS DE CLASE | PRÁCTICAS  |
+<a name="diez"></a>
+## CRITERIOS DE CALFICACIÓN:
+| CUADERNO DE CLASE | CUESTIONARIO | EJERCICIOS DE CLASE | PRÁCTICAS |
 | -- | -- | -- | -- |
-| %| %| %| % |
+| 20% | 60% | 10% | 10% |
+
