@@ -66,4 +66,8 @@ navbar:
           href: UT06_practicas.html
     - text: "PPROYECTO FINAL"
       href: PRACTICA_FINAL.html
+    - text: "APÉNDICES"
+      menu: 
+        - text: "MYSQL Y MAVEN"
+          href: MAVEN_JAVA_MYSQL.html
 output_dir: "."

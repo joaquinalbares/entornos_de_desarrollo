@@ -1,0 +1,216 @@
+---
+title: "CONEXIÓN A MYSQL CON MAVEN"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+---
+
+Para la persistencia de datos en JAVA, usaremos como respaldo una base de datos en un servidor MYSQL.
+
+El siguiente ejemplo, se basa en MySQL y MAVEN para la conexión y gestión de la base de datos.
+
+
+## Instalación de MYSQL
+
+Damos por hecho que MySQL está instalado en el equipo, si no es asi, procedemos a instalarlo.
+
+## Creación de la base de datos de muestra
+
+En primer lugar, definimos una base de datos simple llamada apressBooks con dos tablas:  Recipes y publications. El diseño lógico de la base de datos se muestra en la Tabla 12-1 y la Tabla 12-2, caracterizado por el nombre, la longitud, el tipo de datos y las restricciones (es decir, un campo es una clave primaria y otro no debe ser nulo).
+
+![2123f0147378e017e40e661ac613c60c.png](imagenes/2123f0147378e017e40e661ac613c60c.png)
+
+![9a1dd321bcc3237f81a956aa4b793f02.png](imagenes/9a1dd321bcc3237f81a956aa4b793f02.png)
+
+Las sentencias SQL para la creación de la base de datos, los permisos y las tablas son las siguientes:
+
+```sql
+DROP DATABASE IF EXISTS `apressBooks`;
+CREATE DATABASE `apressBooks`;
+CREATE TABLE `apressBooks`.`recipes` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `recipe_number` varchar(10) NOT NULL,
+  `recipe_name` varchar(100) NOT NULL,
+  `description` varchar(500) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+);
+ 
+insert into apressBooks.recipes values(1, 
+'12-1',
+'Installing MySQL',
+'Downloading and installation of a MySQL Database'); 
+ 
+insert into apressBooks.recipes values(2, 
+'12-2',
+'Connecting to a Database',
+'DriverManager and DataSource Implementations');
+
+insert into apressBooks.recipes values(3,
+'12-3',
+'Handling SQL Exceptions',
+'Using SQLException');
+
+insert into apressBooks.recipes values(4,
+'12-4',
+'Querying a Database and Retrieving Results',
+'Obtaining and using data from a DBMS');
+
+CREATE TABLE `apressBooks`.`publication` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `book_title` varchar(500) NOT NULL,
+  `publish_date` date DEFAULT NULL,
+  `publish_co` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+);
+
+insert into apressBooks.publication values (
+1,
+'Java 17 Recipes',
+date('2021-12-01'),
+'APRESS');
+
+insert into apressBooks.publication values (
+2,
+'Beginning Jakarta EE Web Development',
+date('2021-04-03'),
+'APRESS');
+
+
+CREATE USER 'usuario'@'localhost' IDENTIFIED BY 'P@ssw0rd';
+
+GRANT ALL PRIVILEGES ON apressBooks.* TO 'usuario'@'localhost';
+
+FLUSH PRIVILEGES;
+```
+
+## Pasos para la conectividad entre el programa Java y la base de datos
+
+### 1. Importar los paquetes
+
+Para la conexión de Java con la base de datos usamos un objeto de conexión JDBC para obtener los datos necesarios. 
+
+Crear una conexión JDBC en MAVEN debemos acceder al repositorio:
+
+(https://central.sonatype.com)[https://central.sonatype.com]
+
+Y buscar el repositorio `mysql-connector-`
+
+![Buscando el repositorio adecuado](imagenes/sonatype-connector.png)
+
+> OJO: Es recomendable elegir el mysql-connector-j, que sustituye mysql-connector-java y está actualizado para su uso con otras herramientas de java.
+
+Si no queremos buscar, la ruta directa es:
+
+[https://central.sonatype.com/artifact/com.mysql/mysql-connector-j](https://central.sonatype.com/artifact/com.mysql/mysql-connector-j)
+
+Y asi obtenemos los datos necesario para nuestro pom:
+
+```xml
+<dependency>
+    <groupId>com.mysql</groupId>
+    <artifactId>mysql-connector-j</artifactId>
+    <version>8.4.0</version>
+</dependency>
+```
+
+
+### Paso 2: Establecer una conexión mediante el objeto de clase Connection
+
+Después de cargar el controlador, establezca las conexiones como se muestra a continuación de la siguiente manera:
+
+`Connection con = DriverManager.getConnection(url,user,password)`
+
+Los elementos de esta instrucción son:
+
+- **user**: Username desde el que se puede acceder a su símbolo del sistema SQL.
+- **password**: contraseña desde la que se puede acceder al símbolo del sistema SQL.
+- **Url**: Localizador uniforme de recursos que se crea como se muestra a continuación: `String url = “jdbc:mysql://localhost:3306/Basededatos”` y está compuesto de los siguientes elementos:
+  - `jdbc` es el conector/driver utilizado, 
+  - `mysql` es la base de datos utilizada, 
+  - `localhost` es la dirección IP donde se almacena una base de datos, 
+  - `3306` es el número de puerto 
+  - `Basededatos` es la base de datos sobre la que vamos a trabajar. 
+  
+Los 3 parámetros anteriores son de tipo String y deben ser declarados por el programador antes de llamar a la función.
+    
+Esta sentencia devuelve un objeto de tipo **con**, una referencia a la interfaz de conexión.
+
+### Paso 3: Crear una instrucción
+
+La interfaz `statement` se utiliza para crear sentencias básicas SQL en Java y proporciona métodos para ejecutar consultas con la base de datos. Hay diferentes tipos de sentencias que se utilizan en JDBC de la siguiente manera:
+
+- Crear instrucción (Create Statement)
+- Declaración preparada (Prepared Statement)
+- Declaración invocable (Callable Statement).
+
+Para nuestro ejemplo, vamos a llamar al método para crear instrucción , que generalmente se usa para el acceso de propósito general a bases de datos y es útil cuando se usan instrucciones SQL estáticas en tiempo de ejecución.
+
+Usando el elemento de conexión del paso anterior, ejecutaremos las siguiente sentencia:
+
+`Statement st = con.createStatement();`
+
+### Paso 4: Ejecutar la consulta
+
+Ahora viene la parte más importante, es decir, ejecutar la consulta. La consulta aquí es una consulta SQL. Una vez creado el objeto Statement, hay tres formas de ejecutar dicha consulta:
+
+- **boolean execute(String SQL)**: Si se recupera el objeto ResultSet, devuelve true o se devuelve false. Se utiliza para ejecutar sentencias [DDL](https://www.geeksforgeeks.org/sql-ddl-dql-dml-dcl-tcl-commands/) de SQL o para SQL dinámico.
+- **int executeUpdate(String SQL)**: Devuelve el número de filas afectadas por la ejecución de la instrucción, que se utiliza cuando se necesita un número para las instrucciones INSERT, DELETE o UPDATE.
+- **ResultSet executeQuery (String SQL)**: Devuelve un objeto ResultSet. Se usa de manera similar a SELECT en SQL.
+
+Nos centraremos en la tercera de momento, pues solo vamos a recuperar datos de la base de datos. La sentencia sería la siguiente:
+
+`ResultSet rs = st.executeQuery(query);`
+
+
+### Código:
+Con todo lo visto anteriormente, el código quedaría así:
+
+```java
+import java.io.*;
+import java.sql.*;
+
+class App {
+    public static void main(String[] args) throws Exception {
+		
+		// detalles de la conexión (conector, servidor, puerto y base de datos)
+        String connectionUrl = "jdbc:mysql://127.0.0.1:3306/apressBooks";
+        // Credenciales MySQL
+        String username = "usuario";
+        String password = "P@ssw0rd";
+        String sqlSelectAllbooks = "SELECT * FROM publication";
+
+
+        // Preparamos la consulta
+        try (Connection conn = DriverManager.getConnection(connectionUrl, username, password); 
+            PreparedStatement ps = conn.prepareStatement(sqlSelectAllbooks); 
+            ResultSet rs = ps.executeQuery()) {
+                System.out.println("Conexión Establecida con éxito");
+                while (rs.next()) {
+					          //Obtenemos los valores de cada registro y mostramos 
+					          //algunos campos por pantalla
+                    String title = rs.getString("book_title");
+                    String lastName = rs.getString("publish_co");
+
+                    System.out.println("TITULO: "  + title);
+                    System.out.println("EDITORIAL: "  + title);
+                }
+                conn.close();
+                System.out.println("Conexión Cerrada....");
+            } catch (SQLException e) {
+                // handle the exception
+                e.printStackTrace();
+        }
+      
+    }
+}
+```
+
+Si lo ejecutamos, el resultado debe ser algo parecido a esto:
+
+![Salida de la aplicacion](imagenes/conexion_exitosa.jpg)
+
+

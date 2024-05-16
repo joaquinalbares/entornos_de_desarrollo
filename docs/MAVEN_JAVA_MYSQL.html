@@ -9,11 +9,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="Joaquin Rios" />
 
-<meta name="date" content="2024-01-24" />
 
-<title>UT04 - OPTIMIZACIÓN Y DOCUMENTACIÓN</title>
+<title>CONEXIÓN A MYSQL CON MAVEN</title>
 
 <script src="site_libs/header-attrs-2.26/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -400,110 +398,254 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">UT04 - OPTIMIZACIÓN Y DOCUMENTACIÓN</h1>
-<h4 class="author">Joaquin Rios</h4>
-<h4 class="date">2024-01-24</h4>
+<h1 class="title toc-ignore">CONEXIÓN A MYSQL CON MAVEN</h1>
 
 </div>
 
 
-<div id="ejercicio-de-refactorización" class="section level2">
-<h2>EJERCICIO DE REFACTORIZACIÓN</h2>
-<p>A continuación mostramos el código de una clase refactorizada:</p>
-<pre class="java"><code>/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
-package javaapplication6;
-
-/**
- *
- * @author joaquin
- */
-public class JavaApplication6 {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        int[] listaNumeros = new int[100];
-        // TODO code application logic here
-        for (int i=0; i&lt;listaNumeros.length ; i++) {
-            int numero = (int) (Math.random() * 100) + 1;
-            listaNumeros[i] = numero;            
-        }
-        System.out.println(&quot;El número mayor es &quot; + numeromayor(listaNumeros));
-    }
-    
-    public static int numeromayor( int[] listaNumeros) {
-        int numeroMayor=0;
-        for (int numeroActual : listaNumeros) {
-            if (numeroActual &gt; numeroMayor) {
-                numeroMayor = numeroActual;
-            }
-        }
-        return numeroMayor;
-        
-    }
-    
-}</code></pre>
-<p>El proyecto original se puede descargar <a
-href="assets/JavaApplication6.zip">desde aquí</a>:</p>
-<div id="ejercicio-propuesto" class="section level3">
-<h3>EJERCICIO PROPUESTO</h3>
-<p>Refactorizar el código dado en el <a
-href="assets/empleado.zip">siguiente proyecto</a></p>
+<hr />
+<p>Para la persistencia de datos en JAVA, usaremos como respaldo una
+base de datos en un servidor MYSQL.</p>
+<p>El siguiente ejemplo, se basa en MySQL y MAVEN para la conexión y
+gestión de la base de datos.</p>
+<div id="instalación-de-mysql" class="section level2">
+<h2>Instalación de MYSQL</h2>
+<p>Damos por hecho que MySQL está instalado en el equipo, si no es asi,
+procedemos a instalarlo.</p>
 </div>
-<div id="ejercicio-propuesto-02" class="section level3">
-<h3>EJERCICIO PROPUESTO 02</h3>
-<p>Refactorizar y documentar el siguiente código:</p>
-<pre class="java"><code>import java.time.LocalDate;
+<div id="creación-de-la-base-de-datos-de-muestra"
+class="section level2">
+<h2>Creación de la base de datos de muestra</h2>
+<p>En primer lugar, definimos una base de datos simple llamada
+apressBooks con dos tablas: Recipes y publications. El diseño lógico de
+la base de datos se muestra en la Tabla 12-1 y la Tabla 12-2,
+caracterizado por el nombre, la longitud, el tipo de datos y las
+restricciones (es decir, un campo es una clave primaria y otro no debe
+ser nulo).</p>
+<div class="float">
+<img src="imagenes/2123f0147378e017e40e661ac613c60c.png"
+alt="2123f0147378e017e40e661ac613c60c.png" />
+<div class="figcaption">2123f0147378e017e40e661ac613c60c.png</div>
+</div>
+<div class="float">
+<img src="imagenes/9a1dd321bcc3237f81a956aa4b793f02.png"
+alt="9a1dd321bcc3237f81a956aa4b793f02.png" />
+<div class="figcaption">9a1dd321bcc3237f81a956aa4b793f02.png</div>
+</div>
+<p>Las sentencias SQL para la creación de la base de datos, los permisos
+y las tablas son las siguientes:</p>
+<pre class="sql"><code>DROP DATABASE IF EXISTS `apressBooks`;
+CREATE DATABASE `apressBooks`;
+CREATE TABLE `apressBooks`.`recipes` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `recipe_number` varchar(10) NOT NULL,
+  `recipe_name` varchar(100) NOT NULL,
+  `description` varchar(500) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+);
+ 
+insert into apressBooks.recipes values(1, 
+&#39;12-1&#39;,
+&#39;Installing MySQL&#39;,
+&#39;Downloading and installation of a MySQL Database&#39;); 
+ 
+insert into apressBooks.recipes values(2, 
+&#39;12-2&#39;,
+&#39;Connecting to a Database&#39;,
+&#39;DriverManager and DataSource Implementations&#39;);
 
-import modelo.Persona;
+insert into apressBooks.recipes values(3,
+&#39;12-3&#39;,
+&#39;Handling SQL Exceptions&#39;,
+&#39;Using SQLException&#39;);
 
-public class App {
+insert into apressBooks.recipes values(4,
+&#39;12-4&#39;,
+&#39;Querying a Database and Retrieving Results&#39;,
+&#39;Obtaining and using data from a DBMS&#39;);
+
+CREATE TABLE `apressBooks`.`publication` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `book_title` varchar(500) NOT NULL,
+  `publish_date` date DEFAULT NULL,
+  `publish_co` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+);
+
+insert into apressBooks.publication values (
+1,
+&#39;Java 17 Recipes&#39;,
+date(&#39;2021-12-01&#39;),
+&#39;APRESS&#39;);
+
+insert into apressBooks.publication values (
+2,
+&#39;Beginning Jakarta EE Web Development&#39;,
+date(&#39;2021-04-03&#39;),
+&#39;APRESS&#39;);
+
+
+CREATE USER &#39;usuario&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;P@ssw0rd&#39;;
+
+GRANT ALL PRIVILEGES ON apressBooks.* TO &#39;usuario&#39;@&#39;localhost&#39;;
+
+FLUSH PRIVILEGES;</code></pre>
+</div>
+<div
+id="pasos-para-la-conectividad-entre-el-programa-java-y-la-base-de-datos"
+class="section level2">
+<h2>Pasos para la conectividad entre el programa Java y la base de
+datos</h2>
+<div id="importar-los-paquetes" class="section level3">
+<h3>1. Importar los paquetes</h3>
+<p>Para la conexión de Java con la base de datos usamos un objeto de
+conexión JDBC para obtener los datos necesarios.</p>
+<p>Crear una conexión JDBC en MAVEN debemos acceder al repositorio:</p>
+<p>(<a href="https://central.sonatype.com"
+class="uri">https://central.sonatype.com</a>)[<a
+href="https://central.sonatype.com"
+class="uri">https://central.sonatype.com</a>]</p>
+<p>Y buscar el repositorio <code>mysql-connector-</code></p>
+<div class="float">
+<img src="imagenes/sonatype-connector.png"
+alt="Buscando el repositorio adecuado" />
+<div class="figcaption">Buscando el repositorio adecuado</div>
+</div>
+<blockquote>
+<p>OJO: Es recomendable elegir el mysql-connector-j, que sustituye
+mysql-connector-java y está actualizado para su uso con otras
+herramientas de java.</p>
+</blockquote>
+<p>Si no queremos buscar, la ruta directa es:</p>
+<p><a
+href="https://central.sonatype.com/artifact/com.mysql/mysql-connector-j">https://central.sonatype.com/artifact/com.mysql/mysql-connector-j</a></p>
+<p>Y asi obtenemos los datos necesario para nuestro pom:</p>
+<pre class="xml"><code>&lt;dependency&gt;
+    &lt;groupId&gt;com.mysql&lt;/groupId&gt;
+    &lt;artifactId&gt;mysql-connector-j&lt;/artifactId&gt;
+    &lt;version&gt;8.4.0&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+<div
+id="paso-2-establecer-una-conexión-mediante-el-objeto-de-clase-connection"
+class="section level3">
+<h3>Paso 2: Establecer una conexión mediante el objeto de clase
+Connection</h3>
+<p>Después de cargar el controlador, establezca las conexiones como se
+muestra a continuación de la siguiente manera:</p>
+<p><code>Connection con = DriverManager.getConnection(url,user,password)</code></p>
+<p>Los elementos de esta instrucción son:</p>
+<ul>
+<li><strong>user</strong>: Username desde el que se puede acceder a su
+símbolo del sistema SQL.</li>
+<li><strong>password</strong>: contraseña desde la que se puede acceder
+al símbolo del sistema SQL.</li>
+<li><strong>Url</strong>: Localizador uniforme de recursos que se crea
+como se muestra a continuación:
+<code>String url = “jdbc:mysql://localhost:3306/Basededatos”</code> y
+está compuesto de los siguientes elementos:
+<ul>
+<li><code>jdbc</code> es el conector/driver utilizado,</li>
+<li><code>mysql</code> es la base de datos utilizada,</li>
+<li><code>localhost</code> es la dirección IP donde se almacena una base
+de datos,</li>
+<li><code>3306</code> es el número de puerto</li>
+<li><code>Basededatos</code> es la base de datos sobre la que vamos a
+trabajar.</li>
+</ul></li>
+</ul>
+<p>Los 3 parámetros anteriores son de tipo String y deben ser declarados
+por el programador antes de llamar a la función.</p>
+<p>Esta sentencia devuelve un objeto de tipo <strong>con</strong>, una
+referencia a la interfaz de conexión.</p>
+</div>
+<div id="paso-3-crear-una-instrucción" class="section level3">
+<h3>Paso 3: Crear una instrucción</h3>
+<p>La interfaz <code>statement</code> se utiliza para crear sentencias
+básicas SQL en Java y proporciona métodos para ejecutar consultas con la
+base de datos. Hay diferentes tipos de sentencias que se utilizan en
+JDBC de la siguiente manera:</p>
+<ul>
+<li>Crear instrucción (Create Statement)</li>
+<li>Declaración preparada (Prepared Statement)</li>
+<li>Declaración invocable (Callable Statement).</li>
+</ul>
+<p>Para nuestro ejemplo, vamos a llamar al método para crear instrucción
+, que generalmente se usa para el acceso de propósito general a bases de
+datos y es útil cuando se usan instrucciones SQL estáticas en tiempo de
+ejecución.</p>
+<p>Usando el elemento de conexión del paso anterior, ejecutaremos las
+siguiente sentencia:</p>
+<p><code>Statement st = con.createStatement();</code></p>
+</div>
+<div id="paso-4-ejecutar-la-consulta" class="section level3">
+<h3>Paso 4: Ejecutar la consulta</h3>
+<p>Ahora viene la parte más importante, es decir, ejecutar la consulta.
+La consulta aquí es una consulta SQL. Una vez creado el objeto
+Statement, hay tres formas de ejecutar dicha consulta:</p>
+<ul>
+<li><strong>boolean execute(String SQL)</strong>: Si se recupera el
+objeto ResultSet, devuelve true o se devuelve false. Se utiliza para
+ejecutar sentencias <a
+href="https://www.geeksforgeeks.org/sql-ddl-dql-dml-dcl-tcl-commands/">DDL</a>
+de SQL o para SQL dinámico.</li>
+<li><strong>int executeUpdate(String SQL)</strong>: Devuelve el número
+de filas afectadas por la ejecución de la instrucción, que se utiliza
+cuando se necesita un número para las instrucciones INSERT, DELETE o
+UPDATE.</li>
+<li><strong>ResultSet executeQuery (String SQL)</strong>: Devuelve un
+objeto ResultSet. Se usa de manera similar a SELECT en SQL.</li>
+</ul>
+<p>Nos centraremos en la tercera de momento, pues solo vamos a recuperar
+datos de la base de datos. La sentencia sería la siguiente:</p>
+<p><code>ResultSet rs = st.executeQuery(query);</code></p>
+</div>
+<div id="código" class="section level3">
+<h3>Código:</h3>
+<p>Con todo lo visto anteriormente, el código quedaría así:</p>
+<pre class="java"><code>import java.io.*;
+import java.sql.*;
+
+class App {
     public static void main(String[] args) throws Exception {
-        LocalDate f = LocalDate.now();
-        System.out.println(fecha.getDayOfMonth());
-        System.out.println(fecha.getMonthValue());
-        Persona pepe = new Persona(&quot;Pepe&quot;);
-        pepe.setFechaNacimiento(&quot;2002-11-04&quot;);
-    }
-}
+        
+        // detalles de la conexión (conector, servidor, puerto y base de datos)
+        String connectionUrl = &quot;jdbc:mysql://127.0.0.1:3306/apressBooks&quot;;
+        // Credenciales MySQL
+        String username = &quot;usuario&quot;;
+        String password = &quot;P@ssw0rd&quot;;
+        String sqlSelectAllbooks = &quot;SELECT * FROM publication&quot;;
 
 
-public class Persona {
-    private final String nombre;
-    private String apel; 
-    private int numTelefono;
-    private String email;
-    private LocalDate fechaNacimiento;
+        // Preparamos la consulta
+        try (Connection conn = DriverManager.getConnection(connectionUrl, username, password); 
+            PreparedStatement ps = conn.prepareStatement(sqlSelectAllbooks); 
+            ResultSet rs = ps.executeQuery()) {
+                System.out.println(&quot;Conexión Establecida con éxito&quot;);
+                while (rs.next()) {
+                              //Obtenemos los valores de cada registro y mostramos 
+                              //algunos campos por pantalla
+                    String title = rs.getString(&quot;book_title&quot;);
+                    String lastName = rs.getString(&quot;publish_co&quot;);
 
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public LocalDate getFechaNacimiento() {
-        return fechaNacimiento;
-    }
-    public void setFechaNacimiento(LocalDate fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
-    }
-
-    public int comprobarCumpleanyos() {
-        LocalDate hoy = LocalDate.now();
-        if (hoy.getDayOfMonth()==getFechaNacimiento().getDayOfMonth() &amp;&amp;
-        hoy.getMonthValue()==getFechaNacimiento().getMonthValue()) {
-            return hoy.getYear() - getFechaNacimiento().getYear();   
+                    System.out.println(&quot;TITULO: &quot;  + title);
+                    System.out.println(&quot;EDITORIAL: &quot;  + title);
+                }
+                conn.close();
+                System.out.println(&quot;Conexión Cerrada....&quot;);
+            } catch (SQLException e) {
+                // handle the exception
+                e.printStackTrace();
         }
-        else {
-            return -1;
-        }
+      
     }
 }</code></pre>
-<p>La solución propuesta se puede descargar <a
-href="assets/ejercicio02.zip">aqui</a></p>
+<p>Si lo ejecutamos, el resultado debe ser algo parecido a esto:</p>
+<div class="float">
+<img src="imagenes/conexion_exitosa.jpg"
+alt="Salida de la aplicacion" />
+<div class="figcaption">Salida de la aplicacion</div>
+</div>
 </div>
 </div>
 
