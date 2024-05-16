@@ -64,7 +64,7 @@ navbar:
           href: UT06_index.html
         - text: "Prácticas"
           href: UT06_practicas.html
-    - text: "PPROYECTO FINAL"
+    - text: "PROYECTO FINAL"
       href: PRACTICA_FINAL.html
     - text: "APÉNDICES"
       menu: 
