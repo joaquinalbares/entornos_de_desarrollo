@@ -7,10 +7,6 @@ navbar:
   left:
     - text: "INICIO"
       href: index.html
-    - text: "UT00"
-      menu: 
-        - text: "INSTALAR JAVA"
-          href: UT00_java.html
     - text: "UT01"
       menu: 
         - text: "Contenido"
@@ -68,6 +64,8 @@ navbar:
       href: PRACTICA_FINAL.html
     - text: "APÉNDICES"
       menu: 
+        - text: "INSTALAR JAVA"
+          href: UT00_java.html
         - text: "MYSQL Y MAVEN"
           href: MAVEN_JAVA_MYSQL.html
 output_dir: "."
