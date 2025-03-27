@@ -5,8 +5,11 @@ Código a estudiar
 import java.util.Scanner;
 
 public class CalculadoraPrimos {
+
     public static int operacion(int a, int b, String operador) {
+
         int resultado = 0;
+        
         switch (operador) {
             case "+":
                 resultado = a + b;
@@ -29,6 +32,7 @@ public class CalculadoraPrimos {
         }
         return resultado;
     }
+    
 
     public static boolean esPrimo(int num) {
         if (num < 2) {
