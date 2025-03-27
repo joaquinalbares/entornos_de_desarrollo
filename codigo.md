@@ -1,6 +1,6 @@
 Código a estudiar
 
-´´´java
+```java
 
 import java.util.Scanner;
 
@@ -76,4 +76,4 @@ public class CalculadoraPrimos {
     }
 }
 
-´´´
+```
