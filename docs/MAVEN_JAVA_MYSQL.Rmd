@@ -28,6 +28,7 @@ En primer lugar, definimos una base de datos simple llamada apressBooks con dos 
 
 Las sentencias SQL para la creación de la base de datos, los permisos y las tablas son las siguientes:
 
+{% include codeHeader.html %}
 ```sql
 DROP DATABASE IF EXISTS `apressBooks`;
 CREATE DATABASE `apressBooks`;
@@ -38,13 +39,13 @@ CREATE TABLE `apressBooks`.`recipes` (
   `description` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`id`)
 );
- 
-insert into apressBooks.recipes values(1, 
+
+insert into apressBooks.recipes values(1,
 '12-1',
 'Installing MySQL',
-'Downloading and installation of a MySQL Database'); 
- 
-insert into apressBooks.recipes values(2, 
+'Downloading and installation of a MySQL Database');
+
+insert into apressBooks.recipes values(2,
 '12-2',
 'Connecting to a Database',
 'DriverManager and DataSource Implementations');
@@ -91,7 +92,7 @@ FLUSH PRIVILEGES;
 
 ### 1. Importar los paquetes
 
-Para la conexión de Java con la base de datos usamos un objeto de conexión JDBC para obtener los datos necesarios. 
+Para la conexión de Java con la base de datos usamos un objeto de conexión JDBC para obtener los datos necesarios.
 
 Crear una conexión JDBC en MAVEN debemos acceder al repositorio:
 
@@ -129,14 +130,14 @@ Los elementos de esta instrucción son:
 - **user**: Username desde el que se puede acceder a su símbolo del sistema SQL.
 - **password**: contraseña desde la que se puede acceder al símbolo del sistema SQL.
 - **Url**: Localizador uniforme de recursos que se crea como se muestra a continuación: `String url = “jdbc:mysql://localhost:3306/Basededatos”` y está compuesto de los siguientes elementos:
-  - `jdbc` es el conector/driver utilizado, 
-  - `mysql` es la base de datos utilizada, 
-  - `localhost` es la dirección IP donde se almacena una base de datos, 
-  - `3306` es el número de puerto 
-  - `Basededatos` es la base de datos sobre la que vamos a trabajar. 
-  
+  - `jdbc` es el conector/driver utilizado,
+  - `mysql` es la base de datos utilizada,
+  - `localhost` es la dirección IP donde se almacena una base de datos,
+  - `3306` es el número de puerto
+  - `Basededatos` es la base de datos sobre la que vamos a trabajar.
+
 Los 3 parámetros anteriores son de tipo String y deben ser declarados por el programador antes de llamar a la función.
-    
+
 Esta sentencia devuelve un objeto de tipo **con**, una referencia a la interfaz de conexión.
 
 ### Paso 3: Crear una instrucción
@@ -175,7 +176,7 @@ import java.sql.*;
 
 class App {
     public static void main(String[] args) throws Exception {
-		
+
 		// detalles de la conexión (conector, servidor, puerto y base de datos)
         String connectionUrl = "jdbc:mysql://127.0.0.1:3306/apressBooks";
         // Credenciales MySQL
@@ -185,12 +186,12 @@ class App {
 
 
         // Preparamos la consulta
-        try (Connection conn = DriverManager.getConnection(connectionUrl, username, password); 
-            PreparedStatement ps = conn.prepareStatement(sqlSelectAllbooks); 
+        try (Connection conn = DriverManager.getConnection(connectionUrl, username, password);
+            PreparedStatement ps = conn.prepareStatement(sqlSelectAllbooks);
             ResultSet rs = ps.executeQuery()) {
                 System.out.println("Conexión Establecida con éxito");
                 while (rs.next()) {
-					          //Obtenemos los valores de cada registro y mostramos 
+					          //Obtenemos los valores de cada registro y mostramos
 					          //algunos campos por pantalla
                     String title = rs.getString("book_title");
                     String lastName = rs.getString("publish_co");
@@ -204,7 +205,7 @@ class App {
                 // handle the exception
                 e.printStackTrace();
         }
-      
+
     }
 }
 ```
@@ -212,5 +213,3 @@ class App {
 Si lo ejecutamos, el resultado debe ser algo parecido a esto:
 
 ![Salida de la aplicacion](imagenes/conexion_exitosa.jpg)
-
-

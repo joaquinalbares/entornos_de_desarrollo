@@ -1,4 +1,4 @@
-name: "Create a simple Rmarkdown website"
+name: "Web de Joaquin Rios"
 output:
   html_document:
     theme: cosmo
@@ -8,36 +8,36 @@ navbar:
     - text: "INICIO"
       href: index.html
     - text: "UT01"
-      menu: 
+      menu:
         - text: "Contenido"
           href: UT01_index.html
         - text: "Artículo de opinión"
-          href: UT01_lectura.html 
+          href: UT01_lectura.html
         - text: "Ejercicios de clase"
-          href: UT01_ejercicios.html 
-          
+          href: UT01_ejercicios.html
+
     - text: "UT02"
-      menu: 
+      menu:
         - text: "Contenido"
           href: UT02_index.html
         - text: "Ejercicios de clase"
-          href: UT02_ejercicios.html 
+          href: UT02_ejercicios.html
     - text: "UT03"
-      menu: 
+      menu:
         - text: "Programación"
           href: UT03_index.html
         - text: "INTRO"
-          href: UT03_parte00.html 
+          href: UT03_parte00.html
         - text: "Pruebas de Caja Blanca"
-          href: UT03_parte01.html 
+          href: UT03_parte01.html
         - text: "Test unitarios"
-          href: UT03_parte02.html 
+          href: UT03_parte02.html
         - text: "Ejercicios de clase"
           href: UT03_ejercicios.html
         - text: "Examen de test unitarios"
           href: UT03_examen_B.html
     - text: "UT04"
-      menu: 
+      menu:
         - text: "Programación"
           href: UT04_index.html
         - text: "Contenidos"
@@ -49,13 +49,13 @@ navbar:
         - text: "EXAMEN"
           href: assets/examen_03.zip
     - text: "UT05"
-      menu: 
+      menu:
         - text: "Contenidos"
           href: UT05_index.html
         - text: "Prácticas"
           href: UT05_practicas.html
     - text: "UT06"
-      menu: 
+      menu:
         - text: "Contenidos"
           href: UT06_index.html
         - text: "Prácticas"
@@ -63,7 +63,7 @@ navbar:
     - text: "PROYECTO FINAL"
       href: PRACTICA_FINAL.html
     - text: "APÉNDICES"
-      menu: 
+      menu:
         - text: "INSTALAR JAVA"
           href: UT00_java.html
         - text: "MYSQL Y MAVEN"
